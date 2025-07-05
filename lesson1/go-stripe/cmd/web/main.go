@@ -2,8 +2,10 @@ package main
 
 import (
 	"flag"
+	"fmt"
 	"html/template"
 	"log"
+	"net/http"
 	"os"
 )
 
@@ -29,6 +31,13 @@ type application struct {
 	errorLog      *log.Logger
 	templateCache map[string]*template.Template
 	version       string
+}
+
+func (app *application) serve() {
+	srv := &http.Server{
+		Addr:    fmt.Sprintf(":%d", app.config.port),
+		Handler: app.routes(),
+	}
 }
 
 func main() {
