@@ -1,5 +1,9 @@
 package main
 
+import (
+	"log"
+)
+
 const version = "1.0.0"
 const cssVersion = "1"
 
@@ -10,4 +14,14 @@ type config struct {
 	db   struct {
 		dsn string
 	}
+	stripe struct {
+		secret string
+		key    string
+	}
+}
+
+type application struct {
+	config   config
+	infoLog  *log.Logger
+	errorLog *log.Logger
 }
