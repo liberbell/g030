@@ -28,6 +28,7 @@ type application struct {
 	infoLog       *log.Logger
 	errorLog      *log.Logger
 	templateCache map[string]*template.Template
+	version       string
 }
 
 func main() {
@@ -48,6 +49,10 @@ func main() {
 	tc := make(map[string]*template.Template)
 
 	app := &application{
-		config: cfg,
+		config:        cfg,
+		infoLog:       infoLog,
+		errorLog:      errorLog,
+		templateCache: tc,
+		version:       version,
 	}
 }
