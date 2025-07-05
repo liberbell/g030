@@ -1,6 +1,7 @@
 package main
 
 import (
+	"html/template"
 	"log"
 )
 
@@ -21,7 +22,8 @@ type config struct {
 }
 
 type application struct {
-	config   config
-	infoLog  *log.Logger
-	errorLog *log.Logger
+	config        config
+	infoLog       *log.Logger
+	errorLog      *log.Logger
+	templateCache map[string]*template.Template
 }
