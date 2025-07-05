@@ -41,7 +41,9 @@ func (app *application) serve() {
 		IdleTimeout:       30 * time.Second,
 		ReadTimeout:       10 * time.Second,
 		ReadHeaderTimeout: 2 * time.Second,
+		WriteTimeout:      5 * time.Second,
 	}
+	app.infoLog.Println("Starting HTTP server on port %d", app.config.port)
 }
 
 func main() {
