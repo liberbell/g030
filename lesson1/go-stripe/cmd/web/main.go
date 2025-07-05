@@ -4,6 +4,7 @@ import (
 	"flag"
 	"html/template"
 	"log"
+	"os"
 )
 
 const version = "1.0.0"
@@ -34,5 +35,10 @@ func main() {
 
 	flag.IntVar(&cfg.port, "Port", 4000, "Server Port to listen on")
 	flag.StringVar(&cfg.env, "env", "development", "Application envirnment {decelopment|environment}")
-	flag.StringVar(&cfg.api, "api", "development", "Application envirnment {decelopment|environment}")
+	flag.StringVar(&cfg.api, "api", "http://localhost:4001", "URL to api")
+
+	flag.Parse()
+
+	cfg.stripe.key = os.Getenv("STRIPE_KEY")
+	cfg.stripe.secret = os.Getenv("STRIPE_SECRET")
 }
