@@ -25,7 +25,7 @@ var functions = template.FuncMap{}
 
 var templateFS embed.FS
 
-func (app *application) addDefaultData(td *templateData, r *http.Request) *templateData {
+func (app *application) addDefaultData(td *templateData, r *http.Request) error {
 	return td
 }
 
@@ -39,5 +39,10 @@ func (app *application) renderTemplate(w http.ResponseWriter, r *http.Request, p
 		t = app.templateCache[templateToRender]
 	} else {
 		t, err = app.parseTemplate(partials, page, templateToRender)
+	}
+
+	if err != nil {
+		app.errorLog.Println(err)
+		return err
 	}
 }
