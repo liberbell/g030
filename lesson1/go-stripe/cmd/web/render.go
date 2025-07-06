@@ -39,10 +39,10 @@ func (app *application) renderTemplate(w http.ResponseWriter, r *http.Request, p
 		t = app.templateCache[templateToRender]
 	} else {
 		t, err = app.parseTemplate(partials, page, templateToRender)
+		if err != nil {
+			app.errorLog.Println(err)
+			return err
+		}
 	}
-
-	if err != nil {
-		app.errorLog.Println(err)
-		return err
-	}
+	return nil
 }
