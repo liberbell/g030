@@ -1,5 +1,10 @@
 package main
 
+import (
+	"embed"
+	"text/template"
+)
+
 type templateData struct {
 	StringMap       map[string]string
 	IntMap          map[string]int
@@ -13,3 +18,7 @@ type templateData struct {
 	API             string
 	CSSVersion      string
 }
+
+var functions = template.FuncMap{}
+
+var templateFS embed.FS
