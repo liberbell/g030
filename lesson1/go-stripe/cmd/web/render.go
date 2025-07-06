@@ -52,7 +52,11 @@ func (app *application) parseTemplate(partials []string, page, temmplateToRender
 	var err error
 	if len(partials) > 0 {
 		for i, x := range partials {
-			partials[i] = fmt.Sprintf("templates/%s.partial.tmpl")
+			partials[i] = fmt.Sprintf("templates/%s.partial.tmpl", x)
 		}
+	}
+
+	if len(partials) < 0 {
+		t, err := template.New(fmt.Sprintf("%s.page.tmpl", page)).Funcs(functions)
 	}
 }
