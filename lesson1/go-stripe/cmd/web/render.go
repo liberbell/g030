@@ -2,6 +2,7 @@ package main
 
 import (
 	"embed"
+	"fmt"
 	"net/http"
 	"text/template"
 )
@@ -30,4 +31,8 @@ func (app *application) addDefaultData(td *templateData, r *http.Request) *templ
 
 func (app *application) renderTemplate(w http.ResponseWriter, r *http.Request, page string, td *templateData, partials ...string) error {
 	var t *template.Template
+	var err error
+	templateToRender := fmt.Sprintf("templates/%s.page.tmpl", page)
+
+	_, templateInMap := app.templateCache[templateToRender]
 }
