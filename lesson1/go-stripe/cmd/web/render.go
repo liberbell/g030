@@ -48,5 +48,11 @@ func (app *application) renderTemplate(w http.ResponseWriter, r *http.Request, p
 }
 
 func (app *application) parseTemplate(partials []string, page, temmplateToRender string) (*template.Template, error) {
-
+	var t *template.Template
+	var err error
+	if len(partials) > 0 {
+		for i, x := range partials {
+			partials[i] = fmt.Sprintf("templates/%s.partial.tmpl")
+		}
+	}
 }
