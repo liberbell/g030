@@ -49,6 +49,11 @@ func (app *application) renderTemplate(w http.ResponseWriter, r *http.Request, p
 		td = &templateData{}
 	}
 	td = app.addDefaultData(td, r)
+	err = t.Execute(w, td)
+	if err != nil {
+		app.errorLog.Println(err)
+	}
+
 	return nil
 }
 
