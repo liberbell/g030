@@ -45,6 +45,15 @@
         function val() {
             
         }
-        
+
+        (function() {
+            const elements = stripe.elements();
+            const style = {
+                base: {
+                    fontSize: '16px',
+                    lineHeight: '24px',
+                }
+            }
+        })
     </script>
 {{end}}
