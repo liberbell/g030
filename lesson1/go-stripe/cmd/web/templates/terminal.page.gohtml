@@ -63,7 +63,14 @@
             card.mouont("card-element");
 
             card.addEventListener('change', function(evnet) {
-                
+                var displayError = document.getElementById('card-errors');
+                var displaySuccess = document.getElementById('card-success');
+
+                if (event.error) {
+                    displayError.classList.remove('d-none');
+                } else {
+
+                }
             })
         })
     </script>
