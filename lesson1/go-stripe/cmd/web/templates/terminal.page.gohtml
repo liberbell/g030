@@ -53,7 +53,12 @@
                     fontSize: '16px',
                     lineHeight: '24px',
                 }
-            }
+            };
+
+            card = elements.create('card', {
+                style: style,
+                hidePostalCode: false,
+            })
         })
     </script>
 {{end}}
