@@ -26,13 +26,13 @@
 
     <div class="mb-3">
         <label for="card-element" class="form-label">Credit Card</label>
+        <div id="card-element" class="form-control"></div>
+        <div class="alert-danger text-center" id="card-element-errors" role="alert"></div>
+        <div class="alert-success text-center" id="card-element-success" role="alert"></div>
     </div>
 </form>
 {{end}}
 
 {{define "js"}}
     <script src="https://js.stripe.com/v3/"></script>
-    <div id="card-element" class="form-control"></div>
-    <div class="alert-danger text-center" id="card-element-errors" role="alert"></div>
-    <div class="alert-success text-center" id="card-element-success" role="alert"></div>
 {{end}}
