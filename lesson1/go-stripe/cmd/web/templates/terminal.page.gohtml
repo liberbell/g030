@@ -51,7 +51,7 @@
             const style = {
                 base: {
                     fontSize: '16px',
-                    lineHeight: '24px',
+                    lineHeight: '24px'
                 }
             };
 
@@ -60,9 +60,9 @@
                 hidePostalCode: false,
             });
 
-            card.mouont("card-element");
+            card.mount("#card-element");
 
-            card.addEventListener('change', function(evnet) {
+            card.addEventListener('change', function(event) {
                 var displayError = document.getElementById('card-errors');
                 var displaySuccess = document.getElementById('card-success');
 
