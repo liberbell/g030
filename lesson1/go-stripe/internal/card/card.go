@@ -41,6 +41,10 @@ func cardErrorMessage(code stripe.ErrorCode) string {
 	switch code {
 	case stripe.ErrorCodeCardDeclined:
 		msg = "Your card was declined."
+	case string.ErrorCodeExpiredCard:
+		msg = "Your card is expired."
+	default:
+		msg = "Your card was declined."
 	}
 
 }
