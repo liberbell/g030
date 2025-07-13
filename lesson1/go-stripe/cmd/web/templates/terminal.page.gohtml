@@ -34,7 +34,9 @@
     <hr>
     <a id="pay-button" href="javascript:void(0)" class="btn btn-primary" onclick="val()">Charge Card</a>
     <div id="processing-payment" class="text-alert d-none">
-        <div class="spinner-border text-primary"></div>
+        <div class="spinner-border text-primary" role="status">
+            <span class="visually-hidden">Processing</span>
+        </div>
     </div>
 </form>
 {{end}}
