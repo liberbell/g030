@@ -7,7 +7,9 @@ type Card struct {
 }
 
 type Transaction struct {
-	TransactionID int
-	Amount        int
-	Currency      string
+	TransactionID  int
+	Amount         int
+	Currency       string
+	LastFour       string
+	BankReturnCode string
 }
