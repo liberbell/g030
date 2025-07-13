@@ -20,7 +20,7 @@ type Transaction struct {
 }
 
 func (c *Card) Charge(currency string, amount int) (*stripe.PaymentIntent, string, error) {
-	retrun c.
+	return c.CreatePaymentIntent(currency, amount)
 }
 
 func (c *Card) CreatePaymentIntent(currency string, amount int) (*stripe.PaymentIntent, string, error) {
