@@ -57,6 +57,10 @@ func cardErrorMessage(code stripe.ErrorCode) string {
 		msg = "The Amount is too large to charge to your card."
 	case stripe.ErrorCodeAmountTooSmall:
 		msg = "The Amount is too small to charge to your card."
+	case stripe.ErrorCodeBalanceInsufficient:
+		msg = "Insufficient Balance."
+	case stripe.ErrorCodePostalCodeInvalid:
+		msg = "Your Postal cord is invalid."
 	default:
 		msg = "Your card was declined."
 	}
