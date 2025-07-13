@@ -51,8 +51,13 @@
         const processing = document.getElementById('processing-payment');
 
         stripe = Stripe("pk_test_51RAiiJQIYevZnwnf6k5vtRV78yxyQfnTaGfRJ4C6aShdwPF0jYyZaf33WivHo2XMW2ODZUSGGbya0qZ58KL2oYYm00fWUTFAD9");
+
         function val() {
-            
+            let form = document.getElementById('charge_form');
+            if (form.checkValidity() === false) {
+                this.event.preventDefault();
+                this.event.stopPropagation();
+            }
         }
 
         (function() {
