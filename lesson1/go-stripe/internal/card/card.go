@@ -53,6 +53,10 @@ func cardErrorMessage(code stripe.ErrorCode) string {
 		msg = "Incorrect CVC code."
 	case stripe.ErrorCodeIncorrectZip:
 		msg = "Incorrect ZIP code."
+	case stripe.ErrorCodeAmountTooLarge:
+		msg = "The Amount is too large to charge to your card."
+	case stripe.ErrorCodeAmountTooSmall:
+		msg = "The Amount is too small to charge to your card."
 	default:
 		msg = "Your card was declined."
 	}
