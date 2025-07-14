@@ -46,6 +46,8 @@ func main() {
 	errorLog := log.New(os.Stdout, "ERROR\t", log.Ldate|log.Ltime|log.Lshortfile)
 
 	app := &application{
-		config: cfg,
+		config:   cfg,
+		infoLog:  infoLog,
+		errorLog: errorLog,
 	}
 }
