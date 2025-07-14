@@ -1,8 +1,10 @@
 package main
 
 import (
+	"flag"
 	"html/template"
 	"log"
+	"os"
 )
 
 const version = "1.0.0"
@@ -30,5 +32,20 @@ type application struct {
 }
 
 func main() {
+	var cfg config
 
+	flag.IntVar(&cfg.port, "Port", 4001, "Server Port to listen on")
+	flag.StringVar(&cfg.env, "env", "development", "Application envirnment {decelopment|environment|maintenance}")
+
+	flag.Parse()
+
+	cfg.stripe.key = os.Getenv("STRIPE_KEY")
+	cfg.stripe.secret = os.Getenv("STRIPE_SECRET")
+
+	infoLog := log.New(os.Stdout, "INFO\t", log.Ldate|log.Ltime)
+	errorLog := log.New(os.Stdout, "ERROR\t", log.Ldate|log.Ltime|log.Lshortfile)
+
+	app := &application{
+		config: cfg,
+	}
 }
