@@ -43,7 +43,7 @@ func (app *application) serve() error {
 		ReadHeaderTimeout: 2 * time.Second,
 		WriteTimeout:      5 * time.Second,
 	}
-	app.infoLog.Println(fmt.Sprintf("Starting HTTP server in %s mode on port %d", app.config.env, app.config.port))
+	app.infoLog.Println(fmt.Sprintf("Starting Back end server in %s mode on port %d", app.config.env, app.config.port))
 
 	return srv.ListenAndServe()
 }
@@ -66,5 +66,10 @@ func main() {
 		config:   cfg,
 		infoLog:  infoLog,
 		errorLog: errorLog,
+	}
+
+	err := app.serve()
+	if err != nil {
+		log.Fatal(err)
 	}
 }
