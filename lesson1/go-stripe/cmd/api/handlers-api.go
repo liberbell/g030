@@ -1,5 +1,7 @@
 package main
 
+import "net/http"
+
 type stripePayload struct {
 	Currency string `json: "currency"`
 	Amount   string `json: "amount"`
@@ -8,4 +10,12 @@ type stripePayload struct {
 type jsonResponse struct {
 	OK      bool   `json: "ok"`
 	Message string `json: "message"`
+	Content string `json: "content"`
+	ID      int    `json: "id"`
+}
+
+func (app *application) GetPaymentIntent(w http.ResponseWriter, r *http.Request) {
+	j := jsonResponse{
+		OK: true,
+	}
 }
