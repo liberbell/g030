@@ -1,6 +1,9 @@
 package main
 
-import "net/http"
+import (
+	"encoding/json"
+	"net/http"
+)
 
 type stripePayload struct {
 	Currency string `json: "currency"`
@@ -18,4 +21,6 @@ func (app *application) GetPaymentIntent(w http.ResponseWriter, r *http.Request)
 	j := jsonResponse{
 		OK: true,
 	}
+
+	out, err := json.Marshal(j, "", "   ")
 }
