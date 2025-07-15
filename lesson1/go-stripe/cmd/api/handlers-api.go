@@ -22,7 +22,7 @@ func (app *application) GetPaymentIntent(w http.ResponseWriter, r *http.Request)
 		OK: true,
 	}
 
-	out, err := json.Marshal(j, "", "   ")
+	out, err := json.MarshalIndent(j, "", "   ")
 	if err != nil {
 		app.errorLog.Println(err)
 	}
