@@ -1,6 +1,11 @@
 package main
 
 type stripePayload struct {
-	Currency string `json:"currency"`
-	Amount   string `json:"amount"`
+	Currency string `json: "currency"`
+	Amount   string `json: "amount"`
+}
+
+type jsonResponse struct {
+	OK      bool   `json: "ok"`
+	Message string `json: "message"`
 }
