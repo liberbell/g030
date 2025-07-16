@@ -2,6 +2,7 @@ package main
 
 import (
 	"encoding/json"
+	"myapp/internal/cards"
 	"net/http"
 	"strconv"
 )
@@ -31,6 +32,12 @@ func (app *application) GetPaymentIntent(w http.ResponseWriter, r *http.Request)
 	if err != nil {
 		app.errorLog.Println(err)
 		return
+	}
+
+	card := cards.Card{
+		Secret:   app.config.stripe.secret,
+		Key:      app.config.stripe.key,
+		Currency: payload.Currency,
 	}
 
 	j := jsonResponse{
