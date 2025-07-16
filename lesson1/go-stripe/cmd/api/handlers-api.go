@@ -40,6 +40,10 @@ func (app *application) GetPaymentIntent(w http.ResponseWriter, r *http.Request)
 		Currency: payload.Currency,
 	}
 
+	okay := true
+
+	pi, msg, err := card.Charge()
+
 	j := jsonResponse{
 		OK: true,
 	}
