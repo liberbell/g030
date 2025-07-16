@@ -28,7 +28,7 @@ func (app *application) GetPaymentIntent(w http.ResponseWriter, r *http.Request)
 		return
 	}
 
-	amoount, err := strconv.Atoi(payload.Amount)
+	amount, err := strconv.Atoi(payload.Amount)
 	if err != nil {
 		app.errorLog.Println(err)
 		return
@@ -42,7 +42,22 @@ func (app *application) GetPaymentIntent(w http.ResponseWriter, r *http.Request)
 
 	okay := true
 
-	pi, msg, err := card.Charge()
+	pi, msg, err := card.Charge(payload.Currency, amount)
+	if err != nil {
+		okay = false
+	}
+
+	if okay {
+		out, err := json.MarshalIndent(pi, "", "   ")
+		if err != nil {
+			app.errorLog.Println(err)
+			return
+		}
+		w.Header().Set("Content-Type", "application/json")
+
+	} else {
+
+	}
 
 	j := jsonResponse{
 		OK: true,
