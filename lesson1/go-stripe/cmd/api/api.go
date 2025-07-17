@@ -47,9 +47,8 @@ func (app *application) serve() error {
 func main() {
 	var cfg config
 
-	// flag.IntVar(&cfg.port, "Port", 4001, "Server Port to listen on")
 	flag.IntVar(&cfg.port, "port", 4001, "Server port to listen on")
-	flag.StringVar(&cfg.env, "env", "development", "Application envirnment {decelopment|environment|maintenance}")
+	flag.StringVar(&cfg.env, "env", "development", "Application enviornment {development|production|maintenance}")
 
 	flag.Parse()
 
