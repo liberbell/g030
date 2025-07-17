@@ -85,7 +85,11 @@
                     'Accept': 'application/json',
                     'Content-Type': 'application/json',
                 }
+                body: JSON.stringify(payload),
             }
+
+            fetch("https://localhost:4001/api/payment-intent", requestOptions)
+                .then(response)
         }
 
         (function() {
