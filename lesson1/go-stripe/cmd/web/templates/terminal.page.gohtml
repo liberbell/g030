@@ -73,7 +73,19 @@
             hidePayButton();
 
             let amountToCharge = String(parseFloat(document.getElementById("amount").value) * 100)
-            console.log(amountToCharge)
+
+            let payload = {
+                amount: amountToCharge,
+                currency: "USD",
+            }
+
+            const requestOptions = {
+                method: 'post',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                }
+            }
         }
 
         (function() {
