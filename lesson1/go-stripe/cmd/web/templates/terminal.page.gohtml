@@ -39,8 +39,10 @@
         </div>
     </div>
 
-    <input type="hideen" name="payment_intent" id="payment_intent">
-    <input type="hideen" name="payment_method" id="payment_method">
+    <input type="hidden" name="payment_intent" id="payment_intent">
+    <input type="hidden" name="payment_method" id="payment_method">
+    <input type="hidden" name="payment_amount" id="payment_amount">
+    <input type="hidden" name="payment_currency" id="payment_currency">
 </form>
 {{end}}
 
@@ -69,6 +71,8 @@
             }
             form.classList.add('was-validated');
             hidePayButton();
+
+
         }
 
         (function() {
