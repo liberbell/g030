@@ -84,12 +84,18 @@
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json',
-                }
+                },
                 body: JSON.stringify(payload),
             }
 
             fetch("https://localhost:4001/api/payment-intent", requestOptions)
-                .then(response)
+                .then(response => response.text())
+                .then(response => {
+                    let data;
+                    try {
+
+                    } catch(err)
+                })
         }
 
         (function() {
