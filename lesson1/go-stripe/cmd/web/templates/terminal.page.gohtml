@@ -110,6 +110,7 @@
                                     document.getElementById("payment_amount").value = result.paymentIntent.amount;
                                     document.getElementById("payment_currency").value = result.paymentIntent.currency;
                                     processing.classList.add("d-none");
+                                    showCardSuccess();
                                 }
                             }
                         })
