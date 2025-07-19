@@ -99,6 +99,10 @@
                             billing_details: {
                                 name: document.getElementById("cardholder-name").value,
                             }
+                        }).then(function(result) {
+                            if (result.error) {
+                                showError()
+                            }
                         })
                     } catch(err) {
                         console.log(err);
