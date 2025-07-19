@@ -102,7 +102,7 @@
                         }).then(function(result) {
                             if (result.error) {
                                 showError(result.error.message);
-                                showPayButton();
+                                showPayButtons();
                             } else if(result.paymentIntent) {
                                 if (result.paymentIntent.status === "succeeded") {
                                     document.getElementById("payment_method").value = result.paymentIntent.payment_method_types[0];
@@ -116,6 +116,8 @@
                         })
                     } catch(err) {
                         console.log(err);
+                        showCardError("Invalid response from payment gateway.");
+                        showPayButtons();
                     }
                 })
         }
