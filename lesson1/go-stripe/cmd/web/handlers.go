@@ -14,4 +14,7 @@ func (app *application) PaymentSucceeded(w http.ResponseWriter, r *http.Request)
 		app.errorLog.Println(err)
 		return
 	}
+	cardHolder := r.Form.Get("cardholder_name")
+	paymentIntent := r.Form.Get("payment_intent")
+
 }
