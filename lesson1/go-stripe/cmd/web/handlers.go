@@ -7,3 +7,11 @@ func (app *application) VirtualTerminal(w http.ResponseWriter, r *http.Request) 
 		app.errorLog.Println("hit the handler")
 	}
 }
+
+func (app *application) PaymentSucceeded(w http.ResponseWriter, r *http.Request) {
+	err := r.ParseForm()
+	if err != nil {
+		app.errorLog.Println(err)
+		return
+	}
+}
