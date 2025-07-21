@@ -1,11 +1,11 @@
 {{template "base" . }}
 
 {{define "title"}}
-    Payment succeeded.
+    Payment Succeeded.
 {{end}}
 
 {{define "content"}}
-    <h2 class="mt-5">Payment succeeded</h2>
+    <h2 class="mt-5">Payment Succeeded</h2>
     <hr>
     <p>Payment Intent: {{index .Data "pi"}}
     <p>Cardholder: {{index .Data "cardholder"}}
