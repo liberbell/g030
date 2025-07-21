@@ -29,4 +29,9 @@ func (app *application) PaymentSucceeded(w http.ResponseWriter, r *http.Request)
 	data["pa"] = paymentAmount
 	data["pc"] = paymentCurrency
 
+	if err := app.renderTemplate(w, r, "succeeded", &templateData{
+		Data: data,
+	}); err != nil {
+		app.errorLog.Println(err)
+	}
 }
