@@ -43,7 +43,8 @@ func (app *application) serve() error {
 		ReadHeaderTimeout: 2 * time.Second,
 		WriteTimeout:      5 * time.Second,
 	}
-	app.infoLog.Println(fmt.Sprintf("Starting HTTP server in %s mode on port %d", app.config.env, app.config.port))
+
+	app.infoLog.Printf("Starting HTTP server in %s mode on port %d\n", app.config.env, app.config.port)
 
 	return srv.ListenAndServe()
 }
@@ -51,7 +52,7 @@ func (app *application) serve() error {
 func main() {
 	var cfg config
 
-	flag.IntVar(&cfg.port, "Port", 4000, "Server Port to listen on")
+	flag.IntVar(&cfg.port, "port", 4000, "Server Port to listen on")
 	flag.StringVar(&cfg.env, "env", "development", "Application envirnment {decelopment|environment}")
 	flag.StringVar(&cfg.api, "api", "http://localhost:4001", "URL to api")
 
