@@ -1,14 +1,16 @@
 package main
 
 import (
+	"database/sql"
 	"flag"
 	"fmt"
 	"html/template"
 	"log"
-	"myapp/internal/driver"
 	"net/http"
 	"os"
 	"time"
+
+	_ "github.com/go-sql-driver/mysql"
 )
 
 const version = "1.0.0"
@@ -66,7 +68,8 @@ func main() {
 	infoLog := log.New(os.Stdout, "INFO\t", log.Ldate|log.Ltime)
 	errorLog := log.New(os.Stdout, "ERROR\t", log.Ldate|log.Ltime|log.Lshortfile)
 
-	conn, err := driver.OpenDB(cfg.db.dsn)
+	// conn, err := driver.OpenDB(cfg.db.dsn)
+	conn, err := sql.Open("mysql", "james:jamespass@tcp(127.0.0.1:3306)/widgets?parseTime=true&tls=false")
 	if err != nil {
 		errorLog.Fatal(err)
 	}
