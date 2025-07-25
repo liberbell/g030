@@ -67,7 +67,6 @@ func main() {
 	errorLog := log.New(os.Stdout, "ERROR\t", log.Ldate|log.Ltime|log.Lshortfile)
 
 	conn, err := driver.OpenDB(cfg.db.dsn)
-	// conn, err := sql.Open("mysql", "james:jamespass@tcp(127.0.0.1:3306)/widgets?parseTime=true&tls=false")
 	if err != nil {
 		errorLog.Fatal(err)
 	}
