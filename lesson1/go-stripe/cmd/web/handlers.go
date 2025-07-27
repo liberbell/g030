@@ -46,8 +46,10 @@ func (app *application) PaymentSucceeded(w http.ResponseWriter, r *http.Request)
 func (app *application) ChargeOnce(w http.ResponseWriter, r *http.Request) {
 
 	widget := models.Widget{
-		ID:   1,
-		Name: "Custom Widget",
+		ID:          1,
+		Name:        "Custom Widget",
+		Description: "a very nice widget",
+		Price:       1000,
 	}
 	if err := app.renderTemplate(w, r, "buy-once", nil, "stripe-js"); err != nil {
 		app.errorLog.Println(err)
