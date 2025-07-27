@@ -19,13 +19,17 @@
     autocomplete="off" novalidate="">
 
     <input type="hidden" name="product_id" value="{{$widget.ID}}">
-    <input type="hidden" name="product_price" value="{{$widget.Price}}">
+    <input type="hidden" name="amount" value="{{$widget.Price}}">
 
-    <div class="mb-3">
+    <h3>{{$widget.Name}}: {{$widget.Price}}</h3>
+
+    {% comment %} <div class="mb-3">
         <label for="amount" class="form-label">Amount</label>
         <input type="text" class="form-control" id="amount" name="amount"
             required="" autocomplete="amount-new">
-    </div>
+    </div> {% endcomment %}
+
+
 
     <div class="mb-3">
         <label for="cardholder-name" class="form-label">Cardholder Name</label>
