@@ -26,4 +26,5 @@ type Widget struct {
 	InventoryLevel string    `json: "inventory_level"`
 	Price          int       `json: "price"`
 	CreatedAt      time.Time `json: "-"`
+	UpdateAt       time.Time `json: "-"`
 }
