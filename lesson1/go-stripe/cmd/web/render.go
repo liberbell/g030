@@ -24,6 +24,10 @@ type templateData struct {
 
 var functions = template.FuncMap{}
 
+func formatCurrency(n int) {
+
+}
+
 //go:embed templates
 var templateFS embed.FS
 
