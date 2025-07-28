@@ -61,7 +61,8 @@
             body: JSON.stringify(payload),
         }
 
-        fetch("http://localhost:4001/api/payment-intent", requestOptions)
+        {{/* fetch("http://localhost:4001/api/payment-intent", requestOptions) */}}
+        fetch("{{.API}}/api/payment-intent", requestOptions)
             .then(response => response.text())
             .then(response => {
                 let data;
