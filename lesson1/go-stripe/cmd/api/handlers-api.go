@@ -5,6 +5,8 @@ import (
 	"myapp/internal/cards"
 	"net/http"
 	"strconv"
+
+	"github.com/go-chi/chi/v5"
 )
 
 type stripePayload struct {
@@ -70,4 +72,8 @@ func (app *application) GetPaymentIntent(w http.ResponseWriter, r *http.Request)
 		w.Header().Set("Content-Type", "application/json")
 		w.Write(out)
 	}
+}
+
+func (app *application) GetWidgetbyID(w http.ResponseWriter, r *http.Request) {
+	id := chi.URLParam(r, "id")
 }
