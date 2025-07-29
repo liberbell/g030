@@ -1,6 +1,7 @@
 package models
 
 import (
+	"context"
 	"database/sql"
 	"time"
 )
@@ -27,4 +28,8 @@ type Widget struct {
 	Price          int       `json: "price"`
 	CreatedAt      time.Time `json: "-"`
 	UpdateAt       time.Time `json: "-"`
+}
+
+func (m *DBModel) GetWidget(id int) (Widget, error) {
+	ctx, cancel := context.WithTimeout(context.Background(), 3*time.Second)
 }
