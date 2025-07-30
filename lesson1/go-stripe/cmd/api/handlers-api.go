@@ -83,4 +83,11 @@ func (app *application) GetWidgetbyID(w http.ResponseWriter, r *http.Request) {
 		app.errorLog.Println(err)
 		return
 	}
+
+	out, err := json.MarshalIndent(widget, "", "   ")
+	if err != nil {
+		app.errorLog.Println(err)
+		return
+	}
+	w.Header.Set("Content-Type", "application/json")
 }
