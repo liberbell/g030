@@ -31,11 +31,14 @@ type Widget struct {
 }
 
 type Order struct {
-	ID            int
-	WidgetId      int
-	TransactionId int
-	StatusId      int
-	Quantity      int
+	ID            int       `json: "id"`
+	WidgetId      int       `json: "widget_id"`
+	TransactionId int       `json: "transaction_id"`
+	StatusId      int       `json: "status_id"`
+	Quantity      int       `json: "quantity"`
+	Amount        int       `json: "amount"`
+	CreatedAt     time.Time `json: "-"`
+	UpdateAt      time.Time `json: "-"`
 }
 
 func (m *DBModel) GetWidget(id int) (Widget, error) {
