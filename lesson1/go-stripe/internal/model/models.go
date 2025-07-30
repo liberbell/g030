@@ -43,7 +43,22 @@ type Order struct {
 
 type Status struct {
 	ID        int       `json: "id"`
-	Name      int       `json: "name"`
+	Name      string    `json: "name"`
+	CreatedAt time.Time `json: "-"`
+	UpdateAt  time.Time `json: "-"`
+}
+
+type TransactionStatus struct {
+	ID        int       `json: "id"`
+	Name      string    `json: "name"`
+	CreatedAt time.Time `json: "-"`
+	UpdateAt  time.Time `json: "-"`
+}
+
+type Transaction struct {
+	ID        int       `json: "id"`
+	Amoount   int       `json: "amount"`
+	Currency  string    `json: "amount"`
 	CreatedAt time.Time `json: "-"`
 	UpdateAt  time.Time `json: "-"`
 }
