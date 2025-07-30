@@ -30,6 +30,14 @@ type Widget struct {
 	UpdateAt       time.Time `json: "-"`
 }
 
+type Order struct {
+	ID            int
+	WidgetId      int
+	TransactionId int
+	StatusId      int
+	Quantity      int
+}
+
 func (m *DBModel) GetWidget(id int) (Widget, error) {
 	ctx, cancel := context.WithTimeout(context.Background(), 3*time.Second)
 	defer cancel()
