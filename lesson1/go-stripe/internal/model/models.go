@@ -33,9 +33,9 @@ type Widget struct {
 
 type Order struct {
 	ID            int       `json: "id"`
-	WidgetId      int       `json: "widget_id"`
-	TransactionId int       `json: "transaction_id"`
-	StatusId      int       `json: "status_id"`
+	WidgetID      int       `json: "widget_id"`
+	TransactionID int       `json: "transaction_id"`
+	StatusID      int       `json: "status_id"`
 	Quantity      int       `json: "quantity"`
 	Amount        int       `json: "amount"`
 	CreatedAt     time.Time `json: "-"`
