@@ -28,7 +28,7 @@ type Widget struct {
 	Price          int       `json: "price"`
 	Image          string    `json: "image"`
 	CreatedAt      time.Time `json: "-"`
-	UpdateAt       time.Time `json: "-"`
+	UpdatedAt      time.Time `json: "-"`
 }
 
 type Order struct {
@@ -39,21 +39,21 @@ type Order struct {
 	Quantity      int       `json: "quantity"`
 	Amount        int       `json: "amount"`
 	CreatedAt     time.Time `json: "-"`
-	UpdateAt      time.Time `json: "-"`
+	UpdatedAt     time.Time `json: "-"`
 }
 
 type Status struct {
 	ID        int       `json: "id"`
 	Name      string    `json: "name"`
 	CreatedAt time.Time `json: "-"`
-	UpdateAt  time.Time `json: "-"`
+	UpdatedAt time.Time `json: "-"`
 }
 
 type TransactionStatus struct {
 	ID        int       `json: "id"`
 	Name      string    `json: "name"`
 	CreatedAt time.Time `json: "-"`
-	UpdateAt  time.Time `json: "-"`
+	UpdatedAt time.Time `json: "-"`
 }
 
 type Transaction struct {
@@ -64,7 +64,7 @@ type Transaction struct {
 	BankReturnCode      string    `json: "bank_return_code"`
 	TransactionStatusID int       `json: "transaction_status_id"`
 	CreatedAt           time.Time `json: "-"`
-	UpdateAt            time.Time `json: "-"`
+	UpdatedAt           time.Time `json: "-"`
 }
 
 type User struct {
