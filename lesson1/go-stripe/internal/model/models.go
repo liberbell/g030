@@ -62,7 +62,7 @@ type Transaction struct {
 	Currency            string    `json: "currency"`
 	LastFour            string    `json: "last_four"`
 	BankReturnCode      string    `json: "bank_return_code"`
-	TransactionStatusId int       `json: "transaction_status_id"`
+	TransactionStatusID int       `json: "transaction_status_id"`
 	CreatedAt           time.Time `json: "-"`
 	UpdateAt            time.Time `json: "-"`
 }
