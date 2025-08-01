@@ -74,7 +74,7 @@ type User struct {
 	Email     string    `json: "email"`
 	Password  string    `json: "password"`
 	CreatedAt time.Time `json: "-"`
-	UpdateAt  time.Time `json: "-"`
+	UpdatedAt time.Time `json: "-"`
 }
 
 func (m *DBModel) GetWidget(id int) (Widget, error) {
