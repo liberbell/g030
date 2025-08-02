@@ -110,6 +110,15 @@ func (m *DBModel) InsertTransaction(txn Transaction) (int, error) {
 	defer cancel()
 
 	stmt := `
-		insert into transactions (amount , currency, last_four, bank_return_code)
+		insert into transactions (amount , currency, last_four, bank_return_code, transaction_status_id, created_at, updated_at)
+		values (?, ?, ?, ?, ?, ?, ?)
 	`
+	result, err := m.DB.ExecContext(ctx, stmt,
+		txn.Amoount,
+		txn.Currency,
+		txn.LastFour,
+		txn.BankReturnCode,
+		txn.TransactionStatusID,
+		txn.CreatedAt
+	)
 }
