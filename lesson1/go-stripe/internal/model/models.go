@@ -138,15 +138,15 @@ func (m *DBModel) InsertOrder(order Order) (int, error) {
 	defer cancel()
 
 	stmt := `
-		insert into transactions (amount , currency, last_four, bank_return_code, transaction_status_id, created_at, updated_at)
+		insert into orders (widget_id , transaction_id, status_id, quantity, amount, created_at, updated_at)
 		values (?, ?, ?, ?, ?, ?, ?)
 	`
 	result, err := m.DB.ExecContext(ctx, stmt,
-		order.Amoount,
-		order.Currency,
-		order.LastFour,
-		order.BankReturnCode,
-		order.TransactionStatusID,
+		order.WidgetID,
+		order.TransactionID,
+		order.StatusID,
+		order.Quantity,
+		order.Amount,
 		time.Now(),
 		time.Now(),
 	)
