@@ -61,6 +61,8 @@
     document.getElementById("charge_amount", function(evt){
         if (evt.target.value != "") {
             document.getElementById("amount").value = evt.target.value * 100;
+        } else {
+            document.getElementById("amount").value = 0;
         }
     })
 </script>
