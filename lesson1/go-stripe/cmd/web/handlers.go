@@ -40,6 +40,10 @@ func (app *application) PaymentSucceeded(w http.ResponseWriter, r *http.Request)
 		Secret: app.config.stripe.secret,
 		Key:    app.config.stripe.key,
 	}
+	pi, err := card.RetrievePaymentIntent(paymentIntent)
+	if err != nil {
+		app.errorLog.Println(err)
+	}
 
 	data := make(map[string]interface{})
 	data["cardholder"] = cardHolder
