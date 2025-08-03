@@ -65,6 +65,7 @@ func (app *application) PaymentSucceeded(w http.ResponseWriter, r *http.Request)
 	data["last_four"] = lastFour
 	data["expiry_month"] = expiryMonth
 	data["expiry_year"] = expiryMonth
+	data["bank_return_code"] = pi.Charges.Data[0].ID
 
 	if err := app.renderTemplate(w, r, "succeeded", &templateData{
 		Data: data,
