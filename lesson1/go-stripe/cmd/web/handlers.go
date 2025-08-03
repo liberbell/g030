@@ -40,10 +40,20 @@ func (app *application) PaymentSucceeded(w http.ResponseWriter, r *http.Request)
 		Secret: app.config.stripe.secret,
 		Key:    app.config.stripe.key,
 	}
+
 	pi, err := card.RetrievePaymentIntent(paymentIntent)
 	if err != nil {
 		app.errorLog.Println(err)
 	}
+
+	pm, err := card.GetPaymentMethod(paymentMethod)
+	if err != nil {
+		app.errorLog.Println(err)
+	}
+
+	lastFour := pm.Card.Last4
+	expiryMonth := pm.Card.ExpMonth
+	expiryYear := pm.Card.ExpYear
 
 	data := make(map[string]interface{})
 	data["cardholder"] = cardHolder
@@ -52,6 +62,9 @@ func (app *application) PaymentSucceeded(w http.ResponseWriter, r *http.Request)
 	data["pm"] = paymentMethod
 	data["pa"] = paymentAmount
 	data["pc"] = paymentCurrency
+	data["last_four"] = lastFour
+	data["expiry_month"] = expiryMonth
+	data["expiry_year"] = expiryMonth
 
 	if err := app.renderTemplate(w, r, "succeeded", &templateData{
 		Data: data,
