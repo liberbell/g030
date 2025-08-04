@@ -77,6 +77,15 @@ type User struct {
 	UpdatedAt time.Time `json: "-"`
 }
 
+type Customer struct {
+	ID        int       `json: "id"`
+	FirstName string    `json: "first_name"`
+	LastName  string    `json: "last_name"`
+	Email     string    `json: "email"`
+	CreatedAt time.Time `json: "-"`
+	UpdatedAt time.Time `json: "-"`
+}
+
 func (m *DBModel) GetWidget(id int) (Widget, error) {
 	ctx, cancel := context.WithTimeout(context.Background(), 3*time.Second)
 	defer cancel()
