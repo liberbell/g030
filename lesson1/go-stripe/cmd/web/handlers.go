@@ -8,16 +8,13 @@ import (
 	"github.com/go-chi/chi/v5"
 )
 
+func (app *application) Home(w http.ResponseWriter, r *http.Request) {
+	if err := app.renderTemplate(w, r, "terminal", &templateData{}); err != nil {
+		app.errorLog.Println(err)
+	}
+}
+
 func (app *application) VirtualTerminal(w http.ResponseWriter, r *http.Request) {
-	// stringMap := make(map[string]string)
-	// stringMap["publishable_key"] = app.config.stripe.key
-
-	// if err := app.renderTemplate(w, r, "terminal", &templateData{
-	// 	StringMap: stringMap,
-	// }, "stripe-js"); err != nil {
-	// 	app.errorLog.Println(err)
-	// }
-
 	if err := app.renderTemplate(w, r, "terminal", &templateData{}, "stripe-js"); err != nil {
 		app.errorLog.Println(err)
 	}
