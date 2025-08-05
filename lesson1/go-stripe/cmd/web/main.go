@@ -78,7 +78,8 @@ func main() {
 	}
 	defer conn.Close()
 
-	sm
+	session = scs.New()
+	session.Lifetime = 24 * time.Hour
 
 	tc := make(map[string]*template.Template)
 
