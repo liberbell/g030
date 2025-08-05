@@ -62,6 +62,8 @@ type Transaction struct {
 	Amoount             int       `json: "amount"`
 	Currency            string    `json: "currency"`
 	LastFour            string    `json: "last_four"`
+	ExpiryMonth         int       `json: "expiry_month"`
+	ExpiryYear          int       `json: "expiry_year"`
 	BankReturnCode      string    `json: "bank_return_code"`
 	TransactionStatusID int       `json: "transaction_status_id"`
 	CreatedAt           time.Time `json: "-"`
@@ -180,11 +182,9 @@ func (m *DBModel) InsertCustomer(c Customer) (int, error) {
 		values (?, ?, ?, ?, ?)
 	`
 	result, err := m.DB.ExecContext(ctx, stmt,
-		order.WidgetID,
-		order.TransactionID,
-		order.StatusID,
-		order.Quantity,
-		order.Amount,
+		c.FirstName,
+		c.LastName,
+		c.Email,
 		time.Now(),
 		time.Now(),
 	)
