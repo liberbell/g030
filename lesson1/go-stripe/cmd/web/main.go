@@ -10,10 +10,14 @@ import (
 	"net/http"
 	"os"
 	"time"
+
+	"github.com/alexedwards/scs/v2"
 )
 
 const version = "1.0.0"
 const cssVersion = "1"
+
+var session *scs.SessionManager
 
 type config struct {
 	port int
@@ -73,6 +77,8 @@ func main() {
 		errorLog.Fatal(err)
 	}
 	defer conn.Close()
+
+	sm
 
 	tc := make(map[string]*template.Template)
 
