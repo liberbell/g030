@@ -81,12 +81,17 @@ func (app *application) PaymentSucceeded(w http.ResponseWriter, r *http.Request)
 	}
 }
 
-func (app *application) SaveCustomer(firstName, lastName, email) (id, error) {
+func (app *application) SaveCustomer(firstName, lastName, email string) (int, error) {
 	customer := models.Customer{
 		FirstName: firstName,
 		LastName:  lastName,
 		Email:     email,
 	}
+	id, err := app.DB.InsertCustomer(customer)
+	if err != nil {
+		return 0, err
+	}
+	return id, nil
 }
 
 func (app *application) ChargeOnce(w http.ResponseWriter, r *http.Request) {
