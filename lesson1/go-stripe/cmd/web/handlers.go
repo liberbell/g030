@@ -62,6 +62,14 @@ func (app *application) PaymentSucceeded(w http.ResponseWriter, r *http.Request)
 
 	app.infoLog.Print(customerID)
 
+	amount, _ := strconv.Atoi(paymentAmount)
+	txn := models.Transaction{
+		Amoount:     amount,
+		Currency:    paymentCurrency,
+		LastFour:    lastFour,
+		ExpiryMonth: int(expiryMonth),
+	}
+
 	data := make(map[string]interface{})
 	data["email"] = email
 	data["pi"] = paymentIntent
