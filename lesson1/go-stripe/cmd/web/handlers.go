@@ -5,6 +5,7 @@ import (
 	models "myapp/internal/model"
 	"net/http"
 	"strconv"
+	"time"
 
 	"github.com/go-chi/chi/v5"
 )
@@ -85,6 +86,10 @@ func (app *application) PaymentSucceeded(w http.ResponseWriter, r *http.Request)
 		TransactionID: txnID,
 		CustomerID:    customerID,
 		StatusID:      1,
+		Quantity:      1,
+		Amount:        amount,
+		CreatedAt:     time.Now(),
+		UpdatedAt:     time.Now(),
 	}
 
 	data := make(map[string]interface{})
