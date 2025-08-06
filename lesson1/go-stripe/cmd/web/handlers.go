@@ -2,6 +2,7 @@ package main
 
 import (
 	"myapp/internal/cards"
+	models "myapp/internal/model"
 	"net/http"
 	"strconv"
 
@@ -59,6 +60,8 @@ func (app *application) PaymentSucceeded(w http.ResponseWriter, r *http.Request)
 		return
 	}
 
+	app.infoLog.Print(customerID)
+
 	data := make(map[string]interface{})
 	data["cardholder"] = cardHolder
 	data["email"] = email
@@ -75,6 +78,14 @@ func (app *application) PaymentSucceeded(w http.ResponseWriter, r *http.Request)
 		Data: data,
 	}); err != nil {
 		app.errorLog.Println(err)
+	}
+}
+
+func (app *application) SaveCustomer(firstName, lastName, email) (id, error) {
+	customer := models.Customer{
+		FirstName: firstName,
+		LastName:  lastName,
+		Email:     email,
 	}
 }
 
