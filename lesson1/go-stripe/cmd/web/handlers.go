@@ -63,7 +63,6 @@ func (app *application) PaymentSucceeded(w http.ResponseWriter, r *http.Request)
 	app.infoLog.Print(customerID)
 
 	data := make(map[string]interface{})
-	data["cardholder"] = cardHolder
 	data["email"] = email
 	data["pi"] = paymentIntent
 	data["pm"] = paymentMethod
