@@ -62,7 +62,7 @@ func (app *application) PaymentSucceeded(w http.ResponseWriter, r *http.Request)
 		return
 	}
 
-	app.infoLog.Print(customerID)
+	// app.infoLog.Print(customerID)
 
 	amount, _ := strconv.Atoi(paymentAmount)
 	txn := models.Transaction{
