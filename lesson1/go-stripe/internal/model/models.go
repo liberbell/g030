@@ -124,7 +124,7 @@ func (m *DBModel) InsertTransaction(txn Transaction) (int, error) {
 	defer cancel()
 
 	stmt := `
-		insert into transactions (amount, currency, last_four, bank_return_code, payment_intent, payment_method
+		insert into transactions (amount, currency, last_four, bank_return_code, payment_intent, payment_method,
 		 transaction_status_id, expiry_month, expiry_year, created_at, updated_at)
 		values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
 	`
