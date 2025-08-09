@@ -114,12 +114,12 @@ func (app *application) PaymentSucceeded(w http.ResponseWriter, r *http.Request)
 
 	app.Session.Put(r.Context(), "receipt", data)
 	http.Redirect(w, r, "/receipt", http.StatusSeeOther)
+}
 
+func (app *application) Receipt(w http.ResponseWriter, r *http.Request) {
 	if err := app.renderTemplate(w, r, "succeeded", &templateData{
 		Data: data,
-	}); err != nil {
-		app.errorLog.Println(err)
-	}
+	})
 }
 
 func (app *application) SaveCustomer(firstName, lastName, email string) (int, error) {
