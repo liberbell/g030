@@ -117,9 +117,12 @@ func (app *application) PaymentSucceeded(w http.ResponseWriter, r *http.Request)
 }
 
 func (app *application) Receipt(w http.ResponseWriter, r *http.Request) {
+	data := app.Session.Get(r.Context(), "receipt").(map[string]interface{})
 	if err := app.renderTemplate(w, r, "succeeded", &templateData{
 		Data: data,
-	})
+	}); err != nil {
+		app.errorLog.Println(err)
+	}
 }
 
 func (app *application) SaveCustomer(firstName, lastName, email string) (int, error) {
