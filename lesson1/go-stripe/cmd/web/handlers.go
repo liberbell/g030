@@ -113,6 +113,7 @@ func (app *application) PaymentSucceeded(w http.ResponseWriter, r *http.Request)
 	data["last_name"] = lastName
 
 	app.Session.Put(r.Context(), "receipt", data)
+	http.Redirect(w, r, "/reciept", http.StatusSeeOther)
 
 	if err := app.renderTemplate(w, r, "succeeded", &templateData{
 		Data: data,
