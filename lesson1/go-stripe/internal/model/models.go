@@ -59,7 +59,7 @@ type TransactionStatus struct {
 
 type Transaction struct {
 	ID                  int       `json: "id"`
-	Amoount             int       `json: "amount"`
+	Amount              int       `json: "amount"`
 	Currency            string    `json: "currency"`
 	LastFour            string    `json: "last_four"`
 	ExpiryMonth         int       `json: "expiry_month"`
@@ -129,7 +129,7 @@ func (m *DBModel) InsertTransaction(txn Transaction) (int, error) {
 		values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
 	`
 	result, err := m.DB.ExecContext(ctx, stmt,
-		txn.Amoount,
+		txn.Amount,
 		txn.Currency,
 		txn.LastFour,
 		txn.BankReturnCode,

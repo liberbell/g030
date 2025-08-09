@@ -66,7 +66,7 @@ func (app *application) PaymentSucceeded(w http.ResponseWriter, r *http.Request)
 
 	amount, _ := strconv.Atoi(paymentAmount)
 	txn := models.Transaction{
-		Amoount:             amount,
+		Amount:              amount,
 		Currency:            paymentCurrency,
 		LastFour:            lastFour,
 		ExpiryMonth:         int(expiryMonth),
@@ -113,7 +113,7 @@ func (app *application) PaymentSucceeded(w http.ResponseWriter, r *http.Request)
 	data["last_name"] = lastName
 
 	app.Session.Put(r.Context(), "receipt", data)
-	http.Redirect(w, r, "/reciept", http.StatusSeeOther)
+	http.Redirect(w, r, "/receipt", http.StatusSeeOther)
 
 	if err := app.renderTemplate(w, r, "succeeded", &templateData{
 		Data: data,
