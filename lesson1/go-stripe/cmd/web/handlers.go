@@ -112,8 +112,6 @@ func (app *application) PaymentSucceeded(w http.ResponseWriter, r *http.Request)
 	}
 
 	// app.infoLog.Print(customerID)
-
-	amount, _ := strconv.Atoi(paymentAmount)
 	txn := models.Transaction{
 		Amount:              amount,
 		Currency:            paymentCurrency,
