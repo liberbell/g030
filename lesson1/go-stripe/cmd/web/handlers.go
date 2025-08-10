@@ -99,7 +99,13 @@ func (app *application) PaymentSucceeded(w http.ResponseWriter, r *http.Request)
 
 	widgetID, _ := strconv.Atoi(r.Form.Get("product_id"))
 
-	customerID, err := app.SaveCustomer(firstName, lastName, email)
+	txnData, err := app.GetTransactionData(r)
+	if err != nil {
+		app.errorLog.Println(err)
+		return
+	}
+
+	customerID, err := app.SaveCustomer(txnData.FirstName, txnData.LastName, txnData.Email)
 	if err != nil {
 		app.errorLog.Println(err)
 		return
