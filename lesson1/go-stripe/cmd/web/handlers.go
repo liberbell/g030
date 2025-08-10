@@ -73,6 +73,16 @@ func (app *application) GetTransactionData(r *http.Request) (TransactionData, er
 	expiryMonth := pm.Card.ExpMonth
 	expiryYear := pm.Card.ExpYear
 
+	txnData = TransactionData{
+		FirstName:       firstName,
+		LastName:        lastName,
+		Email:           email,
+		PaymentIntentID: paymentIntent,
+		PaymentMethodID: paymentMethod,
+		PaymentAmount:   amount,
+		PaymentCurrency: paymentCurrency,
+	}
+
 }
 
 func (app *application) PaymentSucceeded(w http.ResponseWriter, r *http.Request) {
