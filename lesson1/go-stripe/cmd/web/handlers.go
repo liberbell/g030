@@ -22,6 +22,19 @@ func (app *application) VirtualTerminal(w http.ResponseWriter, r *http.Request) 
 	}
 }
 
+type TransactionData struct {
+	FirstName       string
+	LastName        string
+	Email           string
+	PaymentIntentID string
+	PaymentMethodID string
+	Amount          int
+	Currency        string
+	LastFour        string
+	ExpiryMonth     int
+	ExpiryYear      int
+}
+
 func (app *application) PaymentSucceeded(w http.ResponseWriter, r *http.Request) {
 	err := r.ParseForm()
 	if err != nil {
