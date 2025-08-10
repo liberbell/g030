@@ -81,6 +81,10 @@ func (app *application) GetTransactionData(r *http.Request) (TransactionData, er
 		PaymentMethodID: paymentMethod,
 		PaymentAmount:   amount,
 		PaymentCurrency: paymentCurrency,
+		LastFour:        lastFour,
+		ExpiryMonth:     int(expiryMonth),
+		ExpiryYear:      int(expiryYear),
+		BankReturnCode:  pi.LatestCharge.ID,
 	}
 
 }
