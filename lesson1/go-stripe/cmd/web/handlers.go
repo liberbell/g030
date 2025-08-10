@@ -86,6 +86,7 @@ func (app *application) GetTransactionData(r *http.Request) (TransactionData, er
 		ExpiryYear:      int(expiryYear),
 		BankReturnCode:  pi.LatestCharge.ID,
 	}
+	return txnData, nil
 
 }
 
