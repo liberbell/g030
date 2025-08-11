@@ -15,6 +15,6 @@
     <p>Payment Amount: {{$txn.PaymentAmount}}</p>
     <p>Currency: {{$txn.PaymentCurency}}</p>
     <p>Last Four: {{$txn.LastFour}}</p>
-    <p>Bank Return Code: {{index .Data "bank_return_code"}}</p>
-    <p>Expir Date(M/Y): {{index .Data "expiry_month"}}/{{index .Data "expiry_year"}}</p>
+    <p>Bank Return Code: {{$txn.BankReturnCode}}</p>
+    <p>Expir Date(M/Y): {{$txn.ExpiryMonth}}/{{$txn.ExpiryYear}}</p>
 {{end}}
