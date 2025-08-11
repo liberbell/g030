@@ -113,14 +113,14 @@ func (app *application) PaymentSucceeded(w http.ResponseWriter, r *http.Request)
 
 	// app.infoLog.Print(customerID)
 	txn := models.Transaction{
-		Amount:              amount,
-		Currency:            paymentCurrency,
-		LastFour:            lastFour,
-		ExpiryMonth:         int(expiryMonth),
-		ExpiryYear:          int(expiryYear),
-		BankReturnCode:      pi.LatestCharge.ID,
-		PaymentIntent:       paymentIntent,
-		PaymentMethod:       paymentMethod,
+		Amount:              txnData.PaymentAmount,
+		Currency:            txnData.PaymentCurrency,
+		LastFour:            txnData.LastFour,
+		ExpiryMonth:         int(txnData.ExpiryMonth),
+		ExpiryYear:          int(txnData.ExpiryYear),
+		BankReturnCode:      txnData.BankReturnCode,
+		PaymentIntent:       txnData.PaymentIntentID,
+		PaymentMethod:       txnData.PaymentMethodID,
 		TransactionStatusID: 2,
 	}
 
