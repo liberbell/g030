@@ -136,7 +136,7 @@ func (app *application) PaymentSucceeded(w http.ResponseWriter, r *http.Request)
 		CustomerID:    customerID,
 		StatusID:      1,
 		Quantity:      1,
-		Amount:        amount,
+		Amount:        txnData.PaymentAmount,
 		CreatedAt:     time.Now(),
 		UpdatedAt:     time.Now(),
 	}
@@ -147,9 +147,9 @@ func (app *application) PaymentSucceeded(w http.ResponseWriter, r *http.Request)
 	}
 
 	data := make(map[string]interface{})
-	data["email"] = email
-	data["pi"] = paymentIntent
-	data["pm"] = paymentMethod
+	data["email"] = txnData.Email
+	data["pi"] = txnData.PaymentIntentID
+	data["pm"] = txnData.PaymentMethodID
 	data["pa"] = paymentAmount
 	data["pc"] = paymentCurrency
 	data["last_four"] = lastFour
