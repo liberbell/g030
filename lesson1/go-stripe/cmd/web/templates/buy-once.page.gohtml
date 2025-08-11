@@ -76,13 +76,13 @@
 
 {{define "js"}}
 <script>
-    document.getElementById("charge-amount").addEventListener(), function (evt) {
+    document.getElementById("charge-amount").addEventListener("change", function (evt) {
         if (evt.target.value !== "") {
             document.getElementById("amount").value = evt.target.value * 100;
         } else {
-            document.getElementById("amount")
+            document.getElementById("amount").value = 0;
         }
-    }
+    })
 </script>
 {{template "stripe-js" .}}
 {{end}}
