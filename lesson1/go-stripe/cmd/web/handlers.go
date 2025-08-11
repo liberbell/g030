@@ -146,20 +146,7 @@ func (app *application) PaymentSucceeded(w http.ResponseWriter, r *http.Request)
 		return
 	}
 
-	data := make(map[string]interface{})
-	data["email"] = txnData.Email
-	data["pi"] = txnData.PaymentIntentID
-	data["pm"] = txnData.PaymentMethodID
-	data["pa"] = paymentAmount
-	data["pc"] = paymentCurrency
-	data["last_four"] = lastFour
-	data["expiry_month"] = expiryMonth
-	data["expiry_year"] = expiryYear
-	data["bank_return_code"] = pi.LatestCharge.ID
-	data["first_name"] = firstName
-	data["last_name"] = lastName
-
-	app.Session.Put(r.Context(), "receipt", data)
+	app.Session.Put(r.Context(), "receipt", txnData)
 	http.Redirect(w, r, "/receipt", http.StatusSeeOther)
 }
 
