@@ -75,5 +75,14 @@
 {{end}}
 
 {{define "js"}}
+<script>
+    document.getElementById("charge-amount").addEventListener(), function (evt) {
+        if (evt.target.value !== "") {
+            document.getElementById("amount").value = evt.target.value * 100;
+        } else {
+            document.getElementById("amount")
+        }
+    }
+</script>
 {{template "stripe-js" .}}
 {{end}}
