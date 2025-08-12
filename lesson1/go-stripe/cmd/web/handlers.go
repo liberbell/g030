@@ -254,3 +254,7 @@ func (app *application) ChargeOnce(w http.ResponseWriter, r *http.Request) {
 		app.errorLog.Println(err)
 	}
 }
+
+func (app *application) BronzePlan(w http.ResponseWriter, r *http.Request) {
+	intMap := make(map[string]int)
+}
