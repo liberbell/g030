@@ -200,7 +200,7 @@ func (app *application) VirtualTerminalReceipt(w http.ResponseWriter, r *http.Re
 	data["txn"] = txn
 
 	app.Session.Remove(r.Context(), "receipt")
-	if err := app.renderTemplate(w, r, "receipt", &templateData{
+	if err := app.renderTemplate(w, r, "virtual-terminal-receipt", &templateData{
 		Data: data,
 	}); err != nil {
 		app.errorLog.Println(err)
