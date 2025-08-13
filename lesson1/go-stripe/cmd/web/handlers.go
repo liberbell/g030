@@ -262,9 +262,10 @@ func (app *application) BronzePlan(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	data := make(map[string]interface{}, 0)
+	data := make(map[string]interface{})
+	data["widget"] = widget
 	if err := app.renderTemplate(w, r, "bronze-plan", &templateData{
-		IntMap: intMap,
+		Data: data,
 	}); err != nil {
 		app.errorLog.Println(err)
 	}
