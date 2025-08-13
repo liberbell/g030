@@ -12,7 +12,7 @@
 
 <div class="alert alert-danger text-center d-none" id="card-messages"></div>
 
-<form action="/payment-succeeded" method="post"
+<form action="/payment-succeeded-temp" method="post"
     name="charge_form" id="charge_form"
     class="d-block needs-validation charge-form"
     autocomplete="off" novalidate="">
@@ -58,7 +58,7 @@
 
     <hr>
 
-    <a id="pay-button" href="javascript:void(0)" class="btn btn-primary" onclick="val()">Charge Card</a>
+    <a id="pay-button" href="javascript:void(0)" class="btn btn-primary" onclick="val()">Pay {{formatCurrency $widget.price}}/month</a>
     <div id="processing-payment" class="text-center d-none">
         <div class="spinner-border text-primary" role="status">
             <span class="visually-hidden">Loading...</span>
