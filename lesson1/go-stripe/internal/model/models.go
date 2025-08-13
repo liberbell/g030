@@ -101,7 +101,7 @@ func (m *DBModel) GetWidget(id int) (Widget, error) {
 
 	row := m.DB.QueryRowContext(ctx,
 		`select
-			id, name, description, inventory_level, price, image, created_at, updated_at
+			id, name, description, inventory_level, price, image, is_recurring, plan_id, created_at, updated_at
 		from
 			widgets
 		where id = ?`, id)
@@ -112,6 +112,8 @@ func (m *DBModel) GetWidget(id int) (Widget, error) {
 		&widget.InventoryLevel,
 		&widget.Price,
 		&widget.Image,
+		&widget.IsRecurring,
+		&widget.PlanID,
 		&widget.CreatedAt,
 		&widget.UpdatedAt,
 	)
