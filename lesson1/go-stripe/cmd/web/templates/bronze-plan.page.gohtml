@@ -129,8 +129,12 @@
             card: card,
             billing_details: {
                 email: document.getElementById("cardholder-email").value,
-            }
-        })
+            },
+        }).then(stripePaymmetMethodHandler);
+     }
+
+     function stripePaymmetMethodHandler(result) {
+        if (result.error)
      }
 
     (function() {
