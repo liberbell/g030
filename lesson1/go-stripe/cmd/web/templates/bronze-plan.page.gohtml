@@ -137,7 +137,11 @@
         if (result.error) {
             showCardError(result.error.message);
         } else {
-            abc
+            let payload = {
+                plan: '{$widget.PlanID}',
+                payment_method: result.paymentMethod.id,
+                email: document.getElementById()
+            }
         }
      }
 
