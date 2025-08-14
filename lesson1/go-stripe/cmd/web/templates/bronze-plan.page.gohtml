@@ -134,7 +134,11 @@
      }
 
      function stripePaymmetMethodHandler(result) {
-        if (result.error)
+        if (result.error) {
+            showCardError(result.error.message);
+        } else {
+            abc
+        }
      }
 
     (function() {
