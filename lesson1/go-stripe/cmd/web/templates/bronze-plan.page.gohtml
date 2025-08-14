@@ -111,6 +111,28 @@
         cardMessages.innerText = "Transaction successful";
     }
 
+    function val() { 
+        let form = document.getElementById("charge_form");
+        if (form.checkValidity() === false) {
+            this.event.preventDefault();
+            this.event.stopPropagation();
+            form.classList.add("was-validated");
+            return;
+        }
+        form.classList.add("was-validated");
+        hidePayButton();
+
+        let amountToCharge = document.getElementById("amount").value;
+
+        stripe.createPaymentMethod({
+            type: 'card',
+            card: card,
+            billing_details: {
+                email: document.getElementById("cardholder-email").value,
+            }
+        })
+     }
+
     (function() {
         const elements = stripe.elements();
         const style = {
