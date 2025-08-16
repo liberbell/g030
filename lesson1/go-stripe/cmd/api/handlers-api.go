@@ -119,4 +119,5 @@ func (app *application) CreateCustomerAndSubscribeToPlan(w http.ResponseWriter, 
 		return
 	}
 	w.Header().Set("Content-Type", "application/json")
+	w.Write(out)
 }
