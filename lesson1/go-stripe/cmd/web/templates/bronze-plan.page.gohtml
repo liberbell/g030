@@ -140,7 +140,8 @@
             let payload = {
                 plan: '{$widget.PlanID}',
                 payment_method: result.paymentMethod.id,
-                email: document.getElementById()
+                email: document.getElementById("cardholder-email").value,
+                last_four: result.paymentMethod.card.last4,
             }
         }
      }
