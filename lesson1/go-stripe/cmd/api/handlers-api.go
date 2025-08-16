@@ -92,3 +92,8 @@ func (app *application) GetWidgetbyID(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	w.Write(out)
 }
+
+func (app *application) CreateCustomerAndSubscribeToPlan(w http.ResponseWriter, r *http.Request) {
+	var data stripePayload
+
+}
