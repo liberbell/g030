@@ -15,11 +15,11 @@ type Card struct {
 }
 
 type Transaction struct {
-	TransactionID  int
-	Amount         int
-	Currency       string
-	LastFour       string
-	BankReturnCode string
+	TransactionStatusID int
+	Amount              int
+	Currency            string
+	LastFour            string
+	BankReturnCode      string
 }
 
 func (c *Card) Charge(currency string, amount int) (*stripe.PaymentIntent, string, error) {
@@ -78,7 +78,7 @@ func (c *Card) SubscribeToPlan(cust *stripe.Customer, plan, email, last4, cardTy
 
 	params.AddMetadata("last_four", last4)
 	params.AddMetadata("card_type", cardType)
-	params.AddExpand("latest_invoce.payment_intent")
+	params.AddExpand("latest_invoice.payment_intent")
 	subscription, err := subscription.New(params)
 	if err != nil {
 		return "", err
@@ -98,7 +98,7 @@ func (c *Card) CreateCustomer(pm, email string) (*stripe.Customer, string, error
 	cust, err := customer.New(customerParams)
 	if err != nil {
 		msg := ""
-		if stripeErr, ok := err.(*stripe.Err); ok {
+		if stripeErr, ok := err.(*stripe.Error); ok {
 			msg = cardErrorMessage(stripeErr.Code)
 		}
 		return nil, msg, err
