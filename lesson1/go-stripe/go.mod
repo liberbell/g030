@@ -8,5 +8,5 @@ require (
 	github.com/go-chi/chi/v5 v5.2.2 // indirect
 	github.com/go-chi/cors v1.2.2 // indirect
 	github.com/go-sql-driver/mysql v1.9.3 // indirect
-	github.com/stripe/stripe-go/v82 v82.3.0 // indirect
+	github.com/stripe/stripe-go/v82 v82.4.1 // indirect
 )
