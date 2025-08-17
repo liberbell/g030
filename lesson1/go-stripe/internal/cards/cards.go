@@ -69,9 +69,15 @@ func (c *Card) SubscribeToPlan(cust *stripe.Customer, plan, email, last4, cardTy
 	items := []*stripe.SubscriptionItemsParams{
 		{Plan: stripe.String(plan)},
 	}
+
 	params := &stripe.SubscriptionParams{
 		Customer: stripe.String(stripeCustomerID),
+		Items:    items,
 	}
+
+	params.AddMetadata("last_four", last4)
+	params.AddMetadata("card_type", cardType)
+	params.AddMetadata("latest_invoce.payment_intent")
 }
 
 func (c *Card) CreateCustomer(pm, email string) (*stripe.Customer, string, error) {
