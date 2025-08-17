@@ -130,15 +130,15 @@
             billing_details: {
                 email: document.getElementById("cardholder-email").value,
             },
-        }).then(stripePaymmetMethodHandler);
+        }).then(stripePaymetMethodHandler);
      }
 
-     function stripePaymmetMethodHandler(result) {
+     function stripePaymetMethodHandler(result) {
         if (result.error) {
             showCardError(result.error.message);
         } else {
             let payload = {
-                plan: '{$widget.PlanID}',
+                plan: '{{$widget.PlanID}}',
                 payment_method: result.paymentMethod.id,
                 email: document.getElementById("cardholder-email").value,
                 last_four: result.paymentMethod.card.last4,
