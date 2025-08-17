@@ -117,8 +117,15 @@ func (app *application) CreateCustomerAndSubscribeToPlan(w http.ResponseWriter, 
 		app.errorLog.Println(err)
 	}
 
+	subscriptionID, err := card.SubscribeToPlan(stripeCustomer, data.Plan, data.Email, data.LastFour, "")
+	if err != nil {
+		app.errorLog.Println(err)
+	}
+
+	app.infoLog.Println("subscriptiionID is ", subscriptionID)
+
 	okay := true
-	msg := ""
+	// msg := ""
 
 	resp := jsonResponse{
 		OK:      okay,
