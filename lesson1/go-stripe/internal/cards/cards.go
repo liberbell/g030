@@ -5,7 +5,7 @@ import (
 	"github.com/stripe/stripe-go/v82/customer"
 	"github.com/stripe/stripe-go/v82/paymentintent"
 	"github.com/stripe/stripe-go/v82/paymentmethod"
-	"github.com/stripe/stripe-go/v82/sub"
+	"github.com/stripe/stripe-go/v82/subscription"
 )
 
 type Card struct {
@@ -79,7 +79,7 @@ func (c *Card) SubscribeToPlan(cust *stripe.Customer, plan, email, last4, cardTy
 	params.AddMetadata("last_four", last4)
 	params.AddMetadata("card_type", cardType)
 	params.AddExpand("latest_invoce.payment_intent")
-	subscription, err := sub.New(params)
+	subscription, err := subscription.New(params)
 	if err != nil {
 		return "", err
 	}
