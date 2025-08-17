@@ -1,6 +1,7 @@
 package cards
 
 import (
+	"github.com/stripe/stripe-go/customer"
 	"github.com/stripe/stripe-go/v82"
 	"github.com/stripe/stripe-go/v82/paymentintent"
 	"github.com/stripe/stripe-go/v82/paymentmethod"
@@ -65,6 +66,14 @@ func (c *Card) RetrievePaymentIntent(id string) (*stripe.PaymentIntent, error) {
 
 func (c *Card) CreateCustomer(pm, email string) (*stripe.Customer, string, error) {
 	stripe.Key = c.Secret
+	customerParams := &stripe.CustomerParams{
+		PaymentMethod: stripe.String(pm),
+		Email:         stripe.String(email),
+		InvoiceSettings: &stripe.CustomerInvoiceSettingsParams{
+			DefaultPaymentMethod: stripe.String(pm),
+		},
+	}
+	cust, err := customer.New(customerParams)
 }
 
 func cardErrorMessage(code stripe.ErrorCode) string {
