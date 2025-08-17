@@ -12,10 +12,10 @@ import (
 type stripePayload struct {
 	Currency      string `json: "currency"`
 	Amount        string `json: "amount"`
-	PaymentMethod string `json: "payment_method`
-	Email         string `json: "email`
-	LastFour      string `json: "last_four`
-	Plan          string `json: "plan`
+	PaymentMethod string `json: "payment_method"`
+	Email         string `json: "email"`
+	LastFour      string `json: "last_four"`
+	Plan          string `json: "plan"`
 }
 
 type jsonResponse struct {
