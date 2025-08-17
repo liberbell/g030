@@ -38,7 +38,7 @@ func (c *Card) CreatePaymentIntent(currency string, amount int) (*stripe.Payment
 	if err != nil {
 		msg := ""
 		if stripeErr, ok := err.(*stripe.Error); ok {
-			msg = string(stripeErr.Code)
+			msg = cardErrorMessage(stripeErr.Code)
 		}
 		return nil, msg, err
 	}
