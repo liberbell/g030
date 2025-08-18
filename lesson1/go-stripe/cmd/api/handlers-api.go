@@ -19,6 +19,9 @@ type stripePayload struct {
 	ExpiryYear    string `json: "expiry_year"`
 	LastFour      string `json: "last_four"`
 	Plan          string `json: "plan"`
+	ProductID     string `json: "product_id"`
+	FirstName     string `json: "first_name"`
+	LastName      string `json: "last_name"`
 }
 
 type jsonResponse struct {
