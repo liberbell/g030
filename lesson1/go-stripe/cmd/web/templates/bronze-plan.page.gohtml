@@ -142,6 +142,7 @@
                 payment_method: result.paymentMethod.id,
                 email: document.getElementById("cardholder-email").value,
                 last_four: result.paymentMethod.card.last4,
+                card_brand: result.paymentMethod.card.brand,
             }
             const requestOptions = {
                 method: 'post',
