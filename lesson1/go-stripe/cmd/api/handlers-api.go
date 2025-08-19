@@ -150,7 +150,11 @@ func (app *application) CreateCustomerAndSubscribeToPlan(w http.ResponseWriter, 
 		expiryMonth, _ := strconv.Atoi(data.ExpiryMonth)
 		expiryYear, _ := strconv.Atoi(data.ExpiryYear)
 		txn := models.Transaction{
-			Amount: amount,
+			Amount:      amount,
+			Currency:    "cad",
+			LastFour:    data.LastFour,
+			ExpiryMonth: expiryMonth,
+			ExpiryYear:  expiryYear,
 		}
 	}
 
