@@ -190,3 +190,11 @@ func (app *application) SaveCustomer(firstName, lastName, email string) (int, er
 	}
 	return id, nil
 }
+
+func (app *application) SaveTransaction(txn models.Transaction) (int, error) {
+	id, err := app.DB.InsertTransaction(txn)
+	if err != nil {
+		return 0, err
+	}
+	return id, nil
+}
