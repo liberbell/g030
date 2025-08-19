@@ -143,6 +143,8 @@
                 email: document.getElementById("cardholder-email").value,
                 last_four: result.paymentMethod.card.last4,
                 card_brand: result.paymentMethod.card.brand,
+                exp_month: result.paymentMethod.card.exp_month,
+                exp_year: result.paymentMethod.card.exp_year,
             }
             const requestOptions = {
                 method: 'post',
