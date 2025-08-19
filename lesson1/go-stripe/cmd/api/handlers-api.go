@@ -7,7 +7,7 @@ import (
 	"strconv"
 
 	"github.com/go-chi/chi/v5"
-	"github.com/stripe/stripe-go"
+	"github.com/stripe/stripe-go/v82"
 )
 
 type stripePayload struct {
@@ -127,12 +127,12 @@ func (app *application) CreateCustomerAndSubscribeToPlan(w http.ResponseWriter, 
 		app.errorLog.Println(err)
 	}
 
-	subscription, err := card.SubscribeToPlan(stripeCustomer, data.Plan, data.Email, data.LastFour, "")
+	subscription, err = card.SubscribeToPlan(stripeCustomer, data.Plan, data.Email, data.LastFour, "")
 	if err != nil {
 		app.errorLog.Println(err)
 	}
 
-	app.infoLog.Println("subscriptiionID is ", subscriptionID)
+	app.infoLog.Println("subscriptiionID is ", subscription.ID)
 
 	// msg := ""
 
