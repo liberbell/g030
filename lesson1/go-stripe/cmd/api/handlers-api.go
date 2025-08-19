@@ -6,6 +6,7 @@ import (
 	models "myapp/internal/model"
 	"net/http"
 	"strconv"
+	"time"
 
 	"github.com/go-chi/chi/v5"
 	"github.com/stripe/stripe-go/v82"
@@ -160,6 +161,16 @@ func (app *application) CreateCustomerAndSubscribeToPlan(w http.ResponseWriter, 
 		txnID, err := app.SaveTransaction(txn)
 		if err != nil {
 			app.errorLog.Println(err)
+		}
+
+		order := models.Order{
+			WidgetID:      productID,
+			TransactionID: txnID,
+			CustomerID:    customerID,
+			StatusID:      1,
+			Quantity:      1,
+			Amount:        amount,
+			CreatedAt:     time.Now(),
 		}
 	}
 
