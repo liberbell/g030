@@ -125,11 +125,13 @@ func (app *application) CreateCustomerAndSubscribeToPlan(w http.ResponseWriter, 
 	stripeCustomer, msg, err := card.CreateCustomer(data.PaymentMethod, data.Email)
 	if err != nil {
 		app.errorLog.Println(err)
+		return
 	}
 
 	subscription, err = card.SubscribeToPlan(stripeCustomer, data.Plan, data.Email, data.LastFour, "")
 	if err != nil {
 		app.errorLog.Println(err)
+		return
 	}
 
 	app.infoLog.Println("subscriptiionID is ", subscription.ID)
