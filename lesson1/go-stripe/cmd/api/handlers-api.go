@@ -123,11 +123,13 @@ func (app *application) CreateCustomerAndSubscribeToPlan(w http.ResponseWriter, 
 
 	okay := true
 	var subscription *stripe.Subscription
+	txnMsg := "Transaction successful"
 
 	stripeCustomer, msg, err := card.CreateCustomer(data.PaymentMethod, data.Email)
 	if err != nil {
 		app.errorLog.Println(err)
 		okay = false
+		txnMsg = msg
 	}
 
 	if okay {
@@ -135,6 +137,7 @@ func (app *application) CreateCustomerAndSubscribeToPlan(w http.ResponseWriter, 
 		if err != nil {
 			app.errorLog.Println(err)
 			okay = false
+			txnMsg = "error subscribing customer"
 		}
 
 		app.infoLog.Println("subscriptiionID is ", subscription.ID)
@@ -182,11 +185,9 @@ func (app *application) CreateCustomerAndSubscribeToPlan(w http.ResponseWriter, 
 		}
 	}
 
-	// msg := ""
-
 	resp := jsonResponse{
 		OK:      okay,
-		Message: msg,
+		Message: txnMsg,
 	}
 	out, err := json.MarshalIndent(resp, "", "   ")
 	if err != nil {
