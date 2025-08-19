@@ -161,6 +161,7 @@ func (app *application) CreateCustomerAndSubscribeToPlan(w http.ResponseWriter, 
 		txnID, err := app.SaveTransaction(txn)
 		if err != nil {
 			app.errorLog.Println(err)
+			return
 		}
 
 		order := models.Order{
@@ -171,6 +172,12 @@ func (app *application) CreateCustomerAndSubscribeToPlan(w http.ResponseWriter, 
 			Quantity:      1,
 			Amount:        amount,
 			CreatedAt:     time.Now(),
+			UpdatedAt:     time.Now(),
+		}
+
+		_, err := app.SaveOrder(order)
+		if err != nil {
+			app.errorLog.Println(err)
 		}
 	}
 
