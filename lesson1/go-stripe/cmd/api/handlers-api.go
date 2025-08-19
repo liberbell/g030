@@ -7,6 +7,7 @@ import (
 	"strconv"
 
 	"github.com/go-chi/chi/v5"
+	"github.com/stripe/stripe-go"
 )
 
 type stripePayload struct {
@@ -118,19 +119,21 @@ func (app *application) CreateCustomerAndSubscribeToPlan(w http.ResponseWriter, 
 		Currency: data.Currency,
 	}
 
+	okay := true
+	var subscription *stripe.Subscription
+
 	stripeCustomer, msg, err := card.CreateCustomer(data.PaymentMethod, data.Email)
 	if err != nil {
 		app.errorLog.Println(err)
 	}
 
-	subscriptionID, err := card.SubscribeToPlan(stripeCustomer, data.Plan, data.Email, data.LastFour, "")
+	subscription, err := card.SubscribeToPlan(stripeCustomer, data.Plan, data.Email, data.LastFour, "")
 	if err != nil {
 		app.errorLog.Println(err)
 	}
 
 	app.infoLog.Println("subscriptiionID is ", subscriptionID)
 
-	okay := true
 	// msg := ""
 
 	resp := jsonResponse{
