@@ -3,6 +3,7 @@ package main
 import (
 	"encoding/json"
 	"myapp/internal/cards"
+	models "myapp/internal/model"
 	"net/http"
 	"strconv"
 
@@ -160,4 +161,17 @@ func (app *application) CreateCustomerAndSubscribeToPlan(w http.ResponseWriter, 
 	}
 	w.Header().Set("Content-Type", "application/json")
 	w.Write(out)
+}
+
+func (app *application) SaveCustomer(firstName, lastName, email string) (int, error) {
+	customer := models.Customer{
+		FirstName: firstName,
+		LastName:  lastName,
+		Email:     email,
+	}
+	id, err := app.DB.InsertCustomer(customer)
+	if err != nil {
+		return 0, err
+	}
+	return id, nil
 }
