@@ -146,6 +146,12 @@ func (app *application) CreateCustomerAndSubscribeToPlan(w http.ResponseWriter, 
 			app.errorLog.Println(err)
 			return
 		}
+		amount, _ := strconv.Atoi(data.Amount)
+		expiryMonth, _ := strconv.Atoi(data.ExpiryMonth)
+		expiryYear, _ := strconv.Atoi(data.ExpiryYear)
+		txn := models.Transaction{
+			Amount: amount,
+		}
 	}
 
 	// msg := ""
