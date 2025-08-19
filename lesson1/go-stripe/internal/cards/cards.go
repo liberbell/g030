@@ -81,7 +81,7 @@ func (c *Card) SubscribeToPlan(cust *stripe.Customer, plan, email, last4, cardTy
 	params.AddExpand("latest_invoice.payment_intent")
 	subscription, err := subscription.New(params)
 	if err != nil {
-		return "", err
+		return nil, err
 	}
 	return subscription, nil
 }
