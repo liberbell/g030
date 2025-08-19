@@ -138,6 +138,15 @@ func (app *application) CreateCustomerAndSubscribeToPlan(w http.ResponseWriter, 
 		app.infoLog.Println("subscriptiionID is ", subscription.ID)
 	}
 
+	if okay {
+		productID, _ := strconv.Atoi(data.ProductID)
+		customerID, err := app.SaveCustomer(data.FirstName, data.LastName, data.Email)
+		if err != nil {
+			app.errorLog.Println(err)
+			return
+		}
+	}
+
 	// msg := ""
 
 	resp := jsonResponse{
