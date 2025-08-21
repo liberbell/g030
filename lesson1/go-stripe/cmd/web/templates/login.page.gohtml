@@ -14,15 +14,9 @@
         <hr>
 
         <div class="mb-3">
-            <label for="cardholder-email" class="form-label">Email</label>
-            <input type="email" class="form-control" id="cardholder-email" name="email"
-                required="" autocomplete="cardholder-email-new">
-        </div>
-
-        <div class="mb-3">
-            <label for="cardholder-name" class="form-label">Name on Card</label>
-            <input type="text" class="form-control" id="cardholder-name" name="cardholder_name"
-                required="" autocomplete="cardholder-name-new">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="email" name="email"
+                required="" autocomplete="email-new">
         </div>
 
         <div class="mb-3">
@@ -34,17 +28,7 @@
 
         <hr>
 
-        <a id="pay-button" href="javascript:void(0)" class="btn btn-primary" onclick="val()">Charge Card</a>
-        <div id="processing-payment" class="text-center d-none">
-            <div class="spinner-border text-primary" role="status">
-                <span class="visually-hidden">Loading...</span>
-            </div>
-        </div>
-
-        <input type="hidden" name="payment_intent" id="payment_intent">
-        <input type="hidden" name="payment_method" id="payment_method">
-        <input type="hidden" name="payment_amount" id="payment_amount">
-        <input type="hidden" name="payment_currency" id="payment_currency">
+        <a href="javascript:void(0)" class="btn btn-primary" onclick="val()">Login</a>
 
     </form>
 {{end}}
