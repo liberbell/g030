@@ -226,3 +226,7 @@ func (app *application) SaveOrder(order models.Order) (int, error) {
 	}
 	return id, nil
 }
+
+func (app *application) CreateAuthToken(w http.ResponseWriter, r *http.Request) {
+	var userInput
+}
