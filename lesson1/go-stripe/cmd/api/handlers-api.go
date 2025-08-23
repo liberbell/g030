@@ -228,5 +228,9 @@ func (app *application) SaveOrder(order models.Order) (int, error) {
 }
 
 func (app *application) CreateAuthToken(w http.ResponseWriter, r *http.Request) {
-	var userInput
+	var userInput struct {
+		Email    string `json: "email"`
+		Password string `json: "password"`
+	}
+
 }
