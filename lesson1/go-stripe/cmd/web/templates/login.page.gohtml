@@ -6,8 +6,8 @@
 
 {{define "content"}}
     <form action="" method="post"
-        name="charge_form" id="login_form"
-        class="d-block needs-validation charge-form"
+        name="login_form" id="login_form"
+        class="d-block needs-validation login-form"
         autocomplete="off" novalidate="">
 
         <h2 class="mt-3 text-center mb-3">Login</h2>
@@ -34,7 +34,7 @@
 <script>
     function val() {
         function val() {
-            let form = document.getElementById("charge_form");
+            let form = document.getElementById("login_form");
             if (form.checkValidity() === false) {
                 this.event.preventDefault();
                 this.event.stopPropagation();
@@ -42,13 +42,10 @@
                 return;
             }
             form.classList.add("was-validated");
-            hidePayButton();
-
-            let amountToCharge = document.getElementById("amount").value;
             
             let payload = {
-                amount: amountToCharge,
-                currency: 'cad',
+                email: amountToCharge,
+                password: 'cad',
             }
 
             const requestOptions = {
