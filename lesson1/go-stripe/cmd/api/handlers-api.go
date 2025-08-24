@@ -233,4 +233,9 @@ func (app *application) CreateAuthToken(w http.ResponseWriter, r *http.Request) 
 		Password string `json: "password"`
 	}
 
+	err := app.readJSON(w, r, &userInput)
+	if err != nil {
+		return nil, err
+	}
+
 }
