@@ -235,4 +235,8 @@ func (m *DBModel) GetUserByEmail(email string) (User, error) {
 		&u.CreatedAt,
 		&u.UpdatedAt,
 	)
+	if err != nil {
+		return u, err
+	}
+	return u, nil
 }
