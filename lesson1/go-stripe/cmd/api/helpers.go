@@ -7,7 +7,7 @@ import (
 	"net/http"
 )
 
-func (app *application) writeJSON(w http.ResponseWriter, r *http.Request, status, data interface{}, headers ...http.Header) error {
+func (app *application) writeJSON(w http.ResponseWriter, r *http.Request, status int, data interface{}, headers ...http.Header) error {
 	out, err := json.MarshalIndent(data, "", "\t")
 	if err != nil {
 		return err
@@ -18,6 +18,7 @@ func (app *application) writeJSON(w http.ResponseWriter, r *http.Request, status
 		}
 	}
 	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(status)
 }
 
 func (app *application) readJSON(w http.ResponseWriter, r *http.Request, data interface{}) error {
