@@ -29,4 +29,15 @@ func (app *application) badRequest(w http.ResponseWriter, r *http.Request, err e
 		Error   bool   `json: "error"`
 		Message string `json: "message"`
 	}
+	payload.Error = true
+	payload.Message = err.Error()
+
+	out, err := json.MarshalIndent(payload, "", "\t")
+	if err != nil {
+		return err
+	}
+
+	w.Header().Set("Content-Type", "application/json")
+	w.Write(out)
+	return nil
 }
