@@ -19,6 +19,9 @@ func (app *application) writeJSON(w http.ResponseWriter, r *http.Request, status
 	}
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(status)
+	w.Write(out)
+
+	return nil
 }
 
 func (app *application) readJSON(w http.ResponseWriter, r *http.Request, data interface{}) error {
