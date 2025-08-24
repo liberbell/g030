@@ -61,6 +61,8 @@ func (app *application) badRequest(w http.ResponseWriter, r *http.Request, err e
 
 func (app *application) invalidCredentials(w http.ResponseWriter) error {
 	var payload struct {
-		Error bool `json: "error"`
+		Error   bool   `json: "error"`
+		Message string `json: "message"`
 	}
+
 }
