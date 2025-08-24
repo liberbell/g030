@@ -235,7 +235,15 @@ func (app *application) CreateAuthToken(w http.ResponseWriter, r *http.Request) 
 
 	err := app.readJSON(w, r, &userInput)
 	if err != nil {
-		return nil, err
+		app.badRequest(w, r, err)
+		return
 	}
+
+	var payload struct {
+		Error   bool   `json: "error"`
+		Message string `json: "message"`
+	}
+	payload.Error = false
+	payload.Message = "Success!"
 
 }
