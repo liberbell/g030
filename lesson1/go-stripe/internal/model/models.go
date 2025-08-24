@@ -225,4 +225,14 @@ func (m *DBModel) GetUserByEmail(email string) (User, error) {
 		from
 			users
 		where email = ?`, email)
+
+	err := row.Scan(
+		&u.ID,
+		&u.FirstName,
+		&u.LastName,
+		&u.Email,
+		&u.Password,
+		&u.CreatedAt,
+		&u.UpdatedAt,
+	)
 }
