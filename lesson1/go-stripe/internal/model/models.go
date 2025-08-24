@@ -210,3 +210,8 @@ func (m *DBModel) InsertCustomer(c Customer) (int, error) {
 	}
 	return int(id), nil
 }
+
+func (m *DBModel) GetUserByEmail(email string) (User, error) {
+	ctx, cancel := context.WithTimeout(context.Background(), 3*time.Second)
+	defer cancel()
+}
