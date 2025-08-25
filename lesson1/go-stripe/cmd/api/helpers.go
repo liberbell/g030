@@ -65,4 +65,7 @@ func (app *application) invalidCredentials(w http.ResponseWriter) error {
 		Message string `json: "message"`
 	}
 
+	payload.Error = true
+	payload.Message = "invalid authentication credentials"
+
 }
