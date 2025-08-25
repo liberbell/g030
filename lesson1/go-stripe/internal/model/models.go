@@ -221,7 +221,7 @@ func (m *DBModel) GetUserByEmail(email string) (User, error) {
 
 	row := m.DB.QueryRowContext(ctx, `
 		select
-			id, first_name, last_name, email, password, created_at, update_at
+			id, first_name, last_name, email, password, created_at, updated_at
 		from
 			users
 		where email = ?`, email)
