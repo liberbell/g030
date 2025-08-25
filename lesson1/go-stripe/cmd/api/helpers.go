@@ -87,4 +87,5 @@ func (app *application) passwordMatches(hash, password string) (bool, error) {
 			return false, err
 		}
 	}
+	return true, nil
 }

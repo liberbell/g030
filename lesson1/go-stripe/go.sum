@@ -12,3 +12,5 @@ github.com/stripe/stripe-go/v82 v82.3.0 h1:6+E33xPmZ1Kzo2P/k90+Q5w2jwdKUU1XoEcrv
 github.com/stripe/stripe-go/v82 v82.3.0/go.mod h1:majCQX6AfObAvJiHraPi/5udwHi4ojRvJnnxckvHrX8=
 github.com/stripe/stripe-go/v82 v82.4.1 h1:KszcencYF6p/YuP+IDqD1hfgjT+93mHSqGedEzwtjOI=
 github.com/stripe/stripe-go/v82 v82.4.1/go.mod h1:majCQX6AfObAvJiHraPi/5udwHi4ojRvJnnxckvHrX8=
+golang.org/x/crypto v0.41.0 h1:WKYxWedPGCTVVl5+WHSSrOBT0O8lx32+zxmHxijgXp4=
+golang.org/x/crypto v0.41.0/go.mod h1:pO5AFd7FA68rFak7rOAGVuygIISepHftHnr8dr6+sUc=
