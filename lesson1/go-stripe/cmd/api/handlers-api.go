@@ -251,6 +251,11 @@ func (app *application) CreateAuthToken(w http.ResponseWriter, r *http.Request) 
 		return
 	}
 
+	if !validPassword {
+		app.invalidCredentials(w)
+		return
+	}
+
 	var payload struct {
 		Error   bool   `json: "error"`
 		Message string `json: "message"`
