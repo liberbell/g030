@@ -11,4 +11,9 @@ type Token struct {
 	UserID    int64     `json: "-"`
 	Hash      []byte    `json: "-"`
 	Expiry    time.Time `json: "expiry"`
+	Scope     string    `json: "scope"`
+}
+
+func GenerateToken(userID int, ttl time.Duration, scope string) (*Token, error) {
+	token := 
 }
