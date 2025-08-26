@@ -259,11 +259,13 @@ func (app *application) CreateAuthToken(w http.ResponseWriter, r *http.Request) 
 	token, err := models.GenerateToken(user.ID, 24*time.Hour, models.ScopeAuthentication)
 	if err != nil {
 		app.badRequest(w, r, err)
+		return
 	}
 
 	var payload struct {
-		Error   bool   `json: "error"`
-		Message string `json: "message"`
+		Error   bool          `json: "error"`
+		Message string        `json: "message"`
+		Token   *models.Token `json: 'authentication_token"`
 	}
 	payload.Error = false
 	payload.Message = "Success!"
