@@ -2,6 +2,7 @@ package main
 
 import (
 	"encoding/json"
+	"fmt"
 	"myapp/internal/cards"
 	models "myapp/internal/model"
 	"net/http"
@@ -268,7 +269,8 @@ func (app *application) CreateAuthToken(w http.ResponseWriter, r *http.Request) 
 		Token   *models.Token `json: 'authentication_token"`
 	}
 	payload.Error = false
-	payload.Message = "Success!"
+	payload.Message = fmt.Sprintf("token for %s created", userInput.Email)
+	payload.Token = token
 
 	_ = app.writeJSON(w, http.StatusOK, payload)
 
