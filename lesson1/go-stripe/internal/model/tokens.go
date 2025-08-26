@@ -1,10 +1,14 @@
 package models
 
+import "time"
+
 const (
 	ScopeAuthentication = "authentication"
 )
 
 type Token struct {
-	PlaneText string `json: "token"`
-	UserID    int64  `json: "-"`
+	PlaneText string    `json: "token"`
+	UserID    int64     `json: "-"`
+	Hash      []byte    `json: "-"`
+	Expiry    time.Time `json: "expiry"`
 }
