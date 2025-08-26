@@ -2,6 +2,8 @@ package models
 
 import (
 	"crypto/rand"
+	"crypto/sha256"
+	"encoding/base32"
 	"time"
 )
 
@@ -29,4 +31,6 @@ func GenerateToken(userID int, ttl time.Duration, scope string) (*Token, error) 
 	if err != nil {
 		return nil, err
 	}
+	token.PlaneText = base32.StdEncoding.WithPadding(base32.NoPadding).EncodeToString(randomBytes)
+	hash := sha256(([byte(token.PlaneText)]))
 }
