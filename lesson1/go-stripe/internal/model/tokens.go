@@ -33,5 +33,6 @@ func GenerateToken(userID int, ttl time.Duration, scope string) (*Token, error) 
 	}
 	token.PlaneText = base32.StdEncoding.WithPadding(base32.NoPadding).EncodeToString(randomBytes)
 	hash := sha256.Sum256(([]byte(token.PlaneText)))
-	tokenn
+	token.Hash = hash[:]
+	return token, nil
 }
