@@ -1,6 +1,9 @@
 package models
 
-import "time"
+import (
+	"crypto/rand"
+	"time"
+)
 
 const (
 	ScopeAuthentication = "authentication"
@@ -15,5 +18,15 @@ type Token struct {
 }
 
 func GenerateToken(userID int, ttl time.Duration, scope string) (*Token, error) {
-	token := 
+	token := &Token{
+		UserID: int64(userID),
+		Expiry: time.Now().Add(ttl),
+		Scope:  scope,
+	}
+
+	randomBytes := make([]byte, 16)
+	_, err := rand.Read(randomBytes)
+	if err != nil {
+		return nil, err
+	}
 }
