@@ -6,5 +6,6 @@ create_table("tokens") {
     t.Column("hash", "string", {})
 }
 
+sql("alter table tokens modify token_hash varbinary(255);")
 sql("alter table tokens alter column created_at set default now();")
 sql("alter table tokens alter column updated_at set default now();")
