@@ -48,11 +48,11 @@ func (m *DBModel) InsertToken(t *Token, u User) error {
 		return err
 	}
 
-	stmt := `INSERT INTO tokens
+	stmt = `INSERT INTO tokens
 				(user_id, name, email, token_hash, created_at, updated_at)
 			 Values (?, ?, ?, ?, ?, ?)`
 
-	_, err := m.DB.ExecContext(ctx, stmt, u.ID, u.LastName, u.Email, t.Hash, time.Now(), time.Now())
+	_, err = m.DB.ExecContext(ctx, stmt, u.ID, u.LastName, u.Email, t.Hash, time.Now(), time.Now())
 	if err != nil {
 		return err
 	}
