@@ -38,7 +38,7 @@ func GenerateToken(userID int, ttl time.Duration, scope string) (*Token, error) 
 	return token, nil
 }
 
-func (m *DBModel) InsertToken(t *Token, u User) Error {
+func (m *DBModel) InsertToken(t *Token, u User) error {
 	ctx, cancel := context.WithTimeout(context.Background(), 3*time.Second)
 	defer cancel()
 
