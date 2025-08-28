@@ -5,6 +5,7 @@
 {{end}}
 
 {{define "content"}}
+    <div class="alert alert-danger text-center d-none" id="login-messages"></div>
     <form action="" method="post"
         name="login_form" id="login_form"
         class="d-block needs-validation login-form"
@@ -32,6 +33,20 @@
 
 {{define "js"}}
 <script>
+    function showCardError(msg) {
+        cardMessages.classList.add("alert-danger");
+        cardMessages.classList.remove("alert-success");
+        cardMessages.classList.remove("d-none");
+        cardMessages.innerText = msg;
+    }
+
+    function showCardSuccess() {
+        cardMessages.classList.remove("alert-danger");
+        cardMessages.classList.add("alert-success");
+        cardMessages.classList.remove("d-none");
+        cardMessages.innerText = "Transaction successful";
+    }
+    
     function val() {
         let form = document.getElementById("login_form");
         if (form.checkValidity() === false) {
