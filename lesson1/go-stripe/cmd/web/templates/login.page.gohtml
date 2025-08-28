@@ -33,20 +33,21 @@
 
 {{define "js"}}
 <script>
-    function showCardError(msg) {
-        cardMessages.classList.add("alert-danger");
-        cardMessages.classList.remove("alert-success");
-        cardMessages.classList.remove("d-none");
-        cardMessages.innerText = msg;
+    let loginMessages = document.getElementById("login-messages");
+    function showError(msg) {
+        loginMessages.classList.add("alert-danger");
+        loginMessages.classList.remove("alert-success");
+        loginMessages.classList.remove("d-none");
+        loginMessages.innerText = msg;
     }
 
-    function showCardSuccess() {
-        cardMessages.classList.remove("alert-danger");
-        cardMessages.classList.add("alert-success");
-        cardMessages.classList.remove("d-none");
-        cardMessages.innerText = "Transaction successful";
+    function showSuccess() {
+        loginMessages.classList.remove("alert-danger");
+        loginMessages.classList.add("alert-success");
+        loginMessages.classList.remove("d-none");
+        loginMessages.innerText = "Login successful";
     }
-    
+
     function val() {
         let form = document.getElementById("login_form");
         if (form.checkValidity() === false) {
