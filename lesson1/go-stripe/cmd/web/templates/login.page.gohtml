@@ -82,7 +82,8 @@ function val() {
     .then(data => {
         console.log(data);
         if (data.Error === false) {
-            localStorage.setItem('Token', data.authentication_token.token);
+            console.log(data.authentication_token)
+            localStorage.setItem('token', data.authentication_token.token);
             localStorage.setItem('token_expiry', data.authentication_token.expiry);
             showSuccess();
         } else {
