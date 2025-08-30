@@ -36,10 +36,9 @@
 {{end}}
 
 {{define "js"}}
-<script>
-    let loginMessages = document.getElementById("login-messages");
+let loginMessages = document.getElementById("login-messages");
 
-    function showError(msg) {
+function showError(msg) {
         loginMessages.classList.add("alert-danger");
         loginMessages.classList.remove("alert-success");
         loginMessages.classList.remove("d-none");
@@ -53,44 +52,42 @@
         loginMessages.innerText = "Login successful";
     }
 
-    function val() {
-        let form = document.getElementById("login_form");
-        if (form.checkValidity() === false) {
-            this.event.preventDefault();
-            this.event.stopPropagation();
-            form.classList.add("was-validated");
-            return;
-        }
+function val() {
+    let form = document.getElementById("login_form");
+    if (form.checkValidity() === false) {
+        this.event.preventDefault();
+        this.event.stopPropagation();
         form.classList.add("was-validated");
-        
-        let payload = {
-            email: document.getElementById("email").value,
-            password: document.getElementById("password").value,
-        }
-
-        const requestOptions = {
-            method: 'post',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(payload),
-        }
-
-        fetch("{{.API}}/api/authenticate", requestOptions)
-            .then(response => response.json())
-            .then(data => {
-                console.log(data);
-                console.log(data.error)
-                if (data.error === false) {
-                    localStorage.setItem('token', data.authentication_token.token);
-                    localStorage.setItem('token_expiry', data.authentication_token.expiry);
-                    showSuccess();
-                } else {
-                    console.log(data.message)
-                    showError(data.message);
-                }
-            })
+        return;
     }
+    form.classList.add("was-validated");
+
+    let payload = {
+        email: document.getElementById("email").value,
+        password: document.getElementById("password").value,
+    }
+
+    const requestOptions = {
+        method: 'post',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(payload),
+    }
+
+    fetch("{{.API}}/api/authenticate", requestOptions)
+    .then(response => response.json())
+    .then(data => {
+        console.log(data);
+        if (data.error === false) {
+            localStorage.setItem('token', data.authentication_token.token);
+            localStorage.setItem('token_expiry', data.authentication_token.expiry);
+            showSuccess();
+        } else {
+            showError(data.message);
+        }
+    })
+}
 </script>
 {{end}}
