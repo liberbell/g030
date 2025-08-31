@@ -86,6 +86,7 @@ function val() {
             localStorage.setItem('token', data.Token.PlainText);
             localStorage.setItem('token_expiry', data.Token.Expiry);
             showSuccess();
+            location.href = "/";
         } else {
             showError(data.message);
         }
