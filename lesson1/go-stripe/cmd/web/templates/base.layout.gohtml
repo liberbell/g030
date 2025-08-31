@@ -63,7 +63,7 @@
 
       document.addEventListener("DOMContentLoaded", function() {
         if (localStorage.getItem("token") !== null) {
-          loginLink.innerHTML = '<li><a class="nav-link" onclick="logout()" href="/logout">Logout</a></li>';
+          loginLink.innerHTML = '<li><a class="nav-link" onclick="logout()" href="#">Logout</a></li>';
           vtLink.classList.remove("d-none");
         } else {
           loginLink.innerHTML = '<li><a class="nav-link" href="/login">Login</a></li>';
