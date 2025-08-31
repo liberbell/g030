@@ -272,11 +272,11 @@ func (app *application) CreateAuthToken(w http.ResponseWriter, r *http.Request) 
 	var payload struct {
 		Error   bool          `json: "error"`
 		Message string        `json: "message"`
-		token   *models.Token `json: "authentication_token"`
+		Token   *models.Token `json: "authentication_token"`
 	}
 	payload.Error = false
 	payload.Message = fmt.Sprintf("token for %s created", userInput.Email)
-	payload.token = token
+	payload.Token = token
 
 	_ = app.writeJSON(w, http.StatusOK, payload)
 
