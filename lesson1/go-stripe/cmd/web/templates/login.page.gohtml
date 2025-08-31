@@ -83,7 +83,7 @@ function val() {
         console.log(data);
         if (data.Error === false) {
             console.log(data.Token);
-            localStorage.setItem('token', data.Token.Hash);
+            localStorage.setItem('token', data.Token.PlainText);
             localStorage.setItem('token_expiry', data.Token.Expiry);
             showSuccess();
         } else {
