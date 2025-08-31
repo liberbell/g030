@@ -23,9 +23,7 @@
             <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="/">Home</a>
             </li>
-            <li id="vt-link" class="nav-item">
-              <a class="nav-link" href="/virtual-terminal">Virtual Terminal</a>
-            </li>
+            
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Products
@@ -35,6 +33,9 @@
                 <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item" href="/plans/bronze">Bronze Plan</a></li>  
               </ul>
+            </li>
+            <li id="vt-link" class="nav-item d-none">
+              <a class="nav-link" href="/virtual-terminal">Virtual Terminal</a>
             </li>
           </ul>
           <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
@@ -62,7 +63,7 @@
 
       document.addEventListener("DOMContentLoaded", function() {
         if (localStorage.getItem("token") !== null) {
-          loginLink.innerHTML = '<li><a class="nav-link" href="/logout">Logout</a></li>';
+          loginLink.innerHTML = '<li><a class="nav-link" onclick="logout()" href="/logout">Logout</a></li>';
         } else {
           loginLink.innerHTML = '<li><a class="nav-link" href="/login">Login</a></li>';
         }
