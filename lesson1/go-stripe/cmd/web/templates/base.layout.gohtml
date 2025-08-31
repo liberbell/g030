@@ -61,7 +61,9 @@
       let vtLink = document.getElementById("vt-link");
 
       document.addEventListener("DOMContentLoaded", function() {
-        if (localStorage.getItem("token"))
+        if (localStorage.getItem("token") !== null) {
+          loginLink.innerHTML = '<a class="nav-link" href="/login">Login</a>'
+        }
       })
     </script>
     {{block "js" .}}
