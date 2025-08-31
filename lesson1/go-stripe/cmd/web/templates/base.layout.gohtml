@@ -76,6 +76,15 @@
         localStorage.removeItem("token_expiry");
         location.href = "/login";
       }
+
+      function checkAuth() {
+        if (localStorage.getItem("token") === null) {
+          location.href = "/login";
+        } else {
+          let token = localStorage.getItem("token");
+          const myHeaders = new Headers();
+        }
+      }
     </script>
     {{block "js" .}}
 
