@@ -85,6 +85,13 @@
           const myHeaders = new Headers();
           myHeaders.append("Content-Type", "application/json");
           myHeaders.append("Authorization", "Bearer " + token);
+
+          const requestOptions = {
+            method: "POST",
+            headers: myHeaders,
+          }
+          fetch("{{.API}}/api/is-authenticated", requestOptions)
+          .then(response => response.json())
         }
       }
     </script>
