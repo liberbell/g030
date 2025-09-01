@@ -93,6 +93,7 @@
           fetch("{{.API}}/api/is-authenticated", requestOptions)
           .then(response => response.json())
           .then(function(data){
+            console.log(data)
             if (data.error === true) {
               console.log("not logged in");
             } else {
