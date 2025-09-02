@@ -292,6 +292,10 @@ func (app *application) CheckAuthentication(w http.ResponseWriter, r *http.Reque
 	user, err := app.authenticateToken(r)
 	if err != nil {
 		app.invalidCredentials(w)
+		return
 	}
-
+	var payload struct {
+		Error   bool   `json: "error"`
+		Message string `json: "message"`
+	}
 }
