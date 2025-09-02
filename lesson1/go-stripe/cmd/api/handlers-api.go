@@ -298,4 +298,7 @@ func (app *application) CheckAuthentication(w http.ResponseWriter, r *http.Reque
 		Error   bool   `json: "error"`
 		Message string `json: "message"`
 	}
+	payload.Error = false
+	payload.Message = fmt.Sprintf("authenticated user %s", user.Email)
+	app.writeJSON(w, http.StatusOK, payload)
 }
