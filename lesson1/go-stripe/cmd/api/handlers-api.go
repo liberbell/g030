@@ -289,5 +289,9 @@ func (app *application) authenticateToken(r *http.Request) (*models.User, error)
 }
 
 func (app *application) CheckAuthentication(w http.ResponseWriter, r *http.Request) {
-	app.invalidCredentials(w)
+	user, err := app.authenticateToken(r)
+	if err != nil {
+		app.invalidCredentials(w)
+	}
+
 }
