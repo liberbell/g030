@@ -282,6 +282,12 @@ func (app *application) CreateAuthToken(w http.ResponseWriter, r *http.Request) 
 
 }
 
+func (app *application) authenticateToken(r *http.Request) (*models.User, error) {
+	var u models.User
+
+	return &u, nil
+}
+
 func (app *application) CheckAuthentication(w http.ResponseWriter, r *http.Request) {
 	app.invalidCredentials(w)
 }
