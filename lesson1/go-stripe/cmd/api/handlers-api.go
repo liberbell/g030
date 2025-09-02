@@ -10,6 +10,7 @@ import (
 	"time"
 
 	"github.com/go-chi/chi/v5"
+	"github.com/pkg/errors"
 	"github.com/stripe/stripe-go/v82"
 )
 
@@ -286,6 +287,9 @@ func (app *application) authenticateToken(r *http.Request) (*models.User, error)
 	var u models.User
 
 	authorizationHeader := r.Header.Get("Authorization")
+	if authorizationHeader == "" {
+		return nil, errors.New("no authorization header recieved")
+	}
 
 	return &u, nil
 }
