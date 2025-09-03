@@ -286,7 +286,6 @@ func (app *application) CreateAuthToken(w http.ResponseWriter, r *http.Request) 
 }
 
 func (app *application) authenticateToken(r *http.Request) (*models.User, error) {
-	var u models.User
 
 	authorizationHeader := r.Header.Get("Authorization")
 	if authorizationHeader == "" {
