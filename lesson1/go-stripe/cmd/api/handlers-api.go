@@ -296,6 +296,11 @@ func (app *application) authenticateToken(r *http.Request) (*models.User, error)
 	if len(headerParts) != 2 || headerParts[0] != "Bearer" {
 		return nil, errors.New("no authorization header received")
 	}
+	token := headerParts[1]
+	if len(token) != 25 {
+		return nil, errors.New("authentication token wrong size")
+	}
+
 	return &u, nil
 }
 
