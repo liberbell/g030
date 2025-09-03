@@ -7,6 +7,7 @@ import (
 	models "myapp/internal/model"
 	"net/http"
 	"strconv"
+	"strings"
 	"time"
 
 	"github.com/go-chi/chi/v5"
@@ -290,6 +291,7 @@ func (app *application) authenticateToken(r *http.Request) (*models.User, error)
 	if authorizationHeader == "" {
 		return nil, errors.New("no authorization header recieved")
 	}
+	headerParts := strings.Split(authorizationHeader, " ")
 
 	return &u, nil
 }
