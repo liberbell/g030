@@ -90,5 +90,7 @@ func (m *DBModel) GetUserForToken(token string) (*User, error) {
 	)
 	if err != nil {
 		log.Println()
+		return nil, err
 	}
+	return &user, nil
 }
