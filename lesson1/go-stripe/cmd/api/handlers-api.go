@@ -292,7 +292,9 @@ func (app *application) authenticateToken(r *http.Request) (*models.User, error)
 		return nil, errors.New("no authorization header recieved")
 	}
 	headerParts := strings.Split(authorizationHeader, " ")
+	if len(headerParts) != 2 || headerParts[0] != "Bearer" {
 
+	}
 	return &u, nil
 }
 
