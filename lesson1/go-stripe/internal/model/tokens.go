@@ -65,3 +65,8 @@ func (m *DBModel) InsertToken(t *Token, u User) error {
 	}
 	return nil
 }
+
+func (m *DBModel) GetUserForToken(t string) (*User, error) {
+	ctx, cancel := context.WithTimeout(context.Background(), 3*time.Second)
+	defer cancel()
+}
