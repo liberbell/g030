@@ -2,6 +2,7 @@ package main
 
 import (
 	"encoding/json"
+	"errors"
 	"fmt"
 	"myapp/internal/cards"
 	models "myapp/internal/model"
@@ -289,11 +290,11 @@ func (app *application) authenticateToken(r *http.Request) (*models.User, error)
 
 	authorizationHeader := r.Header.Get("Authorization")
 	if authorizationHeader == "" {
-		return nil, errors.New("no authorization header recieved")
+		return nil, errors.New("no authorization header received")
 	}
 	headerParts := strings.Split(authorizationHeader, " ")
 	if len(headerParts) != 2 || headerParts[0] != "Bearer" {
-
+		return nil, errors.New("no authorization header received")
 	}
 	return &u, nil
 }
