@@ -5,6 +5,7 @@ import (
 	"crypto/rand"
 	"crypto/sha256"
 	"encoding/base32"
+	"log"
 	"time"
 )
 
@@ -87,4 +88,7 @@ func (m *DBModel) GetUserForToken(token string) (*User, error) {
 		&user.LastName,
 		&user.Email,
 	)
+	if err != nil {
+		log.Println()
+	}
 }
