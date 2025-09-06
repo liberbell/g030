@@ -9,5 +9,6 @@ func (app *application) Auth(next http.Handler) http.Handler {
 			app.invalidCredentials(w)
 			return
 		}
+		next.ServeHTTP(w, r)
 	})
 }
