@@ -333,6 +333,8 @@ func (app *application) VirtualTerminalPaymentSucceeded(w http.ResponseWriter, r
 		BankReturnCode  string `json: "bank_return_code"`
 		ExpiryMonth     int    `json: "expiry_month"`
 		ExpiryYear      int    `json: "expiry_year"`
+		LastFour        string `json: "last_four"`
 	}
+	err := app.readJSON(w, r, &txnData)
 
 }
