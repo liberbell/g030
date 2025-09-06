@@ -320,3 +320,10 @@ func (app *application) CheckAuthentication(w http.ResponseWriter, r *http.Reque
 	payload.Message = fmt.Sprintf("authenticated user %s", user.Email)
 	app.writeJSON(w, http.StatusOK, payload)
 }
+
+func (app *application) VirtualTerminalPaymentSucceeded(w http.ResponseWriter, r *http.Request) {
+	var txnData struct {
+		PaymentAmount   int    `json: "amount"`
+		PaymentCurrency string `json: "currency"`
+	}
+}
