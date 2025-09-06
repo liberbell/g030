@@ -330,6 +330,9 @@ func (app *application) VirtualTerminalPaymentSucceeded(w http.ResponseWriter, r
 		Email           string `json: "email"`
 		PaymentIntent   string `json: "payment_intent"`
 		PaymentMethod   string `json: "payment_method"`
+		BankReturnCode  string `json: "bank_return_code"`
+		ExpiryMonth     int    `json: "expiry_month"`
+		ExpiryYear      int    `json: "expiry_year"`
 	}
 
 }
