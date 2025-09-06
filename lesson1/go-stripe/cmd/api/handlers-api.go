@@ -325,5 +325,10 @@ func (app *application) VirtualTerminalPaymentSucceeded(w http.ResponseWriter, r
 	var txnData struct {
 		PaymentAmount   int    `json: "amount"`
 		PaymentCurrency string `json: "currency"`
+		FirstName       string `json: "first_name"`
+		LastName        string `json: "last_name"`
+		Email           string `json: "email"`
+		PaymentIntent   string `json: "payment_intent"`
 	}
+
 }
