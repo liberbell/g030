@@ -340,4 +340,8 @@ func (app *application) VirtualTerminalPaymentSucceeded(w http.ResponseWriter, r
 		app.badRequest(w, r, err)
 		return
 	}
+	card := cards.Card{
+		Secret: app.config.stripe.secret,
+		Key:    app.config.stripe.key,
+	}
 }
