@@ -178,8 +178,8 @@
             email: document.getElementById("cardholder-email").value,
             payment_intent: result.paymentIntent.id,
             payment_method: result.paymentIntent.payment_intent
-        }
-        let token = 
+        };
+        let token = localStorage.getItem("token");
     }
 
     (function() {
