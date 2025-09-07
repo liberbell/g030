@@ -154,13 +154,11 @@
                         } else if(result.paymentIntent) {
                             if (result.paymentIntent.status === "succeeded") {
                                 // we have charged the card
-                                document.getElementById("payment_method").value = result.paymentIntent.payment_method;
-                                document.getElementById("payment_intent").value = result.paymentIntent.id;
-                                document.getElementById("payment_amount").value = result.paymentIntent.amount;
-                                document.getElementById("payment_currency").value = result.paymentIntent.currency;
+
                                 processing.classList.add("d-none");
                                 showCardSuccess();
-                                document.getElementById("charge_form").submit();
+                                // document.getElementById("charge_form").submit();
+                                saveTransaction(result);
                             }
                         }
                     })
@@ -170,6 +168,11 @@
                     showPayButtons();
                 }
             })
+    }
+    function saveTransaction(result) {
+        let payload = {
+            amount: parseInt(document.getElementById("amount").value(), 10)
+        }
     }
 
     (function() {
