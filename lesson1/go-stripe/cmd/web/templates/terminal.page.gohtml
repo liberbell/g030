@@ -171,8 +171,15 @@
     }
     function saveTransaction(result) {
         let payload = {
-            amount: parseInt(document.getElementById("amount").value(), 10)
+            amount: parseInt(document.getElementById("amount").value(), 10),
+            currency: result.paymentIntent.currency,
+            first_name: "",
+            last_name: "",
+            email: document.getElementById("cardholder-email").value,
+            payment_intent: result.paymentIntent.id,
+            payment_method: result.paymentIntent.payment_intent
         }
+        let token = 
     }
 
     (function() {
