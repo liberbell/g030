@@ -186,8 +186,10 @@
                 'Accept': 'application/json',
                 'Content-Type': 'application',
                 'Authorization': 'Bearer ' + token,
-            }
+            },
+            body: JSON.stringify(payload),
         }
+        fetch("{{.API}}")
     }
 
     (function() {
