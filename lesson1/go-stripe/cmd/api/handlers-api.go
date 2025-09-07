@@ -370,4 +370,10 @@ func (app *application) VirtualTerminalPaymentSucceeded(w http.ResponseWriter, r
 		BankReturnCode:      pi.LatestCharge.ID,
 		TransactionStatusID: 2,
 	}
+
+	_, err = app.SaveTransaction(txn)
+	if err != nil {
+		app.badRequest(w, r, err)
+		return
+	}
 }
