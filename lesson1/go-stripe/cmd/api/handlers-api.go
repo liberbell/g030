@@ -376,4 +376,6 @@ func (app *application) VirtualTerminalPaymentSucceeded(w http.ResponseWriter, r
 		app.badRequest(w, r, err)
 		return
 	}
+
+	app.writeJSON(w, http.StatusOK, txn)
 }
