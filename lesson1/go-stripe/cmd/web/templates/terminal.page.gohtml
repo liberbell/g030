@@ -180,6 +180,13 @@
             payment_method: result.paymentIntent.payment_intent
         };
         let token = localStorage.getItem("token");
+        const requestOptions = {
+            method: "post",
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application',
+            }
+        }
     }
 
     (function() {
