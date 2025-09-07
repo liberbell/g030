@@ -360,4 +360,12 @@ func (app *application) VirtualTerminalPaymentSucceeded(w http.ResponseWriter, r
 	txnData.LastFour = pm.Card.Last4
 	txnData.ExpiryMonth = int(pm.Card.ExpMonth)
 	txnData.ExpiryYear = int(pm.Card.ExpYear)
+
+	txn := models.Transaction{
+		Amount:      txnData.PaymentAmount,
+		Currency:    txnData.PaymentCurrency,
+		LastFour:    txnData.LastFour,
+		ExpiryMonth: txnData.ExpiryMonth,
+		ExpiryYear:  txnData.ExpiryYear,
+	}
 }
