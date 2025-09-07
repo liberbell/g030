@@ -344,4 +344,9 @@ func (app *application) VirtualTerminalPaymentSucceeded(w http.ResponseWriter, r
 		Secret: app.config.stripe.secret,
 		Key:    app.config.stripe.key,
 	}
+	pi, err := card.RetrievePaymentIntent(txnData.PaymentIntent)
+	if err != nil {
+		app.badRequest(w, r, err)
+		return
+	}
 }
