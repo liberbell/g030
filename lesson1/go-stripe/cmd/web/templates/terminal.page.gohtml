@@ -189,7 +189,7 @@
             },
             body: JSON.stringify(payload),
         }
-        fetch("{{.API}}")
+        fetch("{{.API}}/api/admin/virtual-terminal-succeeded", requestOptions)
     }
 
     (function() {
