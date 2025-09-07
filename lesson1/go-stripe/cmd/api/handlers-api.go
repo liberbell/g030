@@ -354,5 +354,6 @@ func (app *application) VirtualTerminalPaymentSucceeded(w http.ResponseWriter, r
 	pm, err := card.GetPaymentMethod(txnData.PaymentMethod)
 	if err != nil {
 		app.badRequest(w, r, err)
+		return
 	}
 }
