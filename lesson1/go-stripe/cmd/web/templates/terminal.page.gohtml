@@ -188,20 +188,20 @@
     }
     function saveTransaction(result) {
         let payload = {
-            amount: parseInt(document.getElementById("amount").value(), 10),
+            amount: parseInt(document.getElementById("amount").value, 10),
             currency: result.paymentIntent.currency,
             first_name: "",
             last_name: "",
             email: document.getElementById("cardholder-email").value,
             payment_intent: result.paymentIntent.id,
-            payment_method: result.paymentIntent.payment_intent
+            payment_method: result.paymentIntent.payment_method,
         };
         let token = localStorage.getItem("token");
         const requestOptions = {
             method: "post",
             headers: {
                 'Accept': 'application/json',
-                'Content-Type': 'application',
+                'Content-Type': 'application/json',
                 'Authorization': 'Bearer ' + token,
             },
             body: JSON.stringify(payload),
