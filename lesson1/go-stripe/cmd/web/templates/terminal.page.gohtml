@@ -174,7 +174,6 @@
 
                                 processing.classList.add("d-none");
                                 showCardSuccess();
-                                // document.getElementById("charge_form").submit();
                                 saveTransaction(result);
                             }
                         }
@@ -195,7 +194,7 @@
             email: document.getElementById("cardholder-email").value,
             payment_intent: result.paymentIntent.id,
             payment_method: result.paymentIntent.payment_method,
-        };
+        }
         let token = localStorage.getItem("token");
         const requestOptions = {
             method: "post",
@@ -208,7 +207,7 @@
         }
         fetch("{{.API}}/api/admin/virtual-terminal-succeeded", requestOptions)
         .then(response => response.json())
-        .then(function(data) {
+        .then(function(data){
             console.log(data);
             processing.classList.add("d-none");
             showCardSuccess();
