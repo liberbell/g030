@@ -207,6 +207,8 @@
             console.log(data);
             processing.classList.add("d-none");
             showCardSuccess();
+            document.getElementById("bank-return-code").innerHTML = data.bank_return_code;
+            document.getElementById("receipt").classList.remove("d-none");
         })
     }
 
