@@ -205,7 +205,7 @@
             },
             body: JSON.stringify(payload),
         }
-        fetch("{{.API}}/api/admin/virtual-terminal-succeeded", requestOptions)
+        fetch("http://localhost:4001/api/admin/virtual-terminal-succeeded", requestOptions)
         .then(response => response.json())
         .then(function(data){
             console.log(data);
