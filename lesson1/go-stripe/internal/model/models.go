@@ -102,7 +102,7 @@ func (m *DBModel) GetWidget(id int) (Widget, error) {
 
 	row := m.DB.QueryRowContext(ctx,
 		`select
-			id, name, description, inventory_level, price, image, is_recurring, plan_id, created_at, updated_at
+			id, name, description, inventory_level, price, coalesce(image, ''), is_recurring, plan_id, created_at, updated_at
 		from
 			widgets
 		where id = ?`, id)
