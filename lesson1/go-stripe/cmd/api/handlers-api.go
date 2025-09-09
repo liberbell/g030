@@ -295,7 +295,7 @@ func (app *application) authenticateToken(r *http.Request) (*models.User, error)
 		return nil, errors.New("no authorization header received")
 	}
 	token := headerParts[1]
-	if len(token) != 25 {
+	if len(token) != 26 {
 		return nil, errors.New("authentication token wrong size")
 	}
 	user, err := app.DB.GetUserForToken(token)
