@@ -77,9 +77,9 @@ func (m *DBModel) GetUserForToken(token string) (*User, error) {
 
 	query := `
 		SELECT
-			u.ID, u.first_name, u.last_name, u.Email
+			u.id, u.first_name, u.last_name, u.email
 		FROM
-			users u inner join tokens t on (u.ID = t.user_id)
+			users u inner join tokens t on (u.id = t.user_id)
 		WHERE
 			t.token_hash = ?
 			AND t.expiry > ?
@@ -91,7 +91,7 @@ func (m *DBModel) GetUserForToken(token string) (*User, error) {
 		&user.Email,
 	)
 	if err != nil {
-		log.Println()
+		log.Println(err)
 		return nil, err
 	}
 	return &user, nil
