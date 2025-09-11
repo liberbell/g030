@@ -284,7 +284,7 @@ func (app *application) LoginPage(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-func (app *application) PostLoginPage(w http.ResponseController, r *http.Request) {
+func (app *application) PostLoginPage(w http.ResponseWriter, r *http.Request) {
 	app.Session.RenewToken(r.Context())
 
 	err := r.ParseForm()
@@ -295,4 +295,9 @@ func (app *application) PostLoginPage(w http.ResponseController, r *http.Request
 
 	email := r.Form.Get("email")
 	password := r.Form.Get("password")
+
+	id, err := app.DB.Authenticate(email, password)
+	if err != nil {
+		http.Redirect(w, r, "/login", http.StatusSeeOther)
+	}
 }
