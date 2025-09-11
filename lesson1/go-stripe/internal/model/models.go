@@ -3,6 +3,7 @@ package models
 import (
 	"context"
 	"database/sql"
+	"errors"
 	"strings"
 	"time"
 
@@ -260,4 +261,10 @@ func (m *DBModel) Authenticate(email, password string) (int, error) {
 		return id, err
 	}
 	err = bcrypt.CompareHashAndPassword([]byte(hashedPasswrod), []byte(password))
+	if err == bcrypt.ErrMismatchedHashAndPassword {
+		return 0, errors.New("incorrect password")
+	} else if err != nil {
+		return 0, err
+	}
+	return 0, nil
 }
