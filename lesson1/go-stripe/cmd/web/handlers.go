@@ -285,5 +285,11 @@ func (app *application) LoginPage(w http.ResponseWriter, r *http.Request) {
 }
 
 func (app *application) PostLoginPage(w http.ResponseController, r *http.Request) {
+	app.Session.RenewToken(r.Context())
 
+	err := r.ParseForm()
+	if err != nil {
+		app.errorLog.Println(err)
+		return
+	}
 }
