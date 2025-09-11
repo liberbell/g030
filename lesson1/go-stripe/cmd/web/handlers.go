@@ -300,4 +300,6 @@ func (app *application) PostLoginPage(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		http.Redirect(w, r, "/login", http.StatusSeeOther)
 	}
+	app.Session.Put(r.Context(), "userID", id)
+	http.Redirect(w, r, "/", http.StatusSeeOther)
 }
