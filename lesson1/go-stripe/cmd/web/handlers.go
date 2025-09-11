@@ -283,3 +283,7 @@ func (app *application) LoginPage(w http.ResponseWriter, r *http.Request) {
 		app.errorLog.Print(err)
 	}
 }
+
+func (app *application) PostLoginPage(w http.ResponseController, r *http.Request) {
+
+}
