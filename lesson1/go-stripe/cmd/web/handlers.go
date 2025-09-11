@@ -292,4 +292,7 @@ func (app *application) PostLoginPage(w http.ResponseController, r *http.Request
 		app.errorLog.Println(err)
 		return
 	}
+
+	email := r.Form.Get("email")
+	password := r.Form.Get("password")
 }
