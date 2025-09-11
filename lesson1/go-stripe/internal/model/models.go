@@ -5,6 +5,8 @@ import (
 	"database/sql"
 	"strings"
 	"time"
+
+	"golang.org/x/crypto/bcrypt"
 )
 
 type DBModel struct {
@@ -257,4 +259,5 @@ func (m *DBModel) Authenticate(email, password string) (int, error) {
 	if err != nil {
 		return id, err
 	}
+	err = bcrypt.CompareHashAndPassword([]byte(hashedPasswrod), []byte(password))
 }
