@@ -251,4 +251,10 @@ func (m *DBModel) Authenticate(email, password string) (int, error) {
 
 	var id int
 	var hashedPasswrod string
+
+	row := m.DB.QueryRowContext(ctx, "SELECT id, password FROM users WHERE email = ?", email)
+	err := row.Scan(&id, &hashedPasswrod)
+	if err != nil {
+		return id, err
+	}
 }
