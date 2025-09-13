@@ -303,3 +303,7 @@ func (app *application) PostLoginPage(w http.ResponseWriter, r *http.Request) {
 	app.Session.Put(r.Context(), "userID", id)
 	http.Redirect(w, r, "/", http.StatusSeeOther)
 }
+
+func (app *application) Logout(w http.ResponseWriter, r *http.Request) {
+
+}
