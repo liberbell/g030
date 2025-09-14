@@ -386,4 +386,6 @@ func (app *application) SendPasswordResetEmail(w http.ResponseWriter, r *http.Re
 	var payload struct {
 		Email string `json: "email"`
 	}
+
+	err := app.readJSON(w, r, &payload)
 }
