@@ -388,4 +388,14 @@ func (app *application) SendPasswordResetEmail(w http.ResponseWriter, r *http.Re
 	}
 
 	err := app.readJSON(w, r, &payload)
+	if err != nil {
+		app.badRequest(w, r, err)
+		return
+	}
+
+	var data struct {
+		Link string
+	}
+
+	data.Link = "http://www.somelinks.com"
 }
