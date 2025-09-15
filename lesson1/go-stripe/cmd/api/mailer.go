@@ -5,6 +5,8 @@ import (
 	"embed"
 	"fmt"
 	"html/template"
+
+	mail "github.com/xhit/go-simple-mail/v2"
 )
 
 //go:embed templates
@@ -37,6 +39,9 @@ func (app *application) SendMail(from, to, subject, tmpl string, data interface{
 		return err
 	}
 	plainMessage := tpl.String()
+	app.infoLog.Println(formattedMessage, plainMessage)
+
+	server := mail.NewSMTPClient
 
 	return nil
 }
