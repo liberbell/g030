@@ -20,8 +20,11 @@ func (app *application) SendMail(from, to, subject, tmpl string, data interface{
 	}
 
 	var tpl bytes.Buffer
-	if err = t.ExecuteTemplate(&tpl, "body") {
-		return nil, err
+	if err = t.ExecuteTemplate(&tpl, "body", data); err != nil {
+		app.errorLog.Println(err)
+		return err
 	}
+	formattedMessage := tpl.String()
+	templateToRender = fmt.Sprintf("templates/%s.html.tmpl", tmpl)
 	return nil
 }
