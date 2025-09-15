@@ -1,6 +1,7 @@
 package main
 
 import (
+	"bytes"
 	"embed"
 	"fmt"
 	"html/template"
@@ -16,6 +17,11 @@ func (app *application) SendMail(from, to, subject, tmpl string, data interface{
 	if err != nil {
 		app.errorLog.Println(err)
 		return err
+	}
+
+	var tpl bytes.Buffer
+	if err = t.ExecuteTemplate(&tpl, "body") {
+		return nil, err
 	}
 	return nil
 }
