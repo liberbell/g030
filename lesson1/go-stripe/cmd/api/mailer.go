@@ -27,5 +27,12 @@ func (app *application) SendMail(from, to, subject, tmpl string, data interface{
 	formattedMessage := tpl.String()
 	templateToRender = fmt.Sprintf("templates/%s.plain.tmpl", tmpl)
 	t, err = template.New("email-plain").ParseFS(emailTemplatesFS, templateToRender)
+	if err != nil {
+		app.errorLog.Println(err)
+		return err
+	}
+
+	if err = t.ExecuteTemplate(&tpl, "body", err); err != nil {
+	}
 	return nil
 }
