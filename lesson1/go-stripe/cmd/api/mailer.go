@@ -25,6 +25,6 @@ func (app *application) SendMail(from, to, subject, tmpl string, data interface{
 		return err
 	}
 	formattedMessage := tpl.String()
-	templateToRender = fmt.Sprintf("templates/%s.html.tmpl", tmpl)
+	templateToRender = fmt.Sprintf("templates/%s.plain.tmpl", tmpl)
 	return nil
 }
