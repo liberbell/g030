@@ -59,7 +59,7 @@ func main() {
 	flag.IntVar(&cfg.port, "port", 4001, "Server port to listen on")
 	flag.StringVar(&cfg.env, "env", "development", "Application environment {development|production|maintenance}")
 	flag.StringVar(&cfg.db.dsn, "dsn", "james:jamespass@tcp(127.0.0.1:3306)/widgets?parseTime=true&tls=false", "DSN")
-	flag.StringVar(&cfg.smtp.host, "smtphost", "smtp.trap.io", "smtp host")
+	flag.StringVar(&cfg.smtp.host, "smtphost", "smtp.mailtrap.io", "smtp host")
 
 	flag.Parse()
 
