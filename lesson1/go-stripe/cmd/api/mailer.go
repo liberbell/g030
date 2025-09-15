@@ -42,6 +42,10 @@ func (app *application) SendMail(from, to, subject, tmpl string, data interface{
 	app.infoLog.Println(formattedMessage, plainMessage)
 
 	server := mail.NewSMTPClient
+	server.Host = app.config.smtp.host
+	server.Port = app.config.smtp.port
+	server.Username = app.config.smtp.username
+	server.Password = 
 
 	return nil
 }
