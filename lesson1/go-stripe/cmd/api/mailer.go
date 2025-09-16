@@ -70,6 +70,7 @@ func (app *application) SendMail(from, to, subject, tmpl string, data interface{
 		app.errorLog.Println(err)
 		return err
 	}
+	app.infoLog.Println("send mail")
 
 	return nil
 }
