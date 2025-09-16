@@ -62,5 +62,8 @@ func (app *application) SendMail(from, to, subject, tmpl string, data interface{
 		AddTo(to).
 		SetSubject(subject)
 
+	email.SetBody(mail.TextHTML, formattedMessage)
+	email.SetAlternative(mail.TextPlain)
+
 	return nil
 }
