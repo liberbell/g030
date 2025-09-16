@@ -51,6 +51,13 @@ func (app *application) SendMail(from, to, subject, tmpl string, data interface{
 	server.Encryption = mail.EncryptionTLS
 	server.Keepalive = false
 	server.ConnectTimeout = 10 * time.Second
+	server.SendTimeout = 10 * time.Second
+
+	smtpClient, err := server.Connect()
+	if err != nil {
+		return err
+	}
+	email := 
 
 	return nil
 }
