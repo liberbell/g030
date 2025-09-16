@@ -5,6 +5,7 @@ import (
 	"embed"
 	"fmt"
 	"html/template"
+	"time"
 
 	mail "github.com/xhit/go-simple-mail"
 	mail "github.com/xhit/go-simple-mail/v2"
@@ -49,6 +50,7 @@ func (app *application) SendMail(from, to, subject, tmpl string, data interface{
 	server.Password = app.config.smtp.password
 	server.Encryption = mail.EncryptionTLS
 	server.Keepalive = false
+	server.ConnectTimeout = 10 * time.Second
 
 	return nil
 }
