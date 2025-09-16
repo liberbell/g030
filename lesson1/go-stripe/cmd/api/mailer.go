@@ -7,7 +7,6 @@ import (
 	"html/template"
 	"time"
 
-	mail "github.com/xhit/go-simple-mail"
 	mail "github.com/xhit/go-simple-mail/v2"
 )
 
