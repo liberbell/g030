@@ -62,7 +62,7 @@ func (app *application) SendMail(from, to, subject, tmpl string, data interface{
 		SetSubject(subject)
 
 	email.SetBody(mail.TextHTML, formattedMessage)
-	email.SetAlternative(mail.TextPlain, plainMessage)
+	email.AddAlternative(mail.TextPlain, plainMessage)
 
 	err = email.Send(smtpClient)
 	if err != nil {
