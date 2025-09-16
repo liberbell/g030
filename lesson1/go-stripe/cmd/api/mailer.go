@@ -57,7 +57,10 @@ func (app *application) SendMail(from, to, subject, tmpl string, data interface{
 	if err != nil {
 		return err
 	}
-	email := 
+	email := mail.NewMSG()
+	email.setFrom(from).
+		AddTo(to).
+		SetSubject(subject)
 
 	return nil
 }
