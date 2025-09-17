@@ -57,7 +57,7 @@ func (app *application) SendMail(from, to, subject, tmpl string, data interface{
 		return err
 	}
 	email := mail.NewMSG()
-	email.setFrom(from).
+	email.SetFrom(from).
 		AddTo(to).
 		SetSubject(subject)
 
