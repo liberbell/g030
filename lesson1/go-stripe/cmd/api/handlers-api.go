@@ -398,4 +398,6 @@ func (app *application) SendPasswordResetEmail(w http.ResponseWriter, r *http.Re
 	}
 
 	data.Link = "http://www.somelinks.com"
+
+	err = app.SendMail("admin@bond.uk")
 }
