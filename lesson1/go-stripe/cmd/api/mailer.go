@@ -48,7 +48,7 @@ func (app *application) SendMail(from, to, subject, tmpl string, data interface{
 	server.Username = app.config.smtp.username
 	server.Password = app.config.smtp.password
 	server.Encryption = mail.EncryptionTLS
-	server.Keepalive = false
+	server.KeepAlive = false
 	server.ConnectTimeout = 10 * time.Second
 	server.SendTimeout = 10 * time.Second
 
