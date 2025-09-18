@@ -35,7 +35,7 @@ func (app *application) SendMail(from, to, subject, tmpl string, data interface{
 		return err
 	}
 
-	if err = t.ExecuteTemplate(&tpl, "body", err); err != nil {
+	if err = t.ExecuteTemplate(&tpl, "body", data); err != nil {
 		app.errorLog.Println(err)
 		return err
 	}
