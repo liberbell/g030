@@ -409,5 +409,5 @@ func (app *application) SendPasswordResetEmail(w http.ResponseWriter, r *http.Re
 		Error   string `json: "error"`
 		Message string `json: "message"`
 	}
-	app.writeJSON(w, http.StatusCreated)
+	app.writeJSON(w, http.StatusCreated, resp)
 }
