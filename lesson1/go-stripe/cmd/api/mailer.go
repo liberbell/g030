@@ -11,12 +11,12 @@ import (
 )
 
 //go:embed templates
-var emailTemplatesFS embed.FS
+var emailTemplateFS embed.FS
 
 func (app *application) SendMail(from, to, subject, tmpl string, data interface{}) error {
-	templateToRender := fmt.Sprintf("templates/%s.html.tmpl")
+	templateToRender := fmt.Sprintf("templates/%s.html.tmpl", tmpl)
 
-	t, err := template.New("email-html").ParseFS(emailTemplatesFS, templateToRender)
+	t, err := template.New("email-html").ParseFS(emailTemplateFS, templateToRender)
 	if err != nil {
 		app.errorLog.Println(err)
 		return err
@@ -29,7 +29,7 @@ func (app *application) SendMail(from, to, subject, tmpl string, data interface{
 	}
 	formattedMessage := tpl.String()
 	templateToRender = fmt.Sprintf("templates/%s.plain.tmpl", tmpl)
-	t, err = template.New("email-plain").ParseFS(emailTemplatesFS, templateToRender)
+	t, err = template.New("email-plain").ParseFS(emailTemplateFS, templateToRender)
 	if err != nil {
 		app.errorLog.Println(err)
 		return err
