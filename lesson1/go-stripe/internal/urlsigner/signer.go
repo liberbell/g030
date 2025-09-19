@@ -1,6 +1,9 @@
 package urlsigner
 
 import (
+	"fmt"
+	"strings"
+
 	goalone "github.com/bwmarrin/go-alone"
 )
 
@@ -12,6 +15,11 @@ func (s *Signer) GenerateTokenFromString(data string) string {
 	var urlToSign string
 
 	crypt := goalone.New(s.Secret, goalone.Timestamp)
+	if strings.Contains(data, "?") {
+		urlToSign = fmt.Sprintf("%s&hash=", data)
+	} else {
+
+	}
 }
 
 func (s *Signer) VeryfyToken(token string) bool {
