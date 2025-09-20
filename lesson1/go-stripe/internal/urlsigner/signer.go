@@ -18,8 +18,12 @@ func (s *Signer) GenerateTokenFromString(data string) string {
 	if strings.Contains(data, "?") {
 		urlToSign = fmt.Sprintf("%s&hash=", data)
 	} else {
-
+		urlToSign = fmt.Sprintf("%s?hash=", data)
 	}
+	tokenBytes := crypt.Sign([]byte(urlToSign))
+	token := string(tokenBytes)
+
+	return token
 }
 
 func (s *Signer) VeryfyToken(token string) bool {
