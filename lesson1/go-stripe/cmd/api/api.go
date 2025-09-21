@@ -68,6 +68,9 @@ func main() {
 	flag.StringVar(&cfg.secretkey, "secret", "elsiespq1k", "secret key")
 	flag.StringVar(&cfg.frontend, "frontend", "http://localhost:4000", "url to front end")
 
+	cfg.smtp.username = os.Getenv("MAIL_user")
+	cfg.smtp.password = os.Getenv("MAIL_pass")
+
 	flag.Parse()
 
 	cfg.stripe.key = os.Getenv("STRIPE_KEY")
