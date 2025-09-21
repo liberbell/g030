@@ -332,4 +332,6 @@ func (app *application) ShowResetPassword(w http.ResponseWriter, r *http.Request
 		app.errorLog.Println("Invalid url - tampering detected")
 		return
 	}
+	data := make(map[string]interface{})
+	data["email"] = r.URL.Query().Get("email")
 }
