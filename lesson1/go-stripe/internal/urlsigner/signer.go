@@ -28,7 +28,10 @@ func (s *Signer) GenerateTokenFromString(data string) string {
 
 func (s *Signer) VeryfyToken(token string) bool {
 	crypt := goalone.New(s.Secret, goalone.Timestamp)
-	_, err := crypt.Unsign()
+	_, err := crypt.Unsign([]byte(token))
+	if err != nil {
+		fmt.Println(err)
+	}
 }
 
 func (s *Signer) Expired(token string, minutesUntilExpire int) bool {
