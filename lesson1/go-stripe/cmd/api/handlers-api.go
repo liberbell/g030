@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"myapp/internal/cards"
 	models "myapp/internal/model"
+	"myapp/internal/urlsigner"
 	"net/http"
 	"strconv"
 	"strings"
@@ -394,10 +395,16 @@ func (app *application) SendPasswordResetEmail(w http.ResponseWriter, r *http.Re
 	}
 
 	link := fmt.Sprintf("%s/reset-password?email=%s", app.config.frontend, payload.Email)
+	sign := urlsigner.Signer{
+		Secret: []byte(app.config.secretkey),
+	}
+	signedLink := sign.GenerateTokenFromString(link)
 
 	var data struct {
 		Link string
 	}
+
+	data.Link = signedLink
 
 	data.Link = "http://www.somelinks.com"
 
