@@ -393,6 +393,8 @@ func (app *application) SendPasswordResetEmail(w http.ResponseWriter, r *http.Re
 		return
 	}
 
+	link := fmt.Sprintf("%s/reset-password?email=%s", app.config.frontend, payload.Email)
+
 	var data struct {
 		Link string
 	}
