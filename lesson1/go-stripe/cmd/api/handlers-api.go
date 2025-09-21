@@ -394,6 +394,18 @@ func (app *application) SendPasswordResetEmail(w http.ResponseWriter, r *http.Re
 		return
 	}
 
+	_, err = app.DB.GetUserByEmail(payload.Email)
+	if err != nil {
+		var resp struct {
+			Error   bool   `json: "error"`
+			Message string `json: "message"`
+		}
+		resp.Error = true
+		resp.Message = "No matching email found on our system"
+		app.writeJSON(w, http.StatusAccepted, resp)
+		return
+	}
+
 	link := fmt.Sprintf("%s/reset-password?email=%s", app.config.frontend, payload.Email)
 	sign := urlsigner.Signer{
 		Secret: []byte(app.config.secretkey),
