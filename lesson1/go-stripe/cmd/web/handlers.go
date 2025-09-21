@@ -334,4 +334,10 @@ func (app *application) ShowResetPassword(w http.ResponseWriter, r *http.Request
 	}
 	data := make(map[string]interface{})
 	data["email"] = r.URL.Query().Get("email")
+
+	if err := app.renderTemplate(w, r, "reset-password", &templateData{
+		Data: data,
+	}); err != nil {
+		app.errorLog.Print(err)
+	}
 }
