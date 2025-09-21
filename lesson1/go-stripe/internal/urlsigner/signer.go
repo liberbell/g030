@@ -1,8 +1,10 @@
 package urlsigner
 
 import (
+	"crypto"
 	"fmt"
 	"strings"
+	"time"
 
 	goalone "github.com/bwmarrin/go-alone"
 )
@@ -32,8 +34,11 @@ func (s *Signer) VeryfyToken(token string) bool {
 	if err != nil {
 		fmt.Println(err)
 	}
+	return true
 }
 
 func (s *Signer) Expired(token string, minutesUntilExpire int) bool {
+	crypt := goalone.New(s.Secret, goalone.Timestamp)
+	ts := crypt.Parse([]byte(token))
 
-}
+	return time.Since(ts.Timestamp) > time.Duration(minutesUntilExpire) * time.Minute
