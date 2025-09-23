@@ -51,6 +51,7 @@ func (app *application) SendMail(from, to, subject, tmpl string, data interface{
 	server.KeepAlive = false
 	server.ConnectTimeout = 10 * time.Second
 	server.SendTimeout = 10 * time.Second
+	fmt.Println(server.Username, server.Password)
 
 	smtpClient, err := server.Connect()
 	if err != nil {
