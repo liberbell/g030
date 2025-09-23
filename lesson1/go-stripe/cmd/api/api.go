@@ -61,7 +61,7 @@ func main() {
 	flag.IntVar(&cfg.port, "port", 4001, "Server port to listen on")
 	flag.StringVar(&cfg.env, "env", "development", "Application environment {development|production|maintenance}")
 	flag.StringVar(&cfg.db.dsn, "dsn", "james:jamespass@tcp(127.0.0.1:3306)/widgets?parseTime=true&tls=false", "DSN")
-	flag.StringVar(&cfg.smtp.host, "smtphost", "smtp.mailtrap.io", "smtp host")
+	flag.StringVar(&cfg.smtp.host, "smtphost", "sandbox.smtp.mailtrap.io", "smtp host")
 	// flag.StringVar(&cfg.smtp.username, "smtpuser", "7ed69a1e28f948", "smtp user")
 	// flag.StringVar(&cfg.smtp.password, "smtppass", "****8f81d", "smtp password")
 	flag.IntVar(&cfg.smtp.port, "smtpport", 587, "Smtp Port")
@@ -70,6 +70,7 @@ func main() {
 
 	cfg.smtp.username = os.Getenv("MAIL_User")
 	cfg.smtp.password = os.Getenv("MAIL_Pass")
+	fmt.Println(cfg.smtp.username, cfg.smtp.password)
 
 	flag.Parse()
 
