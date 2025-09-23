@@ -27,7 +27,7 @@ func (s *Signer) GenerateTokenFromString(data string) string {
 	return token
 }
 
-func (s *Signer) VeryfyToken(token string) bool {
+func (s *Signer) VerifyToken(token string) bool {
 	crypt := goalone.New(s.Secret, goalone.Timestamp)
 	_, err := crypt.Unsign([]byte(token))
 	if err != nil {
