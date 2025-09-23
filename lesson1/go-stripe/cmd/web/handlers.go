@@ -328,7 +328,7 @@ func (app *application) ShowResetPassword(w http.ResponseWriter, r *http.Request
 		Secret: []byte(app.config.secretkey),
 	}
 
-	valid := signer.VeryfyToken(testURL)
+	valid := signer.VerifyToken(testURL)
 	if !valid {
 		app.errorLog.Println("Invalid url - tampering detected")
 		return
