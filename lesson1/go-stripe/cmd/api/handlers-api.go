@@ -430,5 +430,7 @@ func (app *application) SendPasswordResetEmail(w http.ResponseWriter, r *http.Re
 		Error   bool   `json: "error"`
 		Message string `json: "message"`
 	}
+	resp.Error = false
+
 	app.writeJSON(w, http.StatusCreated, resp)
 }
