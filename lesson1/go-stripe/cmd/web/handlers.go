@@ -301,6 +301,7 @@ func (app *application) PostLoginPage(w http.ResponseWriter, r *http.Request) {
 	id, err := app.DB.Authenticate(email, password)
 	if err != nil {
 		http.Redirect(w, r, "/login", http.StatusSeeOther)
+		return
 	}
 	app.Session.Put(r.Context(), "userID", id)
 	http.Redirect(w, r, "/", http.StatusSeeOther)
