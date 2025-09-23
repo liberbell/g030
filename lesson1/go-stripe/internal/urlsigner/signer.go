@@ -32,6 +32,7 @@ func (s *Signer) VerifyToken(token string) bool {
 	_, err := crypt.Unsign([]byte(token))
 	if err != nil {
 		fmt.Println(err)
+		return false
 	}
 	return true
 }
