@@ -427,7 +427,7 @@ func (app *application) SendPasswordResetEmail(w http.ResponseWriter, r *http.Re
 		return
 	}
 	var resp struct {
-		Error   string `json: "error"`
+		Error   bool   `json: "error"`
 		Message string `json: "message"`
 	}
 	app.writeJSON(w, http.StatusCreated, resp)
