@@ -454,4 +454,13 @@ func (app *application) ResetPassword(w http.ResponseWriter, r *http.Request) {
 	}
 
 	newHash, err := bcrypt.GenerateFromPassword([]byte(payload.Password), 12)
+	if err != nil {
+		app.badRequest(w, r, err)
+		return
+	}
+	err = app.DB.UpdatePasswordForUser(user, string(newHash))
+	if err != nil {
+		app.badRequest(w, r, err)
+		return
+	}
 }
