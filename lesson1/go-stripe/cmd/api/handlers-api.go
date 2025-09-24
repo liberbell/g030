@@ -443,5 +443,12 @@ func (app *application) ResetPassword(w http.ResponseWriter, r *http.Request) {
 	err := app.readJSON(w, r, &payload)
 	if err != nil {
 		app.badRequest(w, r, err)
+		return
+	}
+
+	user, err := app.DB.GetUserByEmail(payload.Email)
+	if err != nil {
+		app.badRequest(w, r, err)
+		return
 	}
 }
