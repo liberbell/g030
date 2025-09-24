@@ -274,5 +274,9 @@ func (m *DBModel) UpdatePasswordForUser(u User, hash string) error {
 	defer cancel()
 
 	stmt := `UPDATE users SET password = WHERE id = ?`
-	_, err := m.DB.ExecContext(ctx, hash, u.ID)
+	_, err := m.DB.ExecContext(ctx, stmt, hash, u.ID)
+	if err != nil {
+		return err
+	}
+	return nil
 }
