@@ -434,3 +434,7 @@ func (app *application) SendPasswordResetEmail(w http.ResponseWriter, r *http.Re
 
 	app.writeJSON(w, http.StatusCreated, resp)
 }
+
+func (app *application) ResetPassword(w http.ResponseWriter, r *http.Request) {
+
+}
