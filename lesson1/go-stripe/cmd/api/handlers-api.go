@@ -463,4 +463,8 @@ func (app *application) ResetPassword(w http.ResponseWriter, r *http.Request) {
 		app.badRequest(w, r, err)
 		return
 	}
+
+	var resp struct {
+		Error bool `json: "error"`
+	}
 }
