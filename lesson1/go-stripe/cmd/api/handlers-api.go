@@ -14,6 +14,7 @@ import (
 
 	"github.com/go-chi/chi/v5"
 	"github.com/stripe/stripe-go/v82"
+	"golang.org/x/crypto/bcrypt"
 )
 
 type stripePayload struct {
@@ -451,4 +452,6 @@ func (app *application) ResetPassword(w http.ResponseWriter, r *http.Request) {
 		app.badRequest(w, r, err)
 		return
 	}
+
+	newHash, err := bcrypt.GenerateFromPassword([]byte(payload.Password), 12)
 }
