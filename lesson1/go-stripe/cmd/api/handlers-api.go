@@ -440,4 +440,8 @@ func (app *application) ResetPassword(w http.ResponseWriter, r *http.Request) {
 		Email    string `json: "email"`
 		Password string `json: "password"`
 	}
+	err := app.readJSON(w, r, &payload)
+	if err != nil {
+		app.badRequest(w, r, err)
+	}
 }
