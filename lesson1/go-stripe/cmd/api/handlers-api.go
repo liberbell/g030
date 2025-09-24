@@ -468,4 +468,8 @@ func (app *application) ResetPassword(w http.ResponseWriter, r *http.Request) {
 		Error   bool   `json: "error"`
 		Message string `json: "message"`
 	}
+	resp.Error = false
+	resp.Message = "password changed"
+
+	app.writeJSON(w, http.StatusCreated, resp)
 }
