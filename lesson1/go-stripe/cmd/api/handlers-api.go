@@ -436,5 +436,8 @@ func (app *application) SendPasswordResetEmail(w http.ResponseWriter, r *http.Re
 }
 
 func (app *application) ResetPassword(w http.ResponseWriter, r *http.Request) {
-
+	var payload struct {
+		Email    string `json: "email"`
+		Password string `json: "password"`
+	}
 }
