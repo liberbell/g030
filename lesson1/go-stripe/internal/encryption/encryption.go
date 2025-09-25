@@ -4,6 +4,7 @@ import (
 	"crypto/aes"
 	"crypto/cipher"
 	"crypto/rand"
+	"encoding/base64"
 	"io"
 )
 
@@ -25,6 +26,8 @@ func (e *Encryption) Encrypt(text string) (string, error) {
 	}
 	stream := cipher.NewCFBEncrypter(block, iv)
 	stream.XORKeyStream(cipherText[aes.BlockSize:], plaintext)
+
+	return base64.URLEncoding.EncodeToString(cipherText), nil
 }
 
 func (e *Encryption) Decrypt(cryptoText string) (string, error) {
