@@ -31,5 +31,10 @@ func (e *Encryption) Encrypt(text string) (string, error) {
 }
 
 func (e *Encryption) Decrypt(cryptoText string) (string, error) {
+	cipherText, _ := base64.URLEncoding.DecodeString(cryptoText)
 
+	block, err := aes.NewCipher(e.Key)
+	if err != nil {
+		return "", err
+	}
 }
