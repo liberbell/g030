@@ -7,3 +7,7 @@ type Encryption struct {
 func (e *Encryption) Encrypt(text string) (string, error) {
 
 }
+
+func (e *Encryption) Decrypt(text string) (string, error) {
+
+}
