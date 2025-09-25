@@ -2,6 +2,7 @@ package encryption
 
 import (
 	"crypto/aes"
+	"crypto/cipher"
 	"crypto/rand"
 	"io"
 )
@@ -22,6 +23,8 @@ func (e *Encryption) Encrypt(text string) (string, error) {
 	if _, err := io.ReadFull(rand.Reader, iv); err != nil {
 		return "", err
 	}
+	stream := cipher.NewCFBEncrypter(block, iv)
+	stream.XORKeyStream(cipherText[aes.BlockSize:], plaintext)
 }
 
 func (e *Encryption) Decrypt(cryptoText string) (string, error) {
