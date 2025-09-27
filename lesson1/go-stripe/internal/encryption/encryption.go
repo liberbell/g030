@@ -37,11 +37,14 @@ func (e *Encryption) Decrypt(cryptoText string) (string, error) {
 	if err != nil {
 		return "", err
 	}
-	
+
 	if len(cipherText) < aes.BlockSize {
 		return "", err
 	}
 
-	iv := cipherText[]
+	iv := cipherText[:aes.BlockSize]
+	cipherText = cipherText[aes.BlockSize:]
+
+	stream := cipher.NewCFBDecrypter(block, iv)
 
 }
