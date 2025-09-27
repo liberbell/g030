@@ -457,7 +457,7 @@ func (app *application) ResetPassword(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	user, err := app.DB.GetUserByEmail(payload.Email)
+	user, err := app.DB.GetUserByEmail(realEmail)
 	if err != nil {
 		app.badRequest(w, r, err)
 		return
