@@ -345,9 +345,14 @@ func (app *application) ShowResetPassword(w http.ResponseWriter, r *http.Request
 	encryptor := encryption.Encryption{
 		Key: []byte(app.config.secretkey),
 	}
+	encryptedEmail, err := encryptor.Encrypt(email)
+	if err != nil {
+		app.errorLog.Println("Encryption failed.")
+		return
+	}
 
 	data := make(map[string]interface{})
-	data["email"] = 
+	data["email"] = encryptedEmail
 
 	if err := app.renderTemplate(w, r, "reset-password", &templateData{
 		Data: data,
