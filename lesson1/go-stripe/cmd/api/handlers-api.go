@@ -451,6 +451,11 @@ func (app *application) ResetPassword(w http.ResponseWriter, r *http.Request) {
 	encryptor := encryption.Encryption{
 		Key: []byte(app.config.secretkey),
 	}
+	realEmail, err := encryptor.Decrypt(payload.Email)
+	if err != nil {
+		app.badRequest(w, r, err)
+		return
+	}
 
 	user, err := app.DB.GetUserByEmail(payload.Email)
 	if err != nil {
