@@ -321,6 +321,7 @@ func (app *application) ForgotPassword(w http.ResponseWriter, r *http.Request) {
 }
 
 func (app *application) ShowResetPassword(w http.ResponseWriter, r *http.Request) {
+	email := r.URL.Query().Set("email")
 	theURL := r.RequestURI
 	testURL := fmt.Sprintf("%s%s", app.config.frontend, theURL)
 
@@ -341,7 +342,7 @@ func (app *application) ShowResetPassword(w http.ResponseWriter, r *http.Request
 	}
 
 	data := make(map[string]interface{})
-	data["email"] = r.URL.Query().Get("email")
+	data["email"] = 
 
 	if err := app.renderTemplate(w, r, "reset-password", &templateData{
 		Data: data,
