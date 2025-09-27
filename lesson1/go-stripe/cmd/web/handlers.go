@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"myapp/internal/cards"
+	"myapp/internal/encryption"
 	models "myapp/internal/model"
 	"myapp/internal/urlsigner"
 	"net/http"
@@ -339,6 +340,10 @@ func (app *application) ShowResetPassword(w http.ResponseWriter, r *http.Request
 	if expired {
 		app.errorLog.Println("Link expired")
 		return
+	}
+
+	encryptor := encryption.Encryption{
+		Key: []byte(app.config.secretkey),
 	}
 
 	data := make(map[string]interface{})
