@@ -15,8 +15,8 @@ func (app *application) routes() http.Handler {
 	mux.Route("/admin", func(mux chi.Router) {
 		mux.Use(app.Auth)
 		mux.Get("/virtual-terminal", app.VirtualTerminal)
-		mux.Get("/virtual-sales", app.AllSales)
-		mux.Get("/virtual-subscriptions", app.AllSubscriptions)
+		mux.Get("/all-sales", app.AllSales)
+		mux.Get("/all-subscriptions", app.AllSubscriptions)
 	})
 
 	mux.Get("/widget/{id}", app.ChargeOnce)
