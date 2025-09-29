@@ -288,4 +288,15 @@ func (m *DBModel) GetAllOrders() ([]*Order, error) {
 	ctx, cancel := context.WithTimeout(context.Background(), 3*time.Second)
 	defer cancel()
 
+	var orders []*Order
+
+	query := `
+	select
+		o.id, o.widget_id, o.transaction_id, o.customer_id, o.status_id, o.quantity, o.amount, o.created_at, o.updated_at,
+		w.id, w.name, t.id, t.amount, t.currency,
+	from
+		orders o
+	order by
+		o.created_at desc 
+	`
 }
