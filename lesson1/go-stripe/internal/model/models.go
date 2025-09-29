@@ -305,4 +305,9 @@ func (m *DBModel) GetAllOrders() ([]*Order, error) {
 	order by
 		o.created_at desc 
 	`
+	rows, err := m.DB.QueryContext(ctx, query)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
 }
