@@ -319,6 +319,12 @@ func (m *DBModel) GetAllOrders() ([]*Order, error) {
 			&o.TransactionID,
 			&o.CustomerID,
 			&o.StatusID,
+			&o.Quantity,
+			&o.Amount,
+			&o.CreatedAt,
+			&o.UpdatedAt,
+			&o.Widget.ID,
+			&o.Widget.Name,
 		)
 	}
 }
