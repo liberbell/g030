@@ -310,4 +310,15 @@ func (m *DBModel) GetAllOrders() ([]*Order, error) {
 		return nil, err
 	}
 	defer rows.Close()
+
+	for rows.Next() {
+		var o Order
+		err = rows.Scan(
+			&o.ID,
+			&o.WidgetID,
+			&o.TransactionID,
+			&o.CustomerID,
+			&o.StatusID,
+		)
+	}
 }
