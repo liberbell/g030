@@ -325,6 +325,21 @@ func (m *DBModel) GetAllOrders() ([]*Order, error) {
 			&o.UpdatedAt,
 			&o.Widget.ID,
 			&o.Widget.Name,
+			&o.Transaction.ID,
+			&o.Transaction.Amount,
+			&o.Transaction.Currency,
+			&o.Transaction.LastFour,
+			&o.Transaction.ExpiryMonth,
+			&o.Transaction.ExpiryYear,
+			&o.Transaction.PaymentIntent,
+			&o.Transaction.BankReturnCode,
+			&o.Customer.ID,
+			&o.Customer.FirstName,
+			&o.Customer.LastName,
+			&o.Customer.Email,
 		)
+		if err != nil {
+			return nil, err
+		}
 	}
 }
