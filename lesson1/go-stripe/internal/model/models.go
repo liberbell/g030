@@ -283,3 +283,7 @@ func (m *DBModel) UpdatePasswordForUser(u User, hash string) error {
 	}
 	return nil
 }
+
+func (m *DBModel) GetAllOrders() ([]*Order, error) {
+
+}
