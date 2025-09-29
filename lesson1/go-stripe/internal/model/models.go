@@ -298,6 +298,10 @@ func (m *DBModel) GetAllOrders() ([]*Order, error) {
 	from
 		orders o
 		left join widgets w on (o.widget_id = w.id)
+		left join transactions t on (o.transaction_id = t.id)
+		left join customers c on (o.customer_id = c.id)
+	where
+		w.is_recurring = 0
 	order by
 		o.created_at desc 
 	`
