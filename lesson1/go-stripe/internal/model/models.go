@@ -285,5 +285,7 @@ func (m *DBModel) UpdatePasswordForUser(u User, hash string) error {
 }
 
 func (m *DBModel) GetAllOrders() ([]*Order, error) {
+	ctx, cancel := context.WithTimeout(context.Background(), 3*time.Second)
+	defer cancel()
 
 }
