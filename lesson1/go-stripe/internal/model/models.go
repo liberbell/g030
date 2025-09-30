@@ -256,14 +256,14 @@ func (m *DBModel) Authenticate(email, password string) (int, error) {
 	defer cancel()
 
 	var id int
-	var hashedPasswrod string
+	var hashedPassword string
 
 	row := m.DB.QueryRowContext(ctx, "SELECT id, password FROM users WHERE email = ?", email)
-	err := row.Scan(&id, &hashedPasswrod)
+	err := row.Scan(&id, &hashedPassword)
 	if err != nil {
 		return id, err
 	}
-	err = bcrypt.CompareHashAndPassword([]byte(hashedPasswrod), []byte(password))
+	err = bcrypt.CompareHashAndPassword([]byte(hashedPassword), []byte(password))
 	if err == bcrypt.ErrMismatchedHashAndPassword {
 		return 0, errors.New("incorrect password")
 	} else if err != nil {
