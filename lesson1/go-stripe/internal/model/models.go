@@ -341,5 +341,8 @@ func (m *DBModel) GetAllOrders() ([]*Order, error) {
 		if err != nil {
 			return nil, err
 		}
+		orders = append(orders, &o)
+
 	}
+	return orders, nil
 }
