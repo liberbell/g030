@@ -303,7 +303,7 @@ func (m *DBModel) GetAllOrders() ([]*Order, error) {
 	where
 		w.is_recurring = 0
 	order by
-		o.created_at desc 
+		o.created_at desc
 	`
 	rows, err := m.DB.QueryContext(ctx, query)
 	if err != nil {

@@ -113,7 +113,7 @@ func cardErrorMessage(code stripe.ErrorCode) string {
 		msg = "Your card was declined."
 	case stripe.ErrorCodeExpiredCard:
 		msg = "Your card is expired."
-	case stripe.ErrorCodeInvalidCVC:
+	case stripe.ErrorCodeIncorrectCVC:
 		msg = "Incorrect CVC code."
 	case stripe.ErrorCodeIncorrectZip:
 		msg = "Incorrect ZIP code."
