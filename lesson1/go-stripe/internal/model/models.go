@@ -269,7 +269,7 @@ func (m *DBModel) Authenticate(email, password string) (int, error) {
 	} else if err != nil {
 		return 0, err
 	}
-	return 0, nil
+	return id, nil
 }
 
 func (m *DBModel) UpdatePasswordForUser(u User, hash string) error {
