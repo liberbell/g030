@@ -489,6 +489,6 @@ func (app *application) AllSales(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	app.writeJSON()
+	app.writeJSON(w, http.StatusOK, allsales)
 
 }
