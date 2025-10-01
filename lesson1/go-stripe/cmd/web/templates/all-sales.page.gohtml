@@ -30,9 +30,13 @@
     const requestOptions = {
         method: 'post',
         headers: {
-            'Accept': 
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + token,
         }
     }
+    fetch("{{.API}}/api/admin/all-sales", requestOptions)
+    .then(response => response.json())
 </script>
 
 {{end}}
