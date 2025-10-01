@@ -37,6 +37,9 @@
     }
     fetch("{{.API}}/api/admin/all-sales", requestOptions)
     .then(response => response.json())
+    .then(function (data) {
+        console.log(data);
+    })
 </script>
 
 {{end}}
