@@ -24,7 +24,8 @@
 
 {{define "js"}}
 <script>
-    let token = localStorage
+    let token = localStorage.getItem("token");
+    let tbody = document.getElementById("sales-table").getElementsByTagName("tbody");
 </script>
 
 {{end}}
