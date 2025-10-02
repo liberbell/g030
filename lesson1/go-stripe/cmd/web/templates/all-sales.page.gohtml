@@ -39,6 +39,10 @@
     .then(response => response.json())
     .then(function (data) {
         console.log(data);
+
+        data.forEach(function(i) {
+            let newRow = tbody.inseertRow();
+        })
     })
 </script>
 
