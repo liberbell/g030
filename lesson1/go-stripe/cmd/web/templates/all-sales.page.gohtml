@@ -42,6 +42,9 @@
 
         data.forEach(function(i) {
             let newRow = tbody.inseertRow();
+            let newCell = newRow.insertCell();
+
+            newCell.innerHTML = `<a href="/admin/sales/${i.id}">Order ${i.id}</a>`
         })
     })
 </script>
