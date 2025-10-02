@@ -46,7 +46,15 @@
 
             newCell.innerHTML = `<a href="/admin/sales/${i.id}">Order ${i.id}</a>`;
             newCell = newRow.insertCell();
+
             let item = document.createTextNode(i.customer.last_name + ", " + i.customer.first_name);
+            newCell.appendChild(item);
+
+            newCell = newRow.insertCell();
+            item = document.createTextNode(i.widget.name);
+            newCell.appendChild(item);
+
+            newCell = newRow.insertCell();
         })
     })
 </script>
