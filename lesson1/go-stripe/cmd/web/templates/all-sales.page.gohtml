@@ -33,7 +33,7 @@
             'Accept': 'application/json',
             'Content-Type': 'application/json',
             'Authorization': 'Bearer ' + token,
-        }
+        },
     }
     fetch("{{.API}}/api/admin/all-sales", requestOptions)
     .then(response => response.json())
@@ -41,7 +41,7 @@
         console.log(data);
 
         data.forEach(function(i) {
-            let newRow = tbody.inseertRow();
+            let newRow = tbody.insertRow();
             let newCell = newRow.insertCell();
 
             newCell.innerHTML = `<a href="/admin/sales/${i.id}">Order ${i.id}</a>`;
