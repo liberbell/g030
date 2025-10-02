@@ -55,6 +55,8 @@
             newCell.appendChild(item);
 
             newCell = newRow.insertCell();
+            item = document.createTextNode(i.transaction.amount);
+            newCell.appendChild(item);
         })
     })
 </script>
