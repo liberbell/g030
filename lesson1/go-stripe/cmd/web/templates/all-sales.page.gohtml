@@ -44,7 +44,9 @@
             let newRow = tbody.inseertRow();
             let newCell = newRow.insertCell();
 
-            newCell.innerHTML = `<a href="/admin/sales/${i.id}">Order ${i.id}</a>`
+            newCell.innerHTML = `<a href="/admin/sales/${i.id}">Order ${i.id}</a>`;
+            newCell = newRow.insertCell();
+            let item = document.createTextNode(i.customer.last_name);
         })
     })
 </script>
