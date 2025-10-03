@@ -40,24 +40,28 @@
     .then(function (data) {
         // console.log(data);
 
-        data.forEach(function(i) {
-            let newRow = tbody.insertRow();
-            let newCell = newRow.insertCell();
+        if (data) {}
+            data.forEach(function(i) {
+                let newRow = tbody.insertRow();
+                let newCell = newRow.insertCell();
 
-            newCell.innerHTML = `<a href="/admin/sales/${i.ID}">Order ${i.ID}</a>`;
-            newCell = newRow.insertCell();
+                newCell.innerHTML = `<a href="/admin/sales/${i.ID}">Order ${i.ID}</a>`;
+                newCell = newRow.insertCell();
 
-            let item = document.createTextNode(i.Customer.LastName + ", " + i.customer.FirstName);
-            newCell.appendChild(item);
+                let item = document.createTextNode(i.Customer.LastName + ", " + i.customer.FirstName);
+                newCell.appendChild(item);
 
-            newCell = newRow.insertCell();
-            item = document.createTextNode(i.Widget.Name);
-            newCell.appendChild(item);
+                newCell = newRow.insertCell();
+                item = document.createTextNode(i.Widget.Name);
+                newCell.appendChild(item);
 
-            newCell = newRow.insertCell();
-            item = document.createTextNode(i.Transaction.Amount);
-            newCell.appendChild(item);
-        })
+                newCell = newRow.insertCell();
+                item = document.createTextNode(i.Transaction.Amount);
+                newCell.appendChild(item);
+            })
+        } else {
+
+        }
     })
 </script>
 
