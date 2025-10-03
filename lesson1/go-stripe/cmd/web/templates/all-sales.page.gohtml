@@ -47,15 +47,15 @@
             newCell.innerHTML = `<a href="/admin/sales/${i.ID}">Order ${i.ID}</a>`;
             newCell = newRow.insertCell();
 
-            let item = document.createTextNode(i.customer.LastName + ", " + i.customer.FirstName);
+            let item = document.createTextNode(i.Customer.LastName + ", " + i.customer.FirstName);
             newCell.appendChild(item);
 
             newCell = newRow.insertCell();
-            item = document.createTextNode(i.widget.Name);
+            item = document.createTextNode(i.Widget.Name);
             newCell.appendChild(item);
 
             newCell = newRow.insertCell();
-            item = document.createTextNode(i.transaction.Amount);
+            item = document.createTextNode(i.Transaction.Amount);
             newCell.appendChild(item);
         })
     })
