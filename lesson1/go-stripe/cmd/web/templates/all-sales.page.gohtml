@@ -44,18 +44,18 @@
             let newRow = tbody.insertRow();
             let newCell = newRow.insertCell();
 
-            newCell.innerHTML = `<a href="/admin/sales/${i.id}">Order ${i.id}</a>`;
+            newCell.innerHTML = `<a href="/admin/sales/${i.ID}">Order ${i.ID}</a>`;
             newCell = newRow.insertCell();
 
-            let item = document.createTextNode(i.customer.last_name + ", " + i.customer.first_name);
+            let item = document.createTextNode(i.customer.LastName + ", " + i.customer.FirstName);
             newCell.appendChild(item);
 
             newCell = newRow.insertCell();
-            item = document.createTextNode(i.widget.name);
+            item = document.createTextNode(i.widget.Name);
             newCell.appendChild(item);
 
             newCell = newRow.insertCell();
-            item = document.createTextNode(i.transaction.amount);
+            item = document.createTextNode(i.transaction.Amount);
             newCell.appendChild(item);
         })
     })
