@@ -43,7 +43,7 @@
         data.forEach(function(i) {
             let newRow = tbody.insertRow();
             let newCell = newRow.insertCell();
-            console.log(i.ID)
+            console.log($(i.ID))
 
             newCell.innerHTML = `<a href="/admin/sales/${i.ID}">Order ${i.ID}</a>`;
             newCell = newRow.insertCell();
