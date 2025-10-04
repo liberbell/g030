@@ -38,6 +38,8 @@
     fetch("{{.API}}/api/admin/all-sales", requestOptions)
     .then(response => response.json())
     .then(function (data) {
+        console.log(data);
+
         if (data) {
             data.forEach(function(i) {
                 let newRow = tbody.insertRow();
@@ -46,14 +48,14 @@
                 newCell.innerHTML = `<a href="/admin/sales/${i.ID}">Order ${i.ID}</a>`;
                 newCell = newRow.insertCell();
 
-                let item = document.createTextNode(i.Customer.LastName + ", " + i.customer.FirstName);
+                let item = document.createTextNode(i.Customer.LastName + ", " + i.Customer.FirstName);
                 newCell.appendChild(item);
 
                 newCell = newRow.insertCell();
                 item = document.createTextNode(i.Widget.Name);
                 newCell.appendChild(item);
 
-                let cur = formatCurrency(i.Transaction.Amount)
+                let cur = formatCurrency(i.Transaction.Amount);
                 newCell = newRow.insertCell();
                 item = document.createTextNode(cur);
                 newCell.appendChild(item);
