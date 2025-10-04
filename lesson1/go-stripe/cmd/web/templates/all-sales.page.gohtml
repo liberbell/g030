@@ -53,8 +53,9 @@
                 item = document.createTextNode(i.Widget.Name);
                 newCell.appendChild(item);
 
+                let cur = formatcurrency(i.Transaction.Amount)
                 newCell = newRow.insertCell();
-                item = document.createTextNode(i.Transaction.Amount);
+                item = document.createTextNode(cur);
                 newCell.appendChild(item);
             })
         } else {
@@ -67,7 +68,11 @@
         }
     })
     function formatcurrency(amount) {
-        let c = parseFloat(amount)
+        let c = parseFloat(amount/100);
+        return c.toLocaleString("en-CA", {
+            style: "currency",
+            currency: "CAD",
+        })
     }
 </script>
 
