@@ -38,9 +38,7 @@
     fetch("{{.API}}/api/admin/all-sales", requestOptions)
     .then(response => response.json())
     .then(function (data) {
-        // console.log(data);
-
-        if (data) {}
+        if (data) {
             data.forEach(function(i) {
                 let newRow = tbody.insertRow();
                 let newCell = newRow.insertCell();
@@ -60,6 +58,10 @@
                 newCell.appendChild(item);
             })
         } else {
+            let newRow = tbody.insertRow();
+            let newCell = newRow.insertCell();
+
+            newCell.setAttribute("colspan", "4");
 
         }
     })
