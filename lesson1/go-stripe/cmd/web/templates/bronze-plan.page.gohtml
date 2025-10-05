@@ -129,10 +129,10 @@
             billing_details: {
                 email: document.getElementById("cardholder-email").value,
             },
-        }).then(stripePaymetMethodHandler);
+        }).then(stripePaymentMethodHandler);
      }
 
-     function stripePaymetMethodHandler(result) {
+     function stripePaymentMethodHandler(result) {
         if (result.error) {
             showCardError(result.error.message);
         } else {
