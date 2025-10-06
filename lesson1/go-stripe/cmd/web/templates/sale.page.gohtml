@@ -13,7 +13,7 @@
 <script>
 document.addEventListener("DOMContentLoaded", function() {
     let token = localStorage.getItem("token");
-    let tbody = document.getElementById("sales-table").getElementsByTagName("tbody")[0];
+    let id = window.location.pathname.split("/").pop();
 
     const requestOptions = {
         method: 'post',
@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", function() {
             'Authorization': 'Bearer ' + token,
         },
     }
-    fetch("{{.API}}/api/admin/all-subscriptions", requestOptions)
+    fetch("{{.API}}/api/admin/get-sale/" + id, requestOptions)
     .then(response => response.json())
     .then(function (data) {
         console.log(data);
