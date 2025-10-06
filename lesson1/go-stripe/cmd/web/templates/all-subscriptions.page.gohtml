@@ -66,15 +66,15 @@ document.addEventListener("DOMContentLoaded", function() {
             let newCell = newRow.insertCell();
 
             newCell.setAttribute("colspan", "4");
-            newCell.innerHTML = "No data available";
+            newCell.innerHTML = 'No data available';
 
         }
     })
     function formatCurrency(amount) {
         let c = parseFloat(amount/100);
         return c.toLocaleString("en-CA", {
-            style: "currency",
-            currency: "CAD",
+            style: 'currency',
+            currency: 'CAD',
         })
     }
 })
