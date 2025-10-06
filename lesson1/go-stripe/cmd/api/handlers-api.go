@@ -513,5 +513,5 @@ func (app *application) GetSales(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	app.writeJSON(w, http.StatusOK, allsales)
+	app.writeJSON(w, http.StatusOK, order)
 }
