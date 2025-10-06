@@ -505,7 +505,13 @@ func (app *application) AllSubscriptions(w http.ResponseWriter, r *http.Request)
 
 func (app *application) GetSales(w http.ResponseWriter, r *http.Request) {
 	id := chi.URLParam(r, "id")
-	orderID, _ := strconv.Atoi()
+	orderID, _ := strconv.Atoi(id)
+
+	order, err := app.DB.GetOrderByID(orderID)
+	if err != nil {
+		app.badRequest(w, r, err)
+		return
+	}
 
 	app.writeJSON(w, http.StatusOK, allsales)
 }
