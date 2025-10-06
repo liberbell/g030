@@ -502,3 +502,10 @@ func (app *application) AllSubscriptions(w http.ResponseWriter, r *http.Request)
 
 	app.writeJSON(w, http.StatusOK, allsales)
 }
+
+func (app *application) GetSales(w http.ResponseWriter, r *http.Request) {
+	id := chi.URLParam(r, "id")
+	orderID, _ := strconv.Atoi()
+
+	app.writeJSON(w, http.StatusOK, allsales)
+}
