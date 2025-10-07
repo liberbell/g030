@@ -410,11 +410,11 @@ func (m *DBModel) GetAllSubscriptions() ([]*Order, error) {
 	return orders, nil
 }
 
-func (m *DBModel) GetOrderByID() ([]*Order, error) {
+func (m *DBModel) GetOrderByID() (Order, error) {
 	ctx, cancel := context.WithTimeout(context.Background(), 3*time.Second)
 	defer cancel()
 
-	var orders []*Order
+	var o Order
 
 	query := `
 	select
@@ -427,9 +427,7 @@ func (m *DBModel) GetOrderByID() ([]*Order, error) {
 		left join transactions t on (o.transaction_id = t.id)
 		left join customers c on (o.customer_id = c.id)
 	where
-		w.is_recurring = 1
-	order by
-		o.created_at desc
+		o.id = ?
 	`
 	rows, err := m.DB.QueryContext(ctx, query)
 	if err != nil {
