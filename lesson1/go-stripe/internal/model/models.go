@@ -410,7 +410,7 @@ func (m *DBModel) GetAllSubscriptions() ([]*Order, error) {
 	return orders, nil
 }
 
-func (m *DBModel) GetOrderByID() (Order, error) {
+func (m *DBModel) GetOrderByID(id int) (Order, error) {
 	ctx, cancel := context.WithTimeout(context.Background(), 3*time.Second)
 	defer cancel()
 
@@ -429,44 +429,36 @@ func (m *DBModel) GetOrderByID() (Order, error) {
 	where
 		o.id = ?
 	`
-	rows, err := m.DB.QueryContext(ctx, query)
+	row := m.DB.QueryRowContext(ctx, query, id)
+
+	err := row.Scan(
+		&o.ID,
+		&o.WidgetID,
+		&o.TransactionID,
+		&o.CustomerID,
+		&o.StatusID,
+		&o.Quantity,
+		&o.Amount,
+		&o.CreatedAt,
+		&o.UpdatedAt,
+		&o.Widget.ID,
+		&o.Widget.Name,
+		&o.Transaction.ID,
+		&o.Transaction.Amount,
+		&o.Transaction.Currency,
+		&o.Transaction.LastFour,
+		&o.Transaction.ExpiryMonth,
+		&o.Transaction.ExpiryYear,
+		&o.Transaction.PaymentIntent,
+		&o.Transaction.BankReturnCode,
+		&o.Customer.ID,
+		&o.Customer.FirstName,
+		&o.Customer.LastName,
+		&o.Customer.Email,
+	)
 	if err != nil {
-		return nil, err
+		return o, err
 	}
-	defer rows.Close()
 
-	for rows.Next() {
-		var o Order
-		err = rows.Scan(
-			&o.ID,
-			&o.WidgetID,
-			&o.TransactionID,
-			&o.CustomerID,
-			&o.StatusID,
-			&o.Quantity,
-			&o.Amount,
-			&o.CreatedAt,
-			&o.UpdatedAt,
-			&o.Widget.ID,
-			&o.Widget.Name,
-			&o.Transaction.ID,
-			&o.Transaction.Amount,
-			&o.Transaction.Currency,
-			&o.Transaction.LastFour,
-			&o.Transaction.ExpiryMonth,
-			&o.Transaction.ExpiryYear,
-			&o.Transaction.PaymentIntent,
-			&o.Transaction.BankReturnCode,
-			&o.Customer.ID,
-			&o.Customer.FirstName,
-			&o.Customer.LastName,
-			&o.Customer.Email,
-		)
-		if err != nil {
-			return nil, err
-		}
-		orders = append(orders, &o)
-
-	}
-	return orders, nil
+	return o, nil
 }
