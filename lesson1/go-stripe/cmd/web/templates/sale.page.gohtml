@@ -27,7 +27,11 @@ document.addEventListener("DOMContentLoaded", function() {
     fetch("{{.API}}/api/admin/get-sale/" + id, requestOptions)
     .then(response => response.json())
     .then(function (data) {
-        console.log(data)
+        console.log(data);
+
+        if (data) {
+            document.getElementById("order-no")
+        }
     })
 
     function formatCurrency(amount) {
