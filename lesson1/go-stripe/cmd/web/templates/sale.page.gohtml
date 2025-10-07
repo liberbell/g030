@@ -24,12 +24,12 @@ document.addEventListener("DOMContentLoaded", function() {
             'Authorization': 'Bearer ' + token,
         },
     }
-    {{/* fetch("{{.API}}/api/admin/get-sale/" + id, requestOptions)
+    fetch("{{.API}}/api/admin/get-sale/" + id, requestOptions)
     .then(response => response.json())
     .then(function (data) {
+        console.log(data)
+    })
 
-        
-    }) */}}
     function formatCurrency(amount) {
         let c = parseFloat(amount/100);
         return c.toLocaleString("en-CA", {
