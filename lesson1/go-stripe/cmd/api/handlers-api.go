@@ -146,7 +146,7 @@ func (app *application) CreateCustomerAndSubscribeToPlan(w http.ResponseWriter, 
 			txnMsg = "error subscribing customer"
 		}
 
-		app.infoLog.Println("subscriptiionID is ", subscription.ID)
+		app.infoLog.Println("subscriptionID is ", subscription.ID)
 	}
 
 	if okay {
@@ -216,7 +216,7 @@ func (app *application) SaveCustomer(firstName, lastName, email string) (int, er
 	}
 	return id, nil
 }
-
+d
 func (app *application) SaveTransaction(txn models.Transaction) (int, error) {
 	id, err := app.DB.InsertTransaction(txn)
 	if err != nil {
@@ -489,7 +489,7 @@ func (app *application) AllSales(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	app.writeJSON(w, http.StatusOK, allsales)
+	app.writeJSON(w, http.StatusOK, allSales)
 
 }
 
@@ -500,10 +500,10 @@ func (app *application) AllSubscriptions(w http.ResponseWriter, r *http.Request)
 		return
 	}
 
-	app.writeJSON(w, http.StatusOK, allsales)
+	app.writeJSON(w, http.StatusOK, allSales)
 }
 
-func (app *application) GetSales(w http.ResponseWriter, r *http.Request) {
+func (app *application) GetSale(w http.ResponseWriter, r *http.Request) {
 	id := chi.URLParam(r, "id")
 	orderID, _ := strconv.Atoi(id)
 
