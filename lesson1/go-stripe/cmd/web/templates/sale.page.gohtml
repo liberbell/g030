@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", function() {
             document.getElementById("order-no").innerHTML = data.id;
             document.getElementById("customer").innerHTML = data.Customer.FirstName + " " + data.Customer.LastName;
             document.getElementById("product").innerHTML = data.Widget.Name;
-            document.getElementById("quantity").innerHTML = data.quantity;
+            document.getElementById("quantity").innerHTML = data.Quantity;
             document.getElementById("amount").innerHTML = formatCurrency(data.Transaction.Amount);
         }
     })
