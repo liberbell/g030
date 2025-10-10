@@ -483,7 +483,7 @@ func (app *application) ResetPassword(w http.ResponseWriter, r *http.Request) {
 }
 
 func (app *application) AllSales(w http.ResponseWriter, r *http.Request) {
-	allsales, err := app.DB.GetAllOrders()
+	allSales, err := app.DB.GetAllOrders()
 	if err != nil {
 		app.badRequest(w, r, err)
 		return
@@ -494,7 +494,7 @@ func (app *application) AllSales(w http.ResponseWriter, r *http.Request) {
 }
 
 func (app *application) AllSubscriptions(w http.ResponseWriter, r *http.Request) {
-	allsales, err := app.DB.GetAllSubscriptions()
+	allSales, err := app.DB.GetAllSubscriptions()
 	if err != nil {
 		app.badRequest(w, r, err)
 		return
