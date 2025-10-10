@@ -374,6 +374,7 @@ func (app *application) AllSubscriptions(w http.ResponseWriter, r *http.Request)
 }
 
 func (app *application) ShowSale(w http.ResponseWriter, r *http.Request) {
+	stringMap := make(map[string]string)
 	if err := app.renderTemplate(w, r, "sale", &templateData{}); err != nil {
 		app.errorLog.Print(err)
 	}
