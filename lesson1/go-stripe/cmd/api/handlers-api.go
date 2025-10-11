@@ -515,3 +515,9 @@ func (app *application) GetSale(w http.ResponseWriter, r *http.Request) {
 
 	app.writeJSON(w, http.StatusOK, order)
 }
+
+func (app *application) RefundCharge(w http.ResponseWriter, r *http.Request) {
+	var chargeToRefund struct {
+		ID int
+	}
+}
