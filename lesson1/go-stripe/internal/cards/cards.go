@@ -106,6 +106,10 @@ func (c *Card) CreateCustomer(pm, email string) (*stripe.Customer, string, error
 	return cust, "", nil
 }
 
+func (c *Card) Refund(pi string, amount int) {
+
+}
+
 func cardErrorMessage(code stripe.ErrorCode) string {
 	var msg = ""
 	switch code {
