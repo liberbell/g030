@@ -5,6 +5,7 @@ import (
 	"github.com/stripe/stripe-go/v82/customer"
 	"github.com/stripe/stripe-go/v82/paymentintent"
 	"github.com/stripe/stripe-go/v82/paymentmethod"
+	"github.com/stripe/stripe-go/v82/refund"
 	"github.com/stripe/stripe-go/v82/subscription"
 )
 
@@ -111,8 +112,15 @@ func (c *Card) Refund(pi string, amount int) error {
 	amoutToRefund := int64(amount)
 
 	refundParams := &stripe.RefundParams{
-		Amount: &amoutToRefund,
+		Amount:        &amoutToRefund,
+		PaymentIntent: &pi,
 	}
+
+	_, err := refund.New(refundParams)
+	if err != nil {
+		return err
+	}
+	return nil
 }
 
 func cardErrorMessage(code stripe.ErrorCode) string {
