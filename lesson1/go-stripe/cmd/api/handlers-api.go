@@ -523,4 +523,17 @@ func (app *application) RefundCharge(w http.ResponseWriter, r *http.Request) {
 		Amount        int    `json: "amount"`
 		Currency      string `json: "currency"`
 	}
+
+	err := app.readJSON(w, r, &chargeToRefund)
+	if err != nil {
+		app.badRequest(w, r, err)
+		return
+	}
+
+	card := cards.Card{
+		Secret:   app.config.stripe.secret,
+		Key:      app.config.stripe.key,
+		Currency: chargeToRefund.Currency,
+	}
+
 }
