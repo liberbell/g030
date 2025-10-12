@@ -549,6 +549,6 @@ func (app *application) RefundCharge(w http.ResponseWriter, r *http.Request) {
 	resp.Error = false
 	resp.Message = "Charge refunded"
 
-	app.writeJSON(w, http.Response)
+	app.writeJSON(w, http.StatusOK, resp)
 
 }
