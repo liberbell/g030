@@ -521,5 +521,6 @@ func (app *application) RefundCharge(w http.ResponseWriter, r *http.Request) {
 		ID            int    `json: "id"`
 		PaymentIntent string `json: "pi"`
 		Amount        int    `json: "amount"`
+		Currency      string `json: "currency"`
 	}
 }
