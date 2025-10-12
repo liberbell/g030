@@ -536,4 +536,19 @@ func (app *application) RefundCharge(w http.ResponseWriter, r *http.Request) {
 		Currency: chargeToRefund.Currency,
 	}
 
+	err = card.Refund(chargeToRefund.PaymentIntent, chargeToRefund.Amount)
+	if err != nil {
+		app.badRequest(w, r, err)
+		return
+	}
+
+	var resp struct {
+		Error   bool   `json: "error"`
+		Message string `json: "message"`
+	}
+	resp.Error = false
+	resp.Message = "Charge refunded"
+
+	app.writeJSON(w, http.Response)
+
 }
