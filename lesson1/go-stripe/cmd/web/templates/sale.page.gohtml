@@ -30,7 +30,8 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
 let token = localStorage.getItem("token");
-let id = window.location.pathname.split("/").pop()
+let id = window.location.pathname.split("/").pop();
+let messages = document.getElementById("messages");
 
 document.addEventListener("DOMContentLoaded", function() {
     console.log("ID is", id);
