@@ -28,9 +28,10 @@
 {{define "js"}}
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
+let token = localStorage.getItem("token");
+let id = window.location.pathname.split("/").pop()
+
 document.addEventListener("DOMContentLoaded", function() {
-    let token = localStorage.getItem("token");
-    let id = window.location.pathname.split("/").pop();
     console.log("ID is", id);
 
     const requestOptions = {
@@ -82,6 +83,8 @@ document.getElementById("refund-btn").addEventListener("click", function() {
             let payload = {
                 pi: document.getElementById("pi").value,
                 currency: document.getElementById("currency").value,
+                amount: parseInt(document.getElementById("charge-amount").value),
+                id: id,
             }
         }
     });
