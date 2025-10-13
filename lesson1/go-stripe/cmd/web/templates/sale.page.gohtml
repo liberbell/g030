@@ -52,6 +52,9 @@ document.addEventListener("DOMContentLoaded", function() {
             document.getElementById("product").innerHTML = data.Widget.Name;
             document.getElementById("quantity").innerHTML = data.Quantity;
             document.getElementById("amount").innerHTML = formatCurrency(data.Transaction.Amount);
+            document.getElementById("pi").value = data.Transaction.PaymentIntent;
+            document.getElementById("charge-amount").value = data.Transaction.Amount;
+            document.getElementById("currency").value = data.Transaction.Currency;
         }
     })
 })
