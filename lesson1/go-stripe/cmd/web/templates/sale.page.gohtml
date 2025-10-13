@@ -99,6 +99,9 @@ document.getElementById("refund-btn").addEventListener("click", function() {
 
             fetch("{{.API}}/api/admin/refund", requestOptions)
             .then(response => response.json())
+            .then(function(data) {
+                console.log(data);
+            })
         }
     });
 })
