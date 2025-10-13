@@ -64,9 +64,9 @@
                 newCell = newRow.insertCell()
                 console.log(i.StatusID)
                 if (i.StatusID != 1) {
-                    newCell.innerHTML = `<span class="bg-danger">Refunded</span>`;
+                    newCell.innerHTML = `<span class="badge bg-danger">Refunded</span>`;
                 } else {
-                    newCell.innerHTML = `<span class="bg-success">Charged</span>`;
+                    newCell.innerHTML = `<span class="badge bg-success">Charged</span>`;
                 }
             })
         } else {
