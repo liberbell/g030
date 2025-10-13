@@ -62,6 +62,7 @@
                 newCell.appendChild(item);
 
                 newCell = newRow.insertCell()
+                console.log(i.status_id)
                 if (i.status_id != 1) {
                     newCell.innerHTML = `<span class="bg-danger">Refunded</span>`;
                 } else {
