@@ -34,7 +34,10 @@ let id = window.location.pathname.split("/").pop();
 let messages = document.getElementById("messages");
 
 function showError(msg) {
-    
+    messages.classList.add("alert-danger");
+    messages.classList.remove("alert-success");
+    messages.classList.remove("d-none");
+    messages.innerText = msg
 }
 
 function showSuccess(msg) {
