@@ -19,6 +19,10 @@
 <a class="btn btn-info" href='{{index .StringMap "cancel"}}'>Cancel</a>
 <a id="refund-btn" class="btn btn-warning" href="#!">Refund Order</a>
 
+<input type="hidden" id="pi" value="">
+<input type="hidden" id="charge-amount" value="">
+<input type="hidden" id="currency" value="">
+
 {{end}}
 
 {{define "js"}}
@@ -71,9 +75,11 @@ document.getElementById("refund-btn").addEventListener("click", function() {
         cancelButtonColor: "#d33",
         confirmButtonText: "Refund"
     }).then((result) => {
-    if (result.isConfirmed) {
-        
-    }
+        if (result.isConfirmed) {
+            let payload = {
+                pi: 
+            }
+        }
     });
 })
 </script>
