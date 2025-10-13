@@ -109,10 +109,10 @@ func (c *Card) CreateCustomer(pm, email string) (*stripe.Customer, string, error
 
 func (c *Card) Refund(pi string, amount int) error {
 	stripe.Key = c.Secret
-	amoutToRefund := int64(amount)
+	amountToRefund := int64(amount)
 
 	refundParams := &stripe.RefundParams{
-		Amount:        &amoutToRefund,
+		Amount:        &amountToRefund,
 		PaymentIntent: &pi,
 	}
 
