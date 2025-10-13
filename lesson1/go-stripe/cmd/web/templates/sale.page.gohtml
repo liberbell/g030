@@ -83,8 +83,18 @@ document.getElementById("refund-btn").addEventListener("click", function() {
             let payload = {
                 pi: document.getElementById("pi").value,
                 currency: document.getElementById("currency").value,
-                amount: parseInt(document.getElementById("charge-amount").value),
-                id: id,
+                amount: parseInt(document.getElementById("charge-amount").value, 10),
+                id: parseInt(id, 10),
+            }
+
+            const requestOptions = {
+                method: 'post',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' + token,
+                },
+                body: JSON.stringify(payload),
             }
         }
     });
