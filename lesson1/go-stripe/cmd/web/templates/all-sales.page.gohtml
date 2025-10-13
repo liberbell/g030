@@ -60,6 +60,13 @@
                 newCell = newRow.insertCell();
                 item = document.createTextNode(cur);
                 newCell.appendChild(item);
+
+                newCell = newRow.insertCell()
+                if (i.status_id != 1) {
+                    newCell.innerHTML = `<span class="bg-danger">Refunded</span>`;
+                } else {
+                    newCell.innerHTML = `<span class="bg-success">Charged</span>`;
+                }
             })
         } else {
             let newRow = tbody.insertRow();
