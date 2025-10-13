@@ -80,7 +80,8 @@ document.getElementById("refund-btn").addEventListener("click", function() {
     }).then((result) => {
         if (result.isConfirmed) {
             let payload = {
-                pi: 
+                pi: document.getElementById("pi").value,
+                currency: document.getElementById("currency").value,
             }
         }
     });
