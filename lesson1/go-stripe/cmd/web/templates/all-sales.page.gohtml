@@ -62,8 +62,8 @@
                 newCell.appendChild(item);
 
                 newCell = newRow.insertCell()
-                console.log(i.status_id)
-                if (i.status_id != 1) {
+                console.log(i.StatusID)
+                if (i.StatusID != 1) {
                     newCell.innerHTML = `<span class="bg-danger">Refunded</span>`;
                 } else {
                     newCell.innerHTML = `<span class="bg-success">Charged</span>`;
