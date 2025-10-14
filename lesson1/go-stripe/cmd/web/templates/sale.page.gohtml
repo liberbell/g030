@@ -6,6 +6,7 @@
 
 {{define "content"}}
 <h2 class="mt-5">{{index .StringMap "title"}}</h2>
+<span class="badge bg-danger">Refunded</span>
 <hr>
 <div class="alert alert-danger text-center d-none" id="messages"></div>
 <div>
@@ -118,9 +119,10 @@ document.getElementById("refund-btn").addEventListener("click", function() {
             .then(function(data) {
                 console.log(data);
                 if (data.error) {
-                    showError(data.message)
+                    showError(data.message);
                 } else {
-                    showSuccess("Charge Refunded")
+                    showSuccess("Charge Refunded");
+                    document.getElementById("refund-btn").classList.add("d-none");
                 }
             })
         }
