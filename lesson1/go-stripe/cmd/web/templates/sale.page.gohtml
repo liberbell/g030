@@ -100,7 +100,7 @@ document.getElementById("refund-btn").addEventListener("click", function() {
                 pi: document.getElementById("pi").value,
                 currency: document.getElementById("currency").value,
                 amount: parseInt(document.getElementById("charge-amount").value, 10),
-                // id: parseInt(id, 10),
+                id: parseInt(id, 10),
             }
 
             const requestOptions = {
@@ -117,6 +117,11 @@ document.getElementById("refund-btn").addEventListener("click", function() {
             .then(response => response.json())
             .then(function(data) {
                 console.log(data);
+                if (data.error) {
+                    showError(data.message)
+                } else {
+                    showSuccess("Charge Refunded")
+                }
             })
         }
     })
