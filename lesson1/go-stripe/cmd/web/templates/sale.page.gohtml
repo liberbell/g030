@@ -37,11 +37,14 @@ function showError(msg) {
     messages.classList.add("alert-danger");
     messages.classList.remove("alert-success");
     messages.classList.remove("d-none");
-    messages.innerText = msg
+    messages.innerText = msg;
 }
 
 function showSuccess(msg) {
-    
+    messages.classList.add("alert-success");
+    messages.classList.remove("alert-danger");
+    messages.classList.remove("d-none");
+    messages.innerText = msg;
 }
 
 document.addEventListener("DOMContentLoaded", function() {
