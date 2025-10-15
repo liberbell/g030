@@ -6,7 +6,8 @@
 
 {{define "content"}}
 <h2 class="mt-5">{{index .StringMap "title"}}</h2>
-<span class="badge bg-danger">Refunded</span>
+<span id="refunded" class="badge bg-danger d-none">Refunded</span>
+<span id="charged" class="badge bg-success d-none">Charged</span>
 <hr>
 <div class="alert alert-danger text-center d-none" id="messages"></div>
 <div>
@@ -73,6 +74,7 @@ document.addEventListener("DOMContentLoaded", function() {
             document.getElementById("pi").value = data.Transaction.PaymentIntent;
             document.getElementById("charge-amount").value = data.Transaction.Amount;
             document.getElementById("currency").value = data.Transaction.Currency;
+            if (data.StatusID)
         }
     })
 })
