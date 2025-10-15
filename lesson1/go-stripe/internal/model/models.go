@@ -473,4 +473,5 @@ func (m *DBModel) UpdateOrderStatus(id, statusID int) error {
 	if err != nil {
 		return err
 	}
+	return nil
 }
