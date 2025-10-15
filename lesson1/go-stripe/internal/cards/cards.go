@@ -123,6 +123,14 @@ func (c *Card) Refund(pi string, amount int) error {
 	return nil
 }
 
+func (c *Card) CancelSubscription(subID string) error {
+	stripe.Key = c.Secret
+
+	params := &stripe.SubscriptionParams{
+		CancelAtPeriodEnd: stripe.Bool(true),
+	}
+}
+
 func cardErrorMessage(code stripe.ErrorCode) string {
 	var msg = ""
 	switch code {
