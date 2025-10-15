@@ -20,7 +20,7 @@
 </div>
 <hr>
 <a class="btn btn-info" href='{{index .StringMap "cancel"}}'>Cancel</a>
-<a id="refund-btn" class="btn btn-warning" href="#!">Refund Order</a>
+<a id="refund-btn" class="btn btn-warning d-none" href="#!">Refund Order</a>
 
 <input type="hidden" id="pi" value="">
 <input type="hidden" id="charge-amount" value="">
@@ -74,7 +74,10 @@ document.addEventListener("DOMContentLoaded", function() {
             document.getElementById("pi").value = data.Transaction.PaymentIntent;
             document.getElementById("charge-amount").value = data.Transaction.Amount;
             document.getElementById("currency").value = data.Transaction.Currency;
-            if (data.StatusID)
+            if (data.StatusID === 1) {
+                document.getElementById("refund-btn").remove("d-none");
+                document.getElementById("refund-btn").remove("d-none");
+            }
         }
     })
 })
