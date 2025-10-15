@@ -76,7 +76,10 @@ document.addEventListener("DOMContentLoaded", function() {
             document.getElementById("currency").value = data.Transaction.Currency;
             if (data.StatusID === 1) {
                 document.getElementById("refund-btn").classList.remove("d-none");
-                document.getElementById("refunded").classList.remove("d-none");
+                document.getElementById("charged").classList.remove("d-none");
+            } else {
+                document.getElementById("refund-btn").classList.remove("d-none");
+                document.getElementById("charged").classList.remove("d-none");
             }
         }
     })
