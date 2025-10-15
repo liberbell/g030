@@ -75,8 +75,8 @@ document.addEventListener("DOMContentLoaded", function() {
             document.getElementById("charge-amount").value = data.Transaction.Amount;
             document.getElementById("currency").value = data.Transaction.Currency;
             if (data.StatusID === 1) {
-                document.getElementById("refund-btn").remove("d-none");
-                document.getElementById("refunded").remove("d-none");
+                document.getElementById("refund-btn").classList.remove("d-none");
+                document.getElementById("refunded").classList.remove("d-none");
             }
         }
     })
