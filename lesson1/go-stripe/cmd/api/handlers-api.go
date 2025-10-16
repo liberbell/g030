@@ -571,4 +571,10 @@ func (app *application) CancelSubscription(w http.ResponseWriter, r *http.Reques
 	if err != nil {
 		app.badRequest(w, r, err)
 	}
+
+	card := cards.Card{
+		Secret:   app.config.stripe.secret,
+		Key:      app.config.stripe.key,
+		Currency: subToCancel.Currency,
+	}
 }
