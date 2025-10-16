@@ -570,11 +570,18 @@ func (app *application) CancelSubscription(w http.ResponseWriter, r *http.Reques
 	err := app.readJSON(w, r, &subToCancel)
 	if err != nil {
 		app.badRequest(w, r, err)
+		return
 	}
 
 	card := cards.Card{
 		Secret:   app.config.stripe.secret,
 		Key:      app.config.stripe.key,
 		Currency: subToCancel.Currency,
+	}
+
+	err = card.CancelSubscription(subToCancel.PaymentIntent)
+	if err != nil {
+		app.badRequest(w, r, err)
+		return
 	}
 }
