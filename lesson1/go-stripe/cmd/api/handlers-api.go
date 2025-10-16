@@ -566,4 +566,9 @@ func (app *application) CancelSubscription(w http.ResponseWriter, r *http.Reques
 		PaymentIntent string `json: "pi"`
 		Currency      string `json: "currency"`
 	}
+
+	err := app.readJSON(w, r, &subToCancel)
+	if err != nil {
+		app.badRequest(w, r, err)
+	}
 }
