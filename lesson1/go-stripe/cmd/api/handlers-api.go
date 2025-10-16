@@ -559,3 +559,8 @@ func (app *application) RefundCharge(w http.ResponseWriter, r *http.Request) {
 	app.writeJSON(w, http.StatusOK, resp)
 
 }
+
+func (app *application) CancelSubscription(w http.ResponseWriter, r *http.Request) {
+	var subToCancel struct {
+	}
+}
