@@ -390,6 +390,8 @@ func (app *application) ShowSubscription(w http.ResponseWriter, r *http.Request)
 	stringMap := make(map[string]string)
 	stringMap["title"] = "Subscription"
 	stringMap["cancel"] = "/admin/all-subscriptions"
+	stringMap["refund-url"] = "/api/admin/cancel-subscription"
+	stringMap["refund-btn"] = "Cancel Subscription"
 	if err := app.renderTemplate(w, r, "sale", &templateData{
 		StringMap: stringMap,
 	}); err != nil {
