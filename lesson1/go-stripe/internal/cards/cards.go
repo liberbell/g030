@@ -1,7 +1,6 @@
 package cards
 
 import (
-	"github.com/stripe/stripe-go/v72/sub"
 	"github.com/stripe/stripe-go/v82"
 	"github.com/stripe/stripe-go/v82/customer"
 	"github.com/stripe/stripe-go/v82/paymentintent"
@@ -131,7 +130,7 @@ func (c *Card) CancelSubscription(subID string) error {
 		CancelAtPeriodEnd: stripe.Bool(true),
 	}
 
-	_, err := sub.Update(subID, params)
+	_, err := subscription.Update(subID, params)
 	if err != nil {
 		return err
 	}
