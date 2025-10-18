@@ -101,7 +101,7 @@ document.getElementById("refund-btn").addEventListener("click", function() {
         showCancelButton: true,
         confirmButtonColor: "#3085d6",
         cancelButtonColor: "#d33",
-        confirmButtonText: "Refund"
+        confirmButtonText: '{{index .StringMap "cancel-btn"}}'
     }).then((result) => {
         if (result.isConfirmed) {
             let payload = {
