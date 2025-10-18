@@ -128,7 +128,7 @@ document.getElementById("refund-btn").addEventListener("click", function() {
                 if (data.error) {
                     showError(data.message);
                 } else {
-                    showSuccess("Charge Refunded");
+                    showSuccess('{{index .StringMap "refunded-msg"}}');
                     document.getElementById("refund-btn").classList.add("d-none");
                     document.getElementById("refunded").classList.remove("d-none");
                     document.getElementById("charged").classList.add("d-none");
