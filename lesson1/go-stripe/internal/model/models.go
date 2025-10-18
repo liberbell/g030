@@ -420,6 +420,8 @@ func (m *DBModel) GetAllOrdersPaginated(pageSize, page int) ([]*Order, error) {
 	WHERE
 		w.is_recurring = 0
 	`
+	var totalRecords int
+
 	return orders, nil
 }
 
