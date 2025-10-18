@@ -369,8 +369,9 @@ func (m *DBModel) GetAllOrdersPaginated(pageSize, page int) ([]*Order, error) {
 		w.is_recurring = 0
 	order by
 		o.created_at desc
+	limit 2 offset 0;
 	`
-	rows, err := m.DB.QueryContext(ctx, query)
+	rows, err := m.DB.QueryContext(ctx, query, pageSize, offset)
 	if err != nil {
 		return nil, err
 	}
@@ -409,6 +410,16 @@ func (m *DBModel) GetAllOrdersPaginated(pageSize, page int) ([]*Order, error) {
 		orders = append(orders, &o)
 
 	}
+	query = `
+	SELECT
+		count(o.id)
+	FROM
+		orders o
+	LEFT JOIN
+		widgets w on (o.widget_id = w.id)
+	WHERE
+		w.is_recurring = 0
+	`
 	return orders, nil
 }
 
