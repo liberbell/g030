@@ -23,7 +23,7 @@
 </table>
 <nav>
     <ul id="paginator" class="pagination">
-        
+
     </ul>
 </nav>
 {{end}}
@@ -32,6 +32,11 @@
 <script>
     let currentPage = 1;
     let pageSize = 3;
+
+    function paginator(pages, curPage) {
+        let p = document.getElementById("paginator");
+        let html = `<li class="page-item"><a href="#!" class="page-link pager" data-page="${cur-Page - 1}"</a></li>`
+    }
 
     function updateTable(ps, cp) {
         let token = localStorage.getItem("token");
