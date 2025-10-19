@@ -495,10 +495,14 @@ func (app *application) AllSales(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	allSales, lastPage, totalPecords, err := app.DB.GetAllOrdersPaginated()
+	allSales, lastPage, totalPecords, err := app.DB.GetAllOrdersPaginated(2, 1)
 	if err != nil {
 		app.badRequest(w, r, err)
 		return
+	}
+
+	var resp struct {
+		CurrentPage int `json: "current_page"`
 	}
 
 	app.writeJSON(w, http.StatusOK, allSales)
