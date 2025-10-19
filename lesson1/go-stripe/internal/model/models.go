@@ -421,8 +421,14 @@ func (m *DBModel) GetAllOrdersPaginated(pageSize, page int) ([]*Order, error) {
 		w.is_recurring = 0
 	`
 	var totalRecords int
+	countRow := m.DB.QueryRowContext(ctx, query)
+	err = countRow.Scan(&totalRecords)
+	if err != nil {
+		return nil, 0, 0, err
+	}
+	lastPage := totalRecords / pageSize
 
-	return orders, nil
+	return orders, lastPage, totalRecords, nil
 }
 
 func (m *DBModel) GetAllSubscriptions() ([]*Order, error) {
