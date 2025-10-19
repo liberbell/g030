@@ -38,7 +38,7 @@
         let html = `<li class="page-item"><a href="#!" class="page-link pager" data-page="${cur-Page - 1}">&lt;</a></li>`;
 
         for (var i =0; i <= pages; i++) {
-            html += `<li class="page-item"><a href="#!" class="page-link pager" data-page="${cur-Page - 1}">&lt;</a></li>`;
+            html += `<li class="page-item"><a href="#!" class="page-link pager" data-page="${i + 1}">${i + 1}</a></li>`;
         }
     }
 
