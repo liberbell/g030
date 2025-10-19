@@ -91,8 +91,9 @@
     }
 
     document.addEventListener("DOMContentLoaded", function() {
-        
+        updateTable(pageSize, currentPage);
     })
+
     function formatCurrency(amount) {
         let c = parseFloat(amount/100);
         return c.toLocaleString("en-CA", {
