@@ -488,6 +488,13 @@ func (app *application) AllSales(w http.ResponseWriter, r *http.Request) {
 		PageSize    int `json: "page_size"`
 		CurrentPage int `json: "current_page"`
 	}
+
+	err := app.readJSON(w, r, &payload)
+	if err != nil {
+		app.badRequest(w, r, err)
+		return
+	}
+
 	allSales, err := app.DB.GetAllOrders()
 	if err != nil {
 		app.badRequest(w, r, err)
