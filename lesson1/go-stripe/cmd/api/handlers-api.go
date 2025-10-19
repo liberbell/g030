@@ -484,6 +484,10 @@ func (app *application) ResetPassword(w http.ResponseWriter, r *http.Request) {
 }
 
 func (app *application) AllSales(w http.ResponseWriter, r *http.Request) {
+	var payload struct {
+		PageSize    int `json: "page_size"`
+		CurrentPage int `json: "current_page"`
+	}
 	allSales, err := app.DB.GetAllOrders()
 	if err != nil {
 		app.badRequest(w, r, err)
