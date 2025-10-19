@@ -369,7 +369,7 @@ func (m *DBModel) GetAllOrdersPaginated(pageSize, page int) ([]*Order, int, int,
 		w.is_recurring = 0
 	order by
 		o.created_at desc
-	limit 2 offset 0;
+	limit ? offset ?;
 	`
 	rows, err := m.DB.QueryContext(ctx, query, pageSize, offset)
 	if err != nil {
