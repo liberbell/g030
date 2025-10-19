@@ -347,7 +347,7 @@ func (m *DBModel) GetAllOrders() ([]*Order, error) {
 	return orders, nil
 }
 
-func (m *DBModel) GetAllOrdersPaginated(pageSize, page int) ([]*Order, error) {
+func (m *DBModel) GetAllOrdersPaginated(pageSize, page int) ([]*Order, int, int, error) {
 	ctx, cancel := context.WithTimeout(context.Background(), 3*time.Second)
 	defer cancel()
 
@@ -373,7 +373,7 @@ func (m *DBModel) GetAllOrdersPaginated(pageSize, page int) ([]*Order, error) {
 	`
 	rows, err := m.DB.QueryContext(ctx, query, pageSize, offset)
 	if err != nil {
-		return nil, err
+		return nil, 0, 0, err
 	}
 	defer rows.Close()
 
@@ -405,7 +405,7 @@ func (m *DBModel) GetAllOrdersPaginated(pageSize, page int) ([]*Order, error) {
 			&o.Customer.Email,
 		)
 		if err != nil {
-			return nil, err
+			return nil, 0, 0, err
 		}
 		orders = append(orders, &o)
 
