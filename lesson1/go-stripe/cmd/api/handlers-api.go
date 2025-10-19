@@ -503,6 +503,8 @@ func (app *application) AllSales(w http.ResponseWriter, r *http.Request) {
 
 	var resp struct {
 		CurrentPage int `json: "current_page"`
+		PageSize    int `json: "page_size"`
+		LastPage    int `json: "last_page"`
 	}
 
 	app.writeJSON(w, http.StatusOK, allSales)
