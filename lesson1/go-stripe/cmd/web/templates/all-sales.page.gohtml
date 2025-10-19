@@ -45,14 +45,15 @@
                 'Content-Type': 'application/json',
                 'Authorization': 'Bearer ' + token,
             },
+            body: JSON.stringify(body),
         }
         fetch("{{.API}}/api/admin/all-sales", requestOptions)
         .then(response => response.json())
         .then(function (data) {
             console.log(data);
 
-            if (data) {
-                data.forEach(function(i) {
+            if (data.Orders) {
+                data.Orders.forEach(function(i) {
                     let newRow = tbody.insertRow();
                     let newCell = newRow.insertCell();
 
