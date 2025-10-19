@@ -508,8 +508,13 @@ func (app *application) AllSales(w http.ResponseWriter, r *http.Request) {
 		TotalRecords int `json: "total_records"`
 		Orders       []*models.Order
 	}
+	resp.CurrentPage = 1
+	resp.PageSize = payload.PageSize
+	resp.LastPage = lastPage
+	resp.TotalRecords = totalPecords
+	resp.Orders = allSales
 
-	app.writeJSON(w, http.StatusOK, allSales)
+	app.writeJSON(w, http.StatusOK, resp)
 
 }
 
