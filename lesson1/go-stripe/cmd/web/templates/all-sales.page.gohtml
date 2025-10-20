@@ -94,6 +94,7 @@
                         newCell.innerHTML = `<span class="badge bg-success">Charged</span>`;
                     }
                 })
+                parginator(data.last_page, data.current_page)
             } else {
                 let newRow = tbody.insertRow();
                 let newCell = newRow.insertCell();
