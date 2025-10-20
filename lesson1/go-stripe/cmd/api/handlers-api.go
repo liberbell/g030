@@ -508,7 +508,7 @@ func (app *application) AllSales(w http.ResponseWriter, r *http.Request) {
 		TotalRecords int             `json: "total_records"`
 		Orders       []*models.Order `json: "orders"`
 	}
-	resp.CurrentPage = payload.CurrentPage
+	resp.CurrentPage = 1
 	resp.PageSize = payload.PageSize
 	resp.LastPage = lastPage
 	resp.TotalRecords = totalRecords
