@@ -41,7 +41,7 @@
             html += `<li class="page-item"><a href="#!" class="page-link pager" data-page="${i + 1}">${i + 1}</a></li>`;
         }
         html += `<li class="page-item"><a href="#!" class="page-link pager" data-page="${curPage + 1}">&gt;</a></li>`;
-        
+
         p.innerHTML = html;
     }
 
@@ -96,7 +96,7 @@
                         newCell.innerHTML = `<span class="badge bg-success">Charged</span>`;
                     }
                 })
-                parginator(data.last_page, data.current_page)
+                paginator(data.last_page, data.current_page)
             } else {
                 let newRow = tbody.insertRow();
                 let newCell = newRow.insertCell();
