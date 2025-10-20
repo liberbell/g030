@@ -494,8 +494,9 @@ func (app *application) AllSales(w http.ResponseWriter, r *http.Request) {
 		app.badRequest(w, r, err)
 		return
 	}
+	fmt.Println(payload.PageSize, payload.CurrentPage)
 
-	allSales, lastPage, totalRecords, err := app.DB.GetAllOrdersPaginated(payload.PageSize, 1)
+	allSales, lastPage, totalRecords, err := app.DB.GetAllOrdersPaginated(2, 1)
 	if err != nil {
 		app.badRequest(w, r, err)
 		return
