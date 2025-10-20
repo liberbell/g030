@@ -41,6 +41,8 @@
             html += `<li class="page-item"><a href="#!" class="page-link pager" data-page="${i + 1}">${i + 1}</a></li>`;
         }
         html += `<li class="page-item"><a href="#!" class="page-link pager" data-page="${curPage + 1}">&gt;</a></li>`;
+        
+        p.innerHTML = html;
     }
 
     function updateTable(ps, cp) {
