@@ -612,7 +612,7 @@ func (app *application) CancelSubscription(w http.ResponseWriter, r *http.Reques
 
 	err = app.DB.UpdateOrderStatus(subToCancel.ID, 3)
 	if err != nil {
-		app.badRequest(w, r, errors.New("the subscription was canceled, but the database could not be updated"))
+		app.badRequest(w, r, errors.New("the subscription was cancelled, but the database could not be updated"))
 		return
 	}
 
@@ -621,7 +621,7 @@ func (app *application) CancelSubscription(w http.ResponseWriter, r *http.Reques
 		Message string `json: "message"`
 	}
 	resp.Error = false
-	resp.Message = "Subscription canceled"
+	resp.Message = "Subscription cancelled"
 
 	app.writeJSON(w, http.StatusOK, resp)
 }
