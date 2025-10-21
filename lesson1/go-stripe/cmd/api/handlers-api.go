@@ -485,7 +485,7 @@ func (app *application) ResetPassword(w http.ResponseWriter, r *http.Request) {
 
 func (app *application) AllSales(w http.ResponseWriter, r *http.Request) {
 	var payload struct {
-		PageSize    int `json: "page_size"`
+		PageSize    int `json: "PageSize"`
 		CurrentPage int `json: "page"`
 	}
 
