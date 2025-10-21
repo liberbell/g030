@@ -49,6 +49,9 @@
             pageBtns[j].addEventListener("click", function(evt) {
                 let desiredPage = evt.target.getAttribute("data-page");
                 console.log("clicked, and data-page is ", desiredPage)
+                if ((desiredPage > 0) && (desiredPage <= pages)) {
+                    console.log("would go to page", desiredPage)
+                }
             })
         }
     }
