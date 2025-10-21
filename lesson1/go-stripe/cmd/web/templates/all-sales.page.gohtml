@@ -47,7 +47,8 @@
         let pageBtns = document.getElementsByClassName("pager");
         for (var j = 0; j < pageBtns.lengs; j++) {
             pageBtns[j].addEventListener("click", function(evt) {
-                let desirePage = evt.target.getAttribute("data-page");
+                let desiredPage = evt.target.getAttribute("data-page");
+                console.log("clicked, and data-page is ", desiredPage)
             })
         }
     }
