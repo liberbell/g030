@@ -565,7 +565,7 @@ func (m *DBModel) GetAllSubscriptionsPaginated(pageSize, page int) ([]*Order, in
 	LEFT JOIN
 		widgets w on (o.widget_id = w.id)
 	WHERE
-		w.is_recurring = 0
+		w.is_recurring = 1
 	`
 	var totalRecords int
 	countRow := m.DB.QueryRowContext(ctx, query)
