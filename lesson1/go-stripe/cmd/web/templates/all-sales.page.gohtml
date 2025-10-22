@@ -112,8 +112,8 @@
                         newCell.innerHTML = `<span class="badge bg-success">Charged</span>`;
                     }
                 })
-                console.log("logpoint1:" + data.LastPage, data.currentPage);
-                paginator(data.LastPage, data.currentPage);
+                console.log("logpoint1:" + data.LastPage + ":" + data.CurrentPage);
+                paginator(data.LastPage, data.CurrentPage);
             } else {
                 let newRow = tbody.insertRow();
                 let newCell = newRow.insertCell();
