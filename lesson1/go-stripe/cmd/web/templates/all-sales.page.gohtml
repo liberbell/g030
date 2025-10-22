@@ -62,8 +62,8 @@
         let tbody = document.getElementById("sales-table").getElementsByTagName("tbody")[0];
 
         let body = {
-            page_size: ps,
-            page: cp,
+            page_size: parseInt(ps, 10),
+            page: parseInt(cp, 10),
         }
 
         const requestOptions = {
