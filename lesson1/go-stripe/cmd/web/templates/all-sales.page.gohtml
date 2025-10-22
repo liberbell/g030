@@ -45,7 +45,7 @@
         p.innerHTML = html;
 
         let pageBtns = document.getElementsByClassName("pager");
-        for (var j = 0; j < pageBtns.lengs; j++) {
+        for (var j = 0; j < pageBtns.length; j++) {
             pageBtns[j].addEventListener("click", function(evt) {
                 let desiredPage = evt.target.getAttribute("data-page");
                 console.log("clicked, and data-page is ", desiredPage);
