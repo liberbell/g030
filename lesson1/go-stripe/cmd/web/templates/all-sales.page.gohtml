@@ -61,10 +61,14 @@
         let token = localStorage.getItem("token");
         let tbody = document.getElementById("sales-table").getElementsByTagName("tbody")[0];
 
+        tbody.innerHTML = "";
+
         let body = {
             page_size: parseInt(ps, 10),
             page: parseInt(cp, 10),
         }
+
+        console.log("page size:", ps, "page", cp);
 
         const requestOptions = {
             method: 'post',
@@ -113,7 +117,7 @@
                 let newRow = tbody.insertRow();
                 let newCell = newRow.insertCell();
 
-                newCell.setAttribute("colspan", "4");
+                newCell.setAttribute("colspan", "5");
                 newCell.innerHTML = "No data available";
 
             }
