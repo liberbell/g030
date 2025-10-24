@@ -643,3 +643,7 @@ func (m *DBModel) UpdateOrderStatus(id, statusID int) error {
 	}
 	return nil
 }
+
+func (m *DBModel) GetAllUsers() ([]*User, error) {
+
+}
