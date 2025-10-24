@@ -663,4 +663,15 @@ func (m *DBModel) GetAllUsers() ([]*User, error) {
 	if err != nil {
 		return nil, err
 	}
+	defer rows.Close()
+
+	for rows.Next() {
+		var u User
+		err = rows.Scan(
+			&u.ID,
+			&u.LastName,
+			&u.FirstName,
+			&u.Email,
+		)
+	}
 }
