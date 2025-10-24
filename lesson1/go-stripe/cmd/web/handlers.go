@@ -373,6 +373,18 @@ func (app *application) AllSubscriptions(w http.ResponseWriter, r *http.Request)
 	}
 }
 
+func (app *application) AllUsers(w http.ResponseWriter, r *http.Request) {
+	if err := app.renderTemplate(w, r, "all-users", &templateData{}); err != nil {
+		app.errorLog.Print(err)
+	}
+}
+
+func (app *application) OneUser(w http.ResponseWriter, r *http.Request) {
+	if err := app.renderTemplate(w, r, "one-user", &templateData{}); err != nil {
+		app.errorLog.Print(err)
+	}
+}
+
 func (app *application) ShowSale(w http.ResponseWriter, r *http.Request) {
 	stringMap := make(map[string]string)
 	stringMap["title"] = "Sale"
