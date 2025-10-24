@@ -672,6 +672,8 @@ func (m *DBModel) GetAllUsers() ([]*User, error) {
 			&u.LastName,
 			&u.FirstName,
 			&u.Email,
+			&u.CreatedAt,
+			&u.UpdatedAt,
 		)
 	}
 }
