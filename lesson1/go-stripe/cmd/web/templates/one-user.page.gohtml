@@ -3,3 +3,28 @@
 {{define "title"}}
 One User
 {{end}}
+
+{{define "content"}}
+<h2 class="mt-5">All admin users</h2>
+<hr>
+<div class="float-end">
+    <a class="btn btn-outline-secondary" href="/admin/all-users/0">Add User</a>
+</div>
+<div class="clearfix"></div>
+
+<table id="ussr-table" class="table table-striped">
+    <thead>
+        <tr>
+            <th>User</th>
+            <th>Email</th>
+        </tr>
+    </thead>
+    <tbody>
+
+    </tbody>
+</table>
+{{end}}
+
+{{define "js"}}
+
+{{end}}
