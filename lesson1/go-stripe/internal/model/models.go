@@ -653,5 +653,14 @@ func (m *DBModel) GetAllUsers() ([]*User, error) {
 	query := `
 		SELECT
 			id, last_name, first_name, email, created_at, updated_at
+		FROM
+			users
+		ORDER by
+			last_name, first_name
 	`
+
+	rows, err := m.DB.QueryContext(ctx, query)
+	if err != nil {
+		return nil, err
+	}
 }
