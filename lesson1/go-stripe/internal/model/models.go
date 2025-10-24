@@ -645,5 +645,13 @@ func (m *DBModel) UpdateOrderStatus(id, statusID int) error {
 }
 
 func (m *DBModel) GetAllUsers() ([]*User, error) {
+	ctx, cancel := context.WithTimeout(context.Background(), 3*time.Second)
+	defer cancel()
 
+	var users []*User
+
+	query := `
+		SELECT
+			id, last_name, first_name, email, created_at, updated_at
+	`
 }
