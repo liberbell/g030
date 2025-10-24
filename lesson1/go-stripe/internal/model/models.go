@@ -695,11 +695,11 @@ func (m *DBModel) GetOneUser(id int) (User, error) {
 			id, last_name, first_name, email, created_at, updated_at
 		FROM
 			users
-		ORDER by
-			last_name, first_name
+		WHERE
+			id = ?
 	`
 
-	rows, err := m.DB.QueryContext(ctx, query)
+	rows, err := m.DB.QueryContext(ctx, query, id)
 	if err != nil {
 		return nil, err
 	}
