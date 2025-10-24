@@ -675,5 +675,12 @@ func (m *DBModel) GetAllUsers() ([]*User, error) {
 			&u.CreatedAt,
 			&u.UpdatedAt,
 		)
+		if err != nil {
+			return nil, err
+		}
+
+		users = append(users, &u)
 	}
+	return users, nil
+
 }
