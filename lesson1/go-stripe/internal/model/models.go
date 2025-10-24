@@ -682,5 +682,44 @@ func (m *DBModel) GetAllUsers() ([]*User, error) {
 		users = append(users, &u)
 	}
 	return users, nil
+}
 
+func (m *DBModel) GetOneUser(id int) (User, error) {
+	ctx, cancel := context.WithTimeout(context.Background(), 3*time.Second)
+	defer cancel()
+
+	var u User
+
+	query := `
+		SELECT
+			id, last_name, first_name, email, created_at, updated_at
+		FROM
+			users
+		ORDER by
+			last_name, first_name
+	`
+
+	rows, err := m.DB.QueryContext(ctx, query)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+
+	for rows.Next() {
+		var u User
+		err = rows.Scan(
+			&u.ID,
+			&u.LastName,
+			&u.FirstName,
+			&u.Email,
+			&u.CreatedAt,
+			&u.UpdatedAt,
+		)
+		if err != nil {
+			return nil, err
+		}
+
+		users = append(users, &u)
+	}
+	return users, nil
 }
