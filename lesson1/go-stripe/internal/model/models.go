@@ -757,8 +757,9 @@ func (m *DBModel) AddUser(u User, hash string) error {
 		u.FirstName,
 		u.LastName,
 		u.Email,
+		hash,
 		time.Now(),
-		u.ID,
+		time.Now(),
 	)
 	if err != nil {
 		return err
