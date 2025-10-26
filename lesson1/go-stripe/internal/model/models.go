@@ -748,9 +748,11 @@ func (m *DBModel) AddUser(u User, hash string) error {
 
 	stmt := `
 		INSERT INTO
-			users
-			(first_name, last_name, email, created_at, updated_at, id)
+			users (first_name, last_name, email, password, created_at, updated_at)
+		VALUES
+			(?, ?, ?, ?, ?, ?)
 	`
+
 	_, err := m.DB.ExecContext(ctx, stmt,
 		u.FirstName,
 		u.LastName,
