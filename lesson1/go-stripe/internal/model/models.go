@@ -766,3 +766,7 @@ func (m *DBModel) AddUser(u User, hash string) error {
 	}
 	return nil
 }
+
+func (m *DBModel) DeleteUser(id int) error {
+
+}
