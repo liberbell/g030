@@ -699,7 +699,7 @@ func (m *DBModel) GetOneUser(id int) (User, error) {
 			id = ?
 	`
 
-	row := m.DB.QueryContext(ctx, query, id)
+	row := m.DB.QueryRowContext(ctx, query, id)
 	err := row.Scan(
 		&u.ID,
 		&u.LastName,
@@ -708,4 +708,8 @@ func (m *DBModel) GetOneUser(id int) (User, error) {
 		&u.CreatedAt,
 		&u.UpdatedAt,
 	)
+	if err != nil {
+		return u, err
+	}
+	return u, nil
 }
