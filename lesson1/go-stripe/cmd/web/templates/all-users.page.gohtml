@@ -31,7 +31,72 @@ All Users
         let tbody = document.getElementById("user-table").getElementsByTagName("tbody")[0];
         let token = localStorage.getItem("token");
 
-        
+        const requestOptions = {
+            method: 'post',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + token,
+            },
+        }
+        fetch("{{.API}}/api/admin/all-sales", requestOptions)
+        .then(response => response.json())
+        .then(function (data) {
+            console.log(data);
+
+            if (data.Orders) {
+                data.Orders.forEach(function(i) {
+                    let newRow = tbody.insertRow();
+                    let newCell = newRow.insertCell();
+
+                    newCell.innerHTML = `<a href="/admin/sales/${i.ID}">Order ${i.ID}</a>`;
+                    newCell = newRow.insertCell();
+
+                    let item = document.createTextNode(i.Customer.LastName + ", " + i.Customer.FirstName);
+                    newCell.appendChild(item);
+
+                    newCell = newRow.insertCell();
+                    item = document.createTextNode(i.Widget.Name);
+                    newCell.appendChild(item);
+
+                    let cur = formatCurrency(i.Transaction.Amount);
+                    newCell = newRow.insertCell();
+                    item = document.createTextNode(cur);
+                    newCell.appendChild(item);
+
+                    newCell = newRow.insertCell()
+                    console.log(i.StatusID)
+                    if (i.StatusID != 1) {
+                        newCell.innerHTML = `<span class="badge bg-danger">Refunded</span>`;
+                    } else {
+                        newCell.innerHTML = `<span class="badge bg-success">Charged</span>`;
+                    }
+                })
+                console.log("logpoint1:" + data.LastPage + ":" + data.CurrentPage);
+                paginator(data.LastPage, data.CurrentPage);
+            } else {
+                let newRow = tbody.insertRow();
+                let newCell = newRow.insertCell();
+
+                newCell.setAttribute("colspan", "5");
+                newCell.innerHTML = "No data available";
+
+            }
+        })
+    }
+
+    document.addEventListener("DOMContentLoaded", function() {
+        console.log("logpoint2:" + pageSize + ":" + currentPage);
+        updateTable(pageSize, currentPage);
+    })
+
+    function formatCurrency(amount) {
+        let c = parseFloat(amount/100);
+        return c.toLocaleString("en-CA", {
+            style: "currency",
+            currency: "CAD",
+        })
+    }
 
     })
 </script>
