@@ -768,5 +768,14 @@ func (m *DBModel) AddUser(u User, hash string) error {
 }
 
 func (m *DBModel) DeleteUser(id int) error {
+	ctx, cancel := context.WithTimeout(context.Background(), 3*time.Second)
+	defer cancel()
 
+	stmt := `DELETE FROM users WHERE id = ?`
+
+	_, err := m.DB.ExecContext(ctx, stmt, id)
+	if err != nil {
+		return err
+	}
+	return nil
 }
