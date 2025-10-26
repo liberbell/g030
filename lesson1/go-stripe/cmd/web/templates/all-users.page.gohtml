@@ -49,7 +49,7 @@ All Users
                     let newRow = tbody.insertRow();
                     let newCell = newRow.inseertCell();
 
-                    newCell.innerHTML = `<a href="/admin/alluser/${i.id}">
+                    newCell.innerHTML = `<a href="/admin/alluser/${i.id}">${i.last_name}, ${i.first_name}</a>`
                 })
             }
         })
