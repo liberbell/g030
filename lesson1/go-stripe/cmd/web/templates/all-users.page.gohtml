@@ -46,7 +46,10 @@ All Users
 
             if (data) {
                 data.forEach(function(i) {
-                    let newRow = tbody.insertRow()
+                    let newRow = tbody.insertRow();
+                    let newCell = newRow.inseertCell();
+
+                    newCell.innerHTML = `<a href="/admin/alluser/${i.id}">
                 })
             }
         })
