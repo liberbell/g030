@@ -713,3 +713,16 @@ func (m *DBModel) GetOneUser(id int) (User, error) {
 	}
 	return u, nil
 }
+
+func (m *DBModel) EditUser(u User) error {
+	ctx, cancel := context.WithTimeout(context.Background(), 3*time.Second)
+	defer cancel()
+
+	stmt := `
+		UPDATE
+			users
+		SET
+			first_name = ?,
+			last_name = ?,
+	`
+}
