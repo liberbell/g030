@@ -699,27 +699,13 @@ func (m *DBModel) GetOneUser(id int) (User, error) {
 			id = ?
 	`
 
-	rows, err := m.DB.QueryContext(ctx, query, id)
-	if err != nil {
-		return nil, err
-	}
-	defer rows.Close()
-
-	for rows.Next() {
-		var u User
-		err = rows.Scan(
-			&u.ID,
-			&u.LastName,
-			&u.FirstName,
-			&u.Email,
-			&u.CreatedAt,
-			&u.UpdatedAt,
-		)
-		if err != nil {
-			return nil, err
-		}
-
-		users = append(users, &u)
-	}
-	return users, nil
+	row := m.DB.QueryContext(ctx, query, id)
+	err := row.Scan(
+		&u.ID,
+		&u.LastName,
+		&u.FirstName,
+		&u.Email,
+		&u.CreatedAt,
+		&u.UpdatedAt,
+	)
 }
