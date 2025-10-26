@@ -741,3 +741,25 @@ func (m *DBModel) EditUser(u User) error {
 	}
 	return nil
 }
+
+func (m *DBModel) AddUser(u User, hash string) error {
+	ctx, cancel := context.WithTimeout(context.Background(), 3*time.Second)
+	defer cancel()
+
+	stmt := `
+		INSERT INTO
+			users
+			(first_name, last_name, email, created_at, updated_at, id)
+	`
+	_, err := m.DB.ExecContext(ctx, stmt,
+		u.FirstName,
+		u.LastName,
+		u.Email,
+		time.Now(),
+		u.ID,
+	)
+	if err != nil {
+		return err
+	}
+	return nil
+}
