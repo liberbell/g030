@@ -50,8 +50,13 @@ All Users
                     let newCell = newRow.inseertCell();
 
                     newCell.innerHTML = `<a href="/admin/alluser/${i.id}">${i.last_name}, ${i.first_name}</a>`;
+
                     newCell = newRow.insertCell();
-                })
+                    let item = document.createTextNode(i.email);
+                    newCell.appendChild(item);
+                });
+            } else {
+                let newRow = tbody.insertRow();
             }
         })
     })
