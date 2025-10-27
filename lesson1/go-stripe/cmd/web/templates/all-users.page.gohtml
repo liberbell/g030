@@ -39,7 +39,7 @@ All Users
                 'Authorization': 'Bearer ' + token,
             },
         }
-        fetch("{{.API}}/api/admin/all-sales", requestOptions)
+        fetch("{{.API}}/api/admin/all-users", requestOptions)
         .then(response => response.json())
         .then(function (data) {
             console.log(data);
@@ -47,7 +47,7 @@ All Users
             if (data) {
                 data.forEach(function(i) {
                     let newRow = tbody.insertRow();
-                    let newCell = newRow.inseertCell();
+                    let newCell = newRow.insertCell();
 
                     newCell.innerHTML = `<a href="/admin/all-users/${i.id}">${i.last_name}, ${i.first_name}</a>`;
 
