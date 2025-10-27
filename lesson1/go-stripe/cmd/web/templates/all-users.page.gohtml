@@ -52,7 +52,7 @@ All Users
                     newCell.innerHTML = `<a href="/admin/all-users/${i.ID}">${i.LastName}, ${i.FirstName}</a>`;
 
                     newCell = newRow.insertCell();
-                    let item = document.createTextNode(i.email);
+                    let item = document.createTextNode(i.Email);
                     newCell.appendChild(item);
                 });
             } else {
