@@ -47,9 +47,9 @@ Admin User
 
 {{define "js"}}
 <script>
+    let token = localStorage.getItem("token");
+    let id = window.location.pathname.split("/").pop();
     document.addEventListener("DOMContentLoaded", function() {
-        let token = localStorage.getItem("token");
-        let id = window.location.pathname.split("/").pop();
 
         const requestOptions = {
             method: 'post',
