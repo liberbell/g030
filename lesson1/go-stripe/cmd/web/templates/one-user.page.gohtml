@@ -48,7 +48,17 @@ Admin User
 {{define "js"}}
 <script>
     document.addEventListener("DOMContentLoaded", function() {
-        let token = localStorage.getItem("token")
+        let token = localStorage.getItem("token");
+        let id = window.location.pathname.split("/").pop();
+
+        const requestOptions = {
+            method: 'post',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + token,
+            }
+        }
     })
 </script>
 {{end}}
