@@ -61,6 +61,9 @@ Admin User
         }
         fetch('{{.API}}/api/admin/all-users/' + id, requestOptions)
         .then(response => response.json())
+        .then(function(data) {
+            console.log(data)
+        })
     })
 </script>
 {{end}}
