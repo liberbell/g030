@@ -59,7 +59,8 @@ Admin User
                 'Authorization': 'Bearer ' + token,
             }
         }
-        fetch('{{.API}}/api/admin')
+        fetch('{{.API}}/api/admin/all-users/' + id, requestOptions)
+        .then(response => response.json())
     })
 </script>
 {{end}}
