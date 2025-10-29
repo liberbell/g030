@@ -83,24 +83,7 @@ Admin User
             cancelButtonColor: "#d33",
             confirmButtonText: '{{index .StringMap "refund-btn"}}'
         }).then((result) => {
-            if (result.isConfirmed) {
-                let payload = {
-                    pi: document.getElementById("pi").value,
-                    currency: document.getElementById("currency").value,
-                    amount: parseInt(document.getElementById("charge-amount").value, 10),
-                    id: parseInt(id, 10),
-                }
-
-                const requestOptions = {
-                    method: 'post',
-                    headers: {
-                        'Accept': 'application/json',
-                        'Content-Type': 'application/json',
-                        'Authorization': 'Bearer ' + token,
-                    },
-                    body: JSON.stringify(payload),
-                }
-            }
+            console.log("would delete user id", id)
         })
     })
 </script>
