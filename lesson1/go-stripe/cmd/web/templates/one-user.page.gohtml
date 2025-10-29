@@ -68,8 +68,12 @@ Admin User
             fetch('{{.API}}/api/admin/all-users/' + id, requestOptions)
             .then(response => response.json())
             .then(function(data) {
-                console.log(data)
-                document.getElementById("first_name").value = data.FirstName;
+                console.log(data);
+                if (data) {
+                    document.getElementById("first_name").value = data.FirstName;
+                    document.getElementById("last_name").value = data.LastName;
+                    document.getElementById("email").value = data.Email;
+                }
             })
         }
     })
