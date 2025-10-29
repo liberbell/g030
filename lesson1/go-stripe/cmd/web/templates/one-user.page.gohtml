@@ -38,7 +38,7 @@ Admin User
         <a class="btn btn-warning" href="/admin/all-users" id="cancelBtn">Cancel</a>
     </div>
     <div class="float-end">
-        <a class="btn btn-danger" href="javascript:void(0);" id="deleteBtn">Delete</a>
+        <a class="btn btn-danger d-none" href="javascript:void(0);" id="deleteBtn">Delete</a>
     </div>
     <div class="clearfix"></div>
 </form>
@@ -54,7 +54,8 @@ Admin User
     document.addEventListener("DOMContentLoaded", function() {
 
         if (id !== "0") {
-
+            delBtn.classList.remove("d-none");
+            
             const requestOptions = {
                 method: 'post',
                 headers: {
