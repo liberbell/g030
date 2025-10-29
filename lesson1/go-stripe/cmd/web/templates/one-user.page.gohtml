@@ -69,6 +69,7 @@ Admin User
             .then(response => response.json())
             .then(function(data) {
                 console.log(data)
+                document.getElementById("first_name").value = data.FirstName;
             })
         }
     })
@@ -81,7 +82,7 @@ Admin User
             showCancelButton: true,
             confirmButtonColor: "#3085d6",
             cancelButtonColor: "#d33",
-            confirmButtonText: '{{index .StringMap "refund-btn"}}'
+            confirmButtonText: 'Delete User'
         }).then((result) => {
             console.log("would delete user id", id)
         })
