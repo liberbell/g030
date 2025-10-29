@@ -49,21 +49,26 @@ Admin User
 <script>
     let token = localStorage.getItem("token");
     let id = window.location.pathname.split("/").pop();
+    let delBtn = document.getElementById("deleteBtn");
+
     document.addEventListener("DOMContentLoaded", function() {
 
-        const requestOptions = {
-            method: 'post',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-                'Authorization': 'Bearer ' + token,
+        if (id !== "0") {
+
+            const requestOptions = {
+                method: 'post',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' + token,
+                }
             }
+            fetch('{{.API}}/api/admin/all-users/' + id, requestOptions)
+            .then(response => response.json())
+            .then(function(data) {
+                console.log(data)
+            })
         }
-        fetch('{{.API}}/api/admin/all-users/' + id, requestOptions)
-        .then(response => response.json())
-        .then(function(data) {
-            console.log(data)
-        })
     })
 </script>
 {{end}}
