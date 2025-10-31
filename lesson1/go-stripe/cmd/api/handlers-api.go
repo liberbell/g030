@@ -667,6 +667,9 @@ func (app *application) EditUser(w http.ResponseWriter, r *http.Request) {
 			app.badRequest(w, r, err)
 			return
 		}
+		if user.Password != "" {
+			newHash, err := bcrypt.GenerateFromPassword([]byte(user.Password), 12)
+		}
 	} else {
 
 	}
