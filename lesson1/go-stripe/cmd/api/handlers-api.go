@@ -660,4 +660,14 @@ func (app *application) EditUser(w http.ResponseWriter, r *http.Request) {
 		app.badRequest(w, r, err)
 		return
 	}
+
+	if userID > 0 {
+		err = app.DB.EditUser(user)
+		if err != nil {
+			app.badRequest(w, r, err)
+			return
+		}
+	} else {
+
+	}
 }
