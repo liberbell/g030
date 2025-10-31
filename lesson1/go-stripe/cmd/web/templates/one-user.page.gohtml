@@ -55,7 +55,7 @@ Admin User
     document.addEventListener("DOMContentLoaded", function() {
 
         if (id !== "0") {
-            if (id !== "{{.UserID}}") {}
+            if (id !== "{{.UserID}}") {
                 delBtn.classList.remove("d-none");
             }
 
@@ -90,7 +90,7 @@ Admin User
             cancelButtonColor: "#d33",
             confirmButtonText: 'Delete User'
         }).then((result) => {
-            console.log("would delete user id", id)
+            console.log("would delete user id", id);
         })
     })
 </script>
