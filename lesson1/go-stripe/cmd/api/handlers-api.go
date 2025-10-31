@@ -686,5 +686,12 @@ func (app *application) EditUser(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 		err = app.DB.AddUser(user, string(newHash))
+		if err != nil {
+			app.badRequest(w, r, err)
+			return
+		}
+	}
+	var resp struct {
+		Error bool `json: "error"`
 	}
 }
