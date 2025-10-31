@@ -651,4 +651,13 @@ func (app *application) OneUser(w http.ResponseWriter, r *http.Request) {
 
 func (app *application) EditUser(w http.ResponseWriter, r *http.Request) {
 	id := chi.URLParam(r, "id")
+	userID, _ := strconv.Atoi(id)
+
+	var user models.User
+
+	err := app.readJSON(w, r, &user)
+	if err != nil {
+		app.badRequest(w, r, err)
+		return
+	}
 }
