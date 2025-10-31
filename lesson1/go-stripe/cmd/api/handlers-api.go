@@ -674,8 +674,17 @@ func (app *application) EditUser(w http.ResponseWriter, r *http.Request) {
 				return
 			}
 			err = app.DB.UpdatePasswordForUser(user, string(newHash))
+			if err != nil {
+				app.badRequest(w, r, err)
+				return
+			}
 		}
 	} else {
-
+		newHash, err := bcrypt.GenerateFromPassword([]byte(user.Password), 12)
+		if err != nil {
+			app.badRequest(w, r, err)
+			return
+		}
+		err = app.DB.AddUser(user, string(newHash))
 	}
 }
