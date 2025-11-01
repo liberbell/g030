@@ -692,6 +692,9 @@ func (app *application) EditUser(w http.ResponseWriter, r *http.Request) {
 		}
 	}
 	var resp struct {
-		Error bool `json: "error"`
+		Error   bool   `json: "error"`
+		Message string `json: "message"`
 	}
+	resp.Error = false
+	app.writeJSON(w, http.StatusOK, resp)
 }
