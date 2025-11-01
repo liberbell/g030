@@ -55,7 +55,10 @@ Admin User
     function val() {
         let form = document.getElementById("user_form");
         if (form.checkValidity === false) {
-            this.event.preventDefault{};
+            this.event.preventDefault();
+            this.event.stopPropagation();
+            form.classList.add("was-validated");
+            return
         }
     }
 
