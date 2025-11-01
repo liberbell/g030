@@ -60,6 +60,16 @@ Admin User
             form.classList.add("was-validated");
             return
         }
+        form.classList.add("was-validated");
+
+        if (document.getElementById("password").value !== document.getElementById("verify_password").value) {
+            Swal.fire("Password do noe match.")
+            return
+        }
+
+        let payload = {
+            id: parseInt(id, 10),
+        }
     }
 
     document.addEventListener("DOMContentLoaded", function() {
