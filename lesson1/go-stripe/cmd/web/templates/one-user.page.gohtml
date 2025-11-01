@@ -88,6 +88,7 @@ Admin User
         fetch("{{.API}}/api/admin/all-users/edit/" + id, requestOptions)
         .then(response => response.json())
         .then(function(data) {
+            console.log(data);
             if (data.error) {
                 Swal.fire("Error: " + data.message);
             } else {
