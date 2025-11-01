@@ -52,6 +52,13 @@ Admin User
     let id = window.location.pathname.split("/").pop();
     let delBtn = document.getElementById("deleteBtn");
 
+    function val() {
+        let form = document.getElementById("user_form");
+        if (form.checkValidity === false) {
+            this.event.preventDefault{};
+        }
+    }
+
     document.addEventListener("DOMContentLoaded", function() {
 
         if (id !== "0") {
