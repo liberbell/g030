@@ -85,7 +85,8 @@ Admin User
             body: JSON.stringify(payload),
         }
         
-        fetch("{{.API}}")
+        fetch("{{.API}}/api/admin/all-users/edit/" + id, requestOptions)
+        .then(rfesponse => response.json())
     }
 
     document.addEventListener("DOMContentLoaded", function() {
