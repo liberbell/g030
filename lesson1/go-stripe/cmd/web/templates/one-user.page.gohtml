@@ -81,8 +81,11 @@ Admin User
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
                 'Authorization': 'Bearer ' + token,
-            }
+            },
+            body: JSON.stringify(payload),
         }
+        
+        fetch("{{.API}}")
     }
 
     document.addEventListener("DOMContentLoaded", function() {
