@@ -54,7 +54,7 @@ Admin User
 
     function val() {
         let form = document.getElementById("user_form");
-        if (form.checkValidity === false) {
+        if (form.checkValidity() === false) {
             this.event.preventDefault();
             this.event.stopPropagation();
             form.classList.add("was-validated");
@@ -63,7 +63,7 @@ Admin User
         form.classList.add("was-validated");
 
         if (document.getElementById("password").value !== document.getElementById("verify_password").value) {
-            Swal.fire("Password do noe match.");
+            Swal.fire("Password do not match.");
             return
         }
 
@@ -86,7 +86,7 @@ Admin User
         }
         
         fetch("{{.API}}/api/admin/all-users/edit/" + id, requestOptions)
-        .then(rfesponse => response.json())
+        .then(response => response.json())
         .then(function(data) {
             if (data.error) {
                 Swal.fire("Error: " + data.message);
