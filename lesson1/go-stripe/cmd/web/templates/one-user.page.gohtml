@@ -136,6 +136,16 @@ Admin User
             confirmButtonText: 'Delete User'
         }).then((result) => {
             console.log("would delete user id", id);
+            if (result.isConfirmed) {
+                const requestOptions = {
+                    method: 'post',
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json',
+                        'Authorization': 'Bearer ' + token,
+                    }
+                }
+            }
         })
     })
 </script>
