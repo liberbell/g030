@@ -89,7 +89,7 @@ Admin User
         .then(response => response.json())
         .then(function(data) {
             console.log(data);
-            if (data.error) {
+            if (data.Error) {
                 Swal.fire("Error: " + data.Message);
             } else {
                 location.href = "/admin/all-users";
@@ -145,6 +145,16 @@ Admin User
                         'Authorization': 'Bearer ' + token,
                     }
                 }
+
+                fetch("{{.API}}/admin/all-users/delete" + id, requestOptions)
+                .then(response => response.json())
+                .then(function(data) {
+                    if (data.Error) {
+                        Swal.fire("Error: " + data.Message)
+                    } else {
+                        location.href = "/admin/all-users";
+                    }
+                })
             }
         })
     })
