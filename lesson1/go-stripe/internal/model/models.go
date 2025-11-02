@@ -725,7 +725,7 @@ func (m *DBModel) EditUser(u User) error {
 			first_name = ?,
 			last_name = ?,
 			email = ?,
-			updated_at = ?,
+			updated_at = ?
 		WHERE
 			id = ?
 	`
