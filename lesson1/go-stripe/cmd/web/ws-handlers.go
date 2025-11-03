@@ -75,5 +75,13 @@ func (app *application) ListenForWS(conn *WebSocketConnection) {
 }
 
 func (app *application) ListenToWsChan() {
+	var response WsJsonResponse
+	for {
+		e := <-wsChan
+		switch e.Action {
+		case "deleteUser":
+			response.Action = "logout"
 
+		}
+	}
 }
