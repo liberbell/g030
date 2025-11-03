@@ -18,6 +18,12 @@ type WsPayload struct {
 	Conn        WebSocketConnection `json: "-"`
 }
 
+type WsJsonResponse struct {
+	Action  string `json: "action"`
+	Message string `json: "message"`
+	UserID  int    `json: "user_id"`
+}
+
 var upgradeConnection = websocket.Upgrader{
 	ReadBufferSize:  1024,
 	WriteBufferSize: 1024,
