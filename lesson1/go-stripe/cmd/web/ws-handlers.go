@@ -32,7 +32,7 @@ var upgradeConnection = websocket.Upgrader{
 }
 
 var clients = make(map[WebSocketConnection]string)
-var WsChan = make(chan WsPayload)
+var wsChan = make(chan WsPayload)
 
 func (app *application) WsEndPoint(w http.ResponseWriter, r *http.Request) {
 	ws, err := upgradeConnection.Upgrade(w, r, nil)
@@ -62,4 +62,18 @@ func (app *application) ListenForWS(conn *WebSocketConnection) {
 			app.errorLog.Println("ERROR: ", fmt.Sprintf("%v", r))
 		}
 	}()
+
+	var payload WsPayload
+	for {
+		err := conn.ReadJSON(&payload)
+		if err != nil {
+		} else {
+			payload.Conn = *conn
+			wsChan <- payload
+		}
+	}
+}
+
+func (app *application) ListenToWsChan() {
+
 }
