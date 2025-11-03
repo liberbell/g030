@@ -94,6 +94,8 @@ func (app *application) broadcastToAll(response WsJsonResponse) {
 		err := client.WriteJSON(response)
 		if err != nil {
 			app.errorLog.Printf("Web socket err on %s: %s", response.Action, err)
+			_ = client.Close()
+			delete(clients, client)
 		}
 	}
 }
