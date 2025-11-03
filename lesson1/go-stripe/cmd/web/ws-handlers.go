@@ -81,7 +81,7 @@ func (app *application) ListenToWsChan() {
 		switch e.Action {
 		case "deleteUser":
 			response.Action = "logout"
-
+			response.Message = "Your account has been deleted."
 		}
 	}
 }
