@@ -57,9 +57,9 @@ func (app *application) WsEndPoint(w http.ResponseWriter, r *http.Request) {
 }
 
 func (app *application) ListenForWS(conn *WebSocketConnection) {
-	defer func()  {
-		if r := recover(); {
-			
+	defer func() {
+		if r := recover(); r != nil {
+			app.errorLog.Println("ERROR: ", fmt.Sprintf("%v", r))
 		}
-	}
+	}()
 }
