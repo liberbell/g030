@@ -44,4 +44,9 @@ func (app *application) WsEndPoint(w http.ResponseWriter, r *http.Request) {
 	var response WsJsonResponse
 	response.Message = "Connected to Server"
 
+	err = ws.WriteJSON(response)
+	if err != nil {
+		app.errorLog.Println(err)
+		return
+	}
 }
