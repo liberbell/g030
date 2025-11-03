@@ -74,7 +74,7 @@ func (app *application) ListenForWS(conn *WebSocketConnection) {
 	}
 }
 
-func (app *application) ListenToWsChan() {
+func (app *application) ListenToWsChannel() {
 	var response WsJsonResponse
 	for {
 		e := <-wsChan
