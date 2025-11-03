@@ -35,4 +35,8 @@ var WsChan = make(chan WsPayload)
 
 func (app *application) WsEndPoint(w http.ResponseWriter, r *http.Request) {
 	ws, err := upgradeConnection.Upgrade(w, r, nil)
+	if err != nil {
+		app.errorLog.Println(err)
+		return
+	}
 }
