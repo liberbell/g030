@@ -89,6 +89,11 @@ func (app *application) ListenToWsChan() {
 	}
 }
 
-func (app *application) broadcastToAll() {
-
+func (app *application) broadcastToAll(response WsJsonResponse) {
+	for client := range clients {
+		err := client.WriteJSON(response)
+		if err != nil {
+			app.errorLog.Printf("Web socket err on %s: %s", response.Action, err)
+		}
+	}
 }
