@@ -29,3 +29,6 @@ var upgradeConnection = websocket.Upgrader{
 	WriteBufferSize: 1024,
 	CheckOrigin:     func(r *http.Request) bool { return true },
 }
+
+var clients = make(map[WebSocketConnection]string)
+var WsChan = make(chan WsPayload)
