@@ -32,3 +32,7 @@ var upgradeConnection = websocket.Upgrader{
 
 var clients = make(map[WebSocketConnection]string)
 var WsChan = make(chan WsPayload)
+
+func (app *application) WsEndPoint(w http.ResponseWriter, r *http.Request) {
+	ws, err := upgradeConnection.Upgrade(w, r, nil)
+}
