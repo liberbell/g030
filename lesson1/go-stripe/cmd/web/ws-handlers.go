@@ -82,6 +82,13 @@ func (app *application) ListenToWsChan() {
 		case "deleteUser":
 			response.Action = "logout"
 			response.Message = "Your account has been deleted."
+			app.broadcastToAll(response)
+
+		default:
 		}
 	}
+}
+
+func (app *application) broadcastToAll() {
+
 }
