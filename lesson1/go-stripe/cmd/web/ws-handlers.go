@@ -49,4 +49,17 @@ func (app *application) WsEndPoint(w http.ResponseWriter, r *http.Request) {
 		app.errorLog.Println(err)
 		return
 	}
+
+	conn := WebSocketConnection{Conn: ws}
+	clients[conn] = ""
+
+	go app.ListenForWS(&conn)
+}
+
+func (app *application) ListenForWS(conn *WebSocketConnection) {
+	defer func()  {
+		if r := recover(); {
+			
+		}
+	}
 }
