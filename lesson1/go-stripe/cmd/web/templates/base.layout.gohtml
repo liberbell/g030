@@ -92,7 +92,10 @@
         socket.onopen = () => {
           console.log("successfully connected to websockets.");
         }
+
+        socket.onclose = event => { };
       })
+
 
       {{end}}
 
