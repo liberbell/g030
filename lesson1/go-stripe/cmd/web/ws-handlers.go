@@ -16,6 +16,7 @@ type WsPayload struct {
 	Message     string              `json: "message"`
 	UserName    string              `json: "username"`
 	MessageType string              `json: "message_type"`
+	UserID      int                 `json: "user_id"`
 	Conn        WebSocketConnection `json: "-"`
 }
 
