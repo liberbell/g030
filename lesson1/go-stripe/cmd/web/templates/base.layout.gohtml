@@ -102,7 +102,9 @@
 
           switch (data.action) {
             case "logout":
-              
+              if (data.user_id === {{.UserID}}) {
+                logout();
+              }
               break;
           
             default:
