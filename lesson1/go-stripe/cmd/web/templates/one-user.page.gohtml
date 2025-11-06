@@ -153,8 +153,8 @@ Admin User
                         Swal.fire("Error: " + data.Message)
                     } else {
                         let jsonData = {
-                            action: "deleteUser"
-                            user_id: parseInt(id, 10)
+                            action: "deleteUser",
+                            user_id: parseInt(id, 10),
                         }
                         location.href = "/admin/all-users";
                     }
