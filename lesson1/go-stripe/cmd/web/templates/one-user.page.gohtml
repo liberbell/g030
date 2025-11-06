@@ -156,6 +156,7 @@ Admin User
                             action: "deleteUser",
                             user_id: parseInt(id, 10),
                         }
+                        socket.send(JSON.stringify(jsonData));
                         location.href = "/admin/all-users";
                     }
                 })
