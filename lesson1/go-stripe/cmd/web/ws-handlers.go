@@ -68,8 +68,10 @@ func (app *application) ListenForWS(conn *WebSocketConnection) {
 	for {
 		err := conn.ReadJSON(&payload)
 		if err != nil {
+			break
 		} else {
 			payload.Conn = *conn
+			app.infoLog.Println("ListenForWS", payload.Action)
 			wsChan <- payload
 		}
 	}
