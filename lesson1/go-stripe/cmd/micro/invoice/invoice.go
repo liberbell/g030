@@ -37,4 +37,14 @@ func main() {
 	flag.StringVar(&cfg.frontend, "frontend", "http://localhost:4000", "url to front end")
 
 	flag.Parse()
+
+	infoLog := log.New(os.Stdout, "INFO\t", log.Ldate|log.Ltime)
+	errorLog := log.New(os.Stdout, "ERROR\t", log.Ldate|log.Ltime|log.Lshortfile)
+
+	app := &application{
+		config:   cfg,
+		infoLog:  infoLog,
+		errorLog: errorLog,
+		version:  version,
+	}
 }
