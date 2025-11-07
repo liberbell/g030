@@ -2,8 +2,11 @@ package main
 
 import (
 	"flag"
+	"fmt"
 	"log"
+	"net/http"
 	"os"
+	"time"
 )
 
 const version = "1.0.0"
@@ -47,4 +50,23 @@ func main() {
 		errorLog: errorLog,
 		version:  version,
 	}
+
+	err := app.serve()
+	if err != nil {
+		log.Fatal(err)
+	}
+}
+
+func (app *application) serve() error {
+	srv := &http.Server{
+		Addr:              fmt.Sprintf(":%d", app.config.port),
+		Handler:           app.routes(),
+		IdleTimeout:       30 * time.Second,
+		ReadTimeout:       10 * time.Second,
+		ReadHeaderTimeout: 2 * time.Second,
+		WriteTimeout:      5 * time.Second,
+	}
+	app.infoLog.Printf("Starting invoice microservice on port %d\n", app.config.port)
+
+	return srv.ListenAndServe()
 }
