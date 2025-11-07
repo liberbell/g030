@@ -1,23 +1,23 @@
 package main
 
+import "log"
+
 const version = "1.0.0"
 
 type config struct {
 	port int
-	env  string
-	db   struct {
-		dsn string
-	}
-	stripe struct {
-		secret string
-		key    string
-	}
 	smtp struct {
 		host     string
 		port     int
 		username string
 		password string
 	}
-	secretkey string
-	frontend  string
+	frontend string
+}
+
+type application struct {
+	config   config
+	infoLog  *log.Logger
+	errorLog *log.Logger
+	version  string
 }
