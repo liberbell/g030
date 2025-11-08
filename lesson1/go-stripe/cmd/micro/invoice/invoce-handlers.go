@@ -13,6 +13,6 @@ type Order struct {
 	CreatedAt time.Time `json: "created_at"`
 }
 
-func (app *application) CreateAndSendInvoce(w http.ResponseWriter, r *http.Request) {
+func (app *application) CreateAndSendInvoice(w http.ResponseWriter, r *http.Request) {
 
 }
