@@ -63,5 +63,7 @@ func (app *application) badRequest(w http.ResponseWriter, r *http.Request, err e
 
 func (app *application) CreateDirIfNotExist(path string) error {
 	const mode = 0755
-	if _. err := os.Stat(path)
+	if _, err := os.Stat(path); os.IsNotExist(err) {
+		err := os.Mkdir(path, mode)
+	}
 }
