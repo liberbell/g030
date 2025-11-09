@@ -61,5 +61,7 @@ func (app *application) createInvoicePDF(order Order) error {
 	pdf.SetX(58)
 	pdf.SetY(93)
 	pdf.CellFormat(155, 8, order.Product, "", 0, "L", false, 0, "")
+	pdf.SetX(166)
+	pdf.CellFormat(20, 8, fmt.Sprintf("%s", order.Quantity), "", 0, "L", false, 0, "")
 
 }
