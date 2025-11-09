@@ -55,4 +55,11 @@ func (app *application) createInvoicePDF(order Order) error {
 	pdf.CellFormat(97, 8, fmt.Sprintf("Attention: %s %s", order.FirstName, order.LastName), "", 0, "L", false, 0, "")
 	pdf.Ln(5)
 	pdf.CellFormat(97, 8, order.Email, "", 0, "L", false, 0, "")
+	pdf.Ln(5)
+	pdf.CellFormat(97, 8, order.CreatedAt.Format("2006-01-02"), "", 0, "L", false, 0, "")
+
+	pdf.SetX(58)
+	pdf.SetY(93)
+	pdf.CellFormat(155, 8, order.Product, "", 0, "L", false, 0, "")
+
 }
