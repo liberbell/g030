@@ -29,6 +29,12 @@ func (app *application) CreateAndSendInvoice(w http.ResponseWriter, r *http.Requ
 		return
 	}
 
+	err = app.createInvoicePDF(order)
+	if err != nil {
+		app.badRequest(w, r, err)
+		return
+	}
+
 	var resp struct {
 		Error   bool   `json: "error"`
 		Message string `json: "message"`
