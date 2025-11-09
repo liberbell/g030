@@ -52,6 +52,7 @@ func (app *application) createInvoicePDF(order Order) error {
 	pdf.SetY(50)
 	pdf.SetX(10)
 	pdf.SetFont("Times", "", 11)
-	pdf.CellFormat(97, 8, fmt.Sprintf("Attention: %s %s", order.FirstName, order.LastName))
-
+	pdf.CellFormat(97, 8, fmt.Sprintf("Attention: %s %s", order.FirstName, order.LastName), "", 0, "L", false, 0, "")
+	pdf.Ln(5)
+	pdf.CellFormat(97, 8, order.Email, "", 0, "L", false, 0, "")
 }
