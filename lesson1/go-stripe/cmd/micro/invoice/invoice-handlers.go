@@ -32,4 +32,5 @@ func (app *application) CreateAndSendInvoice(w http.ResponseWriter, r *http.Requ
 	}
 	resp.Error = false
 	resp.Message = fmt.Sprintf("Invoice %d.pdf created and sent to %s", order.ID, order.Email)
+	app.writeJSON(w, http.StatusCreated, resp)
 }
