@@ -48,4 +48,9 @@ func (app *application) createInvoicePDF(order Order) error {
 	t := importer.ImportPage(pdf, "./pdf-templates/invoice.pdf", 1, "/MediaBox")
 	pdf.AddPage()
 	importer.UseImportedTemplate(pdf, t, 0, 0, 215.9, 0)
+
+	pdf.SetY(50)
+	pdf.SetX(10)
+	pdf.SetFont("Times", "", 11)
+
 }
