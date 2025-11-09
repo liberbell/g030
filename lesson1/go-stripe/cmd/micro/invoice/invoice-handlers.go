@@ -12,7 +12,7 @@ type Order struct {
 	Product   string    `json: "product"`
 	FirstName string    `json: "first_name"`
 	LastName  string    `json: "last_name"`
-	FirstName string    `json: "first_name"`
+	Email     string    `json: "email"`
 	CreatedAt time.Time `json: "created_at"`
 }
 
