@@ -6,6 +6,7 @@ import (
 	"time"
 
 	"github.com/jung-kurt/gofpdf"
+	"github.com/jung-kurt/gofpdf/contrib/gofpdi"
 )
 
 type Order struct {
@@ -39,4 +40,10 @@ func (app *application) CreateAndSendInvoice(w http.ResponseWriter, r *http.Requ
 
 func (app *application) createInvoicePDF(order Order) error {
 	pdf := gofpdf.New("P", "mm", "Letter", "")
+	pdf.SetMargins(10, 13, 10)
+	pdf.SetAutoPageBreak(true, 0)
+
+	importer := gofpdi.NewImporter()
+
+	t := importer.ImportPage(pdf, "./pdf-templates/invoice.pdf")
 }
