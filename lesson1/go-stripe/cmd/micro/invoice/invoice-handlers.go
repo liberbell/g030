@@ -87,5 +87,5 @@ func (app *application) createInvoicePDF(order Order) error {
 	if err != nil {
 		return err
 	}
-
+	return nil
 }
