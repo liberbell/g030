@@ -33,6 +33,9 @@ func (app *application) CreateAndSendInvoice(w http.ResponseWriter, r *http.Requ
 	order.Email = "some@one.com"
 	order.FirstName = "John"
 	order.LastName = "Lenon"
+	order.Quantity = 1
+	order.Amount = 1000
+	order.Product = "Widget"
 
 	err := app.createInvoicePDF(order)
 	if err != nil {
