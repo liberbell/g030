@@ -18,6 +18,13 @@ type Order struct {
 	LastName  string    `json: "last_name"`
 	Email     string    `json: "email"`
 	CreatedAt time.Time `json: "created_at"`
+	Items     []Products
+}
+
+type Products struct {
+	Name     string
+	Amount   int
+	Quantity int
 }
 
 func (app *application) CreateAndSendInvoice(w http.ResponseWriter, r *http.Request) {
