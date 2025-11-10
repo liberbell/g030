@@ -29,6 +29,11 @@ func (app *application) CreateAndSendInvoice(w http.ResponseWriter, r *http.Requ
 	// 	return
 	// }
 
+	order.ID = 100
+	order.Email = "some@one.com"
+	order.FirstName = "John"
+	order.LastName = "Lenon"
+
 	err := app.createInvoicePDF(order)
 	if err != nil {
 		app.badRequest(w, r, err)
