@@ -65,6 +65,12 @@ func (app *application) SendMail(from, to, subject, tmpl string, attachments []s
 	email.SetBody(mail.TextHTML, formattedMessage)
 	email.AddAlternative(mail.TextPlain, plainMessage)
 
+	if len(attachments) > 0 {
+		for _, x := range attachments {
+			email.AddAttachment(x)
+		}
+	}
+
 	err = email.Send(smtpClient)
 	if err != nil {
 		app.errorLog.Println(err)
