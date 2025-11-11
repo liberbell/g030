@@ -23,22 +23,22 @@ type Order struct {
 func (app *application) CreateAndSendInvoice(w http.ResponseWriter, r *http.Request) {
 	var order Order
 
-	err := app.readJSON(w, r, &order)
-	if err != nil {
-		app.badRequest(w, r, err)
-		return
-	}
+	// err := app.readJSON(w, r, &order)
+	// if err != nil {
+	// 	app.badRequest(w, r, err)
+	// 	return
+	// }
 
-	// order.ID = 100
-	// order.Email = "some@one.com"
-	// order.FirstName = "John"
-	// order.LastName = "Lenon"
-	// order.Quantity = 1
-	// order.Amount = 1000
-	// order.Product = "Widget"
-	// order.CreatedAt = time.Now()
+	order.ID = 100
+	order.Email = "some@one.com"
+	order.FirstName = "John"
+	order.LastName = "Lenon"
+	order.Quantity = 1
+	order.Amount = 1000
+	order.Product = "Widget"
+	order.CreatedAt = time.Now()
 
-	err = app.createInvoicePDF(order)
+	err := app.createInvoicePDF(order)
 	if err != nil {
 		app.badRequest(w, r, err)
 		return
