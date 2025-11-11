@@ -44,8 +44,8 @@ func (app *application) CreateAndSendInvoice(w http.ResponseWriter, r *http.Requ
 		return
 	}
 
-	attachments := []string {
-		fmt.Sprintf("./invoices/%d.pdf", order.ID)
+	attachments := []string{
+		fmt.Sprintf("./invoices/%d.pdf", order.ID),
 	}
 
 	err = app.SendMail("info@widgets.com", order.Email, "Your invoice", "invoice", attachments, nil)
