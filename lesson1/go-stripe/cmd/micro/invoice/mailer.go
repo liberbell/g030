@@ -10,7 +10,7 @@ import (
 	mail "github.com/xhit/go-simple-mail/v2"
 )
 
-//go:embed templates
+//go:embed email-templates
 var emailTemplateFS embed.FS
 
 func (app *application) SendMail(from, to, subject, tmpl string, attachments []string, data interface{}) error {
