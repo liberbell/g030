@@ -44,6 +44,12 @@ func (app *application) CreateAndSendInvoice(w http.ResponseWriter, r *http.Requ
 		return
 	}
 
+	attachments := []string {
+		fmt.Sprintf("./invoices/%d.pdf", order.ID)
+	}
+
+	err = app.SendMail("info@widgets.com", order.Email, "Your invoice")
+
 	var resp struct {
 		Error   bool   `json: "error"`
 		Message string `json: "message"`
