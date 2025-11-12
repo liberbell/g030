@@ -173,6 +173,11 @@ func (app *application) PaymentSucceeded(w http.ResponseWriter, r *http.Request)
 		CreatedAt: time.Now(),
 	}
 
+	err = app.callInvoiceMicro(inv)
+	if err != nil {
+		app.infoLog.Println(err)
+	}
+
 	app.Session.Put(r.Context(), "receipt", txnData)
 	http.Redirect(w, r, "/receipt", http.StatusSeeOther)
 }
@@ -198,6 +203,7 @@ func (app *application) callInvoiceMicro(inv Invoice) error {
 
 	defer resp.Body.Close()
 	app.infoLog.Println(resp.Body)
+
 	return nil
 }
 
