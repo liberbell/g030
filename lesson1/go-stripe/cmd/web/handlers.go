@@ -1,6 +1,7 @@
 package main
 
 import (
+	"bytes"
 	"encoding/json"
 	"fmt"
 	"myapp/internal/cards"
@@ -183,7 +184,11 @@ func (app *application) callInvoiceMicro(inv Invoice) error {
 		return err
 	}
 
-	req, err := http.NewRequest()
+	req, err := http.NewRequest("POST", url, bytes.NewBuffer(out))
+	if err != nil {
+		return err
+	}
+	req.Header.Set("Content-Type", "application/json")
 }
 
 func (app *application) VirtualTerminalPaymentSucceeded(w http.ResponseWriter, r *http.Request) {
