@@ -93,6 +93,11 @@ func (app *application) GetTransactionData(r *http.Request) (TransactionData, er
 
 }
 
+type Order struct {
+	ID       int `json: "id"`
+	Quantity int `json: "quantity"`
+}
+
 func (app *application) PaymentSucceeded(w http.ResponseWriter, r *http.Request) {
 	err := r.ParseForm()
 	if err != nil {
