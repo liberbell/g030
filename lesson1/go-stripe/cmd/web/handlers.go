@@ -161,8 +161,14 @@ func (app *application) PaymentSucceeded(w http.ResponseWriter, r *http.Request)
 	}
 
 	inv := Invoice{
-		ID:     orderID,
-		Amount: order.Amount,
+		ID:        orderID,
+		Amount:    order.Amount,
+		Product:   "Widget",
+		Quantity:  order.Quantity,
+		FirstName: txnData.FirstName,
+		LastName:  txnData.LastName,
+		Email:     txnData.Email,
+		CreatedAt: time.Now(),
 	}
 
 	app.Session.Put(r.Context(), "receipt", txnData)
