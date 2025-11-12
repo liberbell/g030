@@ -93,7 +93,7 @@ func (app *application) GetTransactionData(r *http.Request) (TransactionData, er
 
 }
 
-type Order struct {
+type Invoice struct {
 	ID        int       `json: "id"`
 	Quantity  int       `json: "quantity"`
 	Amount    int       `json: "amount"`
@@ -154,10 +154,15 @@ func (app *application) PaymentSucceeded(w http.ResponseWriter, r *http.Request)
 		CreatedAt:     time.Now(),
 		UpdatedAt:     time.Now(),
 	}
-	_, err = app.SaveOrder(order)
+	orderID, err := app.SaveOrder(order)
 	if err != nil {
 		app.errorLog.Println(err)
 		return
+	}
+
+	inv := Invoice{
+		ID:     orderID,
+		Amount: order.Amount,
 	}
 
 	app.Session.Put(r.Context(), "receipt", txnData)
