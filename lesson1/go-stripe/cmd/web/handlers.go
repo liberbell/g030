@@ -191,6 +191,12 @@ func (app *application) callInvoiceMicro(inv Invoice) error {
 	req.Header.Set("Content-Type", "application/json")
 
 	client := &http.Client{}
+	resp, err := client.Do(req)
+	if err != nil {
+		return err
+	}
+
+	derer resp.Body.Close()
 }
 
 func (app *application) VirtualTerminalPaymentSucceeded(w http.ResponseWriter, r *http.Request) {
