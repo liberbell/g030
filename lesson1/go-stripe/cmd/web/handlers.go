@@ -196,7 +196,9 @@ func (app *application) callInvoiceMicro(inv Invoice) error {
 		return err
 	}
 
-	derer resp.Body.Close()
+	defer resp.Body.Close()
+	app.infoLog.Println(resp.Body)
+	return nil
 }
 
 func (app *application) VirtualTerminalPaymentSucceeded(w http.ResponseWriter, r *http.Request) {
