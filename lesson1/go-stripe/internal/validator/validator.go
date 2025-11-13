@@ -17,3 +17,8 @@ func (v *Validator) AddError(key, message string) {
 		v.Errors[key] = message
 	}
 }
+
+func (v *Validator) Check(ok bool, key, meesage string) {
+	if !ok {
+	}
+}
