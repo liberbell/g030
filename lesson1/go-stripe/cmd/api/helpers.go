@@ -90,3 +90,7 @@ func (app *application) passwordMatches(hash, password string) (bool, error) {
 	}
 	return true, nil
 }
+
+func (app *application) failedValidation(w http.ResponseWriter, r *http.Request, errors map[string]string) {
+	var payload struct{}
+}
