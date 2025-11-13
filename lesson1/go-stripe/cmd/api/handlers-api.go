@@ -112,6 +112,17 @@ func (app *application) GetWidgetByID(w http.ResponseWriter, r *http.Request) {
 	w.Write(out)
 }
 
+type Invoice struct {
+	ID        int       `json: "id"`
+	Quantity  int       `json: "quantity"`
+	Amount    int       `json: "amount"`
+	Product   string    `json: "product"`
+	FirstName string    `json: "first_name"`
+	LastName  string    `json: "last_name"`
+	Email     string    `json: "email"`
+	CreatedAt time.Time `json: "created_at"`
+}
+
 func (app *application) CreateCustomerAndSubscribeToPlan(w http.ResponseWriter, r *http.Request) {
 	var data stripePayload
 	err := json.NewDecoder(r.Body).Decode(&data)
