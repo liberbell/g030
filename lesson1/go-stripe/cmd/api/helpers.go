@@ -93,8 +93,12 @@ func (app *application) passwordMatches(hash, password string) (bool, error) {
 
 func (app *application) failedValidation(w http.ResponseWriter, r *http.Request, errors map[string]string) {
 	var payload struct {
-		Error   string            `json: "error"`
+		Error   bool              `json: "error"`
 		Message string            `json: "message"`
 		Errors  map[string]string `json: "errors"`
 	}
+
+	payload.Error = true
+	payload.Message = "failed validation"
+	payload.Errors = errors
 }
