@@ -172,7 +172,11 @@
 
                     location.href = "/receipt/bronze";
                 } else {
-                    document.getElementById("charge-form").classList
+                    document.getElementById("charge-form").classList.remove("was-validated")
+
+                    Object.entries(data.errors).forEach((i) => {
+                        const [key, value] = i;
+                    })
                 }
             })
         }
