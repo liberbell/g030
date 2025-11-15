@@ -137,6 +137,11 @@ func (app *application) CreateCustomerAndSubscribeToPlan(w http.ResponseWriter, 
 	v := validator.New()
 	v.Check(len(data.FirstName) > 1, "first_name", "Must be at least 2 characters")
 
+	if !v.Valid() {
+		app.failedValidation(w, r, v.Errors)
+		return
+	}
+
 	card := cards.Card{
 		Secret:   app.config.stripe.secret,
 		Key:      app.config.stripe.key,
