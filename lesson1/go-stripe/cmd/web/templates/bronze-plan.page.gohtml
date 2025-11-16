@@ -177,6 +177,7 @@
                     Object.entries(data.errors).forEach((i) => {
                         const [key, value] = i;
                         console.log(`${key}: ${value}`);
+                        document.getElementById(key).classList.add("is-invalid");
                     })
                 }
             })
