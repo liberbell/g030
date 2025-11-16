@@ -183,7 +183,9 @@
                         document.getElementById(key).classList.add("is-invalid");
                         document.getElementById(key + "-help").classList.remove("valid-feedback");
                         document.getElementById(key + "-help").classList.add("invalid-feedback");
+                        document.getElementById(key + "-help").innerText = value;
                     })
+                    showPayButtons();
                 }
             })
         }
