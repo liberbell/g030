@@ -28,6 +28,9 @@
         <label for="first_name" class="form-label">First Name</label>
         <input type="text" class="form_control" id="first_name" name="first_name"
             required="" autocomplete="first_name-new">
+        <div id="first_name-help" class="valid-feedback">
+           Looks good!
+        </div>
     </div>
 
     <div class="mb-3">
@@ -178,6 +181,8 @@
                         const [key, value] = i;
                         console.log(`${key}: ${value}`);
                         document.getElementById(key).classList.add("is-invalid");
+                        document.getElementById(key + "-help").classList.remove("valid-feedback");
+                        document.getElementById(key + "-help").classList.add("invalid-feedback");
                     })
                 }
             })
